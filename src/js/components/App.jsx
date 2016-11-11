@@ -1,24 +1,17 @@
 var React = require('react');
 
-var Link  =require('react-router').Link;
-
-function getActiveClass(path) {
-	var current = window.location.hash.slice(1);
-	return current === path?'active':'';
-}
+var CharacterSelection = require('./CharacterSelection.jsx'),
+	Search = require('./Search.jsx'),
+	BattleView = require('./BattleView.jsx');
 
 var App = React.createClass({
 	render() {
 		return (
-			<div>
-				<header>
-					<Link to='/' className={getActiveClass('/')}>Home</Link>
-				</header>
-				<main>
-					<h1>App</h1>
-					{this.props.children}
-				</main>
-			</div>
+			<section>
+				<CharacterSelection />
+				<Search />
+				<BattleView />
+			</section>
 		)
 	}
 });
