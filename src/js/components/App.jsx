@@ -49,20 +49,26 @@ var App = React.createClass({
 
 		return (
 			<section>
-				<CharacterSelection
-					id={this.state.character1}
-					image={this.state.image1}/>
-				<Search 
-					handleCharacter={this.handleClick} 
-					id='left'
-					choose={this.handleChoose}/>
-				<CharacterSelection 
-				id={this.state.character2}
-				image={this.state.image2}/>
-				<Search 
-					handleCharacter={this.handleClick} 
-					id='right'
-					choose={this.handleChoose}/>
+				<div>
+					<CharacterSelection
+						records={this.state.records}
+						id={this.state.character1}
+						image={this.state.image1}/>
+					<Search 
+						handleCharacter={this.handleClick} 
+						id='left'
+						choose={this.handleChoose}/>
+				</div>
+				<div>
+					<CharacterSelection
+						records={this.state.records} 
+						id={this.state.character2}
+						image={this.state.image2}/>
+					<Search 
+						handleCharacter={this.handleClick} 
+						id='right'
+						choose={this.handleChoose}/>
+				</div>
 				<BattleView 
 					character1={this.state.character1}
 					character2={this.state.character2}
@@ -79,6 +85,10 @@ var App = React.createClass({
 			searchResults: null,
 			narrative: battleManager.narrativeBattle(this.state.character1, this.state.character2)
 		});
+		var winner = this.state.narrative.winner,
+			loser = this.state.narrative.loser;
+
+
 	},
 
 	handleClick(e) {

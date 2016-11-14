@@ -9,8 +9,7 @@ var CharacterSelection = React.createClass({
 		if (this.props.id) {
 			src = this.props.image;
 		}
-		var record = battleStore.get(this.props.id),
-			{ wins, losses } = record;
+		var { wins, losses } = this.props.record;
 		return (
 			<div 
 				className='select' 
