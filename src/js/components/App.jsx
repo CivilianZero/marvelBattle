@@ -59,7 +59,7 @@ var App = React.createClass({
 						handleCharacter={this.handleClick} 
 						id='right'
 						choose={this.handleChoose}/>
-				<div>
+				</div>
 				{results}
 				<BattleView 
 					character1={this.state.character1}
