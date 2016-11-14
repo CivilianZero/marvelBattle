@@ -46,12 +46,15 @@ var App = React.createClass({
 				searchResults={this.state.searchResults}/>;
 		}
 
+		var name1 = characterStore.getCharacters(this.state.character1).name;
+		var name2 = characterStore.getCharacters(this.state.character2).name;
 
 		return (
 			<section>
 				<div>
 					<CharacterSelection
 						records={this.state.records}
+						name={name1}
 						id={this.state.character1}
 						image={this.state.image1}/>
 					<Search 
@@ -61,7 +64,8 @@ var App = React.createClass({
 				</div>
 				<div>
 					<CharacterSelection
-						records={this.state.records} 
+						records={this.state.records}
+						name={name2} 
 						id={this.state.character2}
 						image={this.state.image2}/>
 					<Search 
@@ -69,25 +73,27 @@ var App = React.createClass({
 						id='right'
 						choose={this.handleChoose}/>
 				</div>
+				{results}
 				<BattleView 
 					character1={this.state.character1}
 					character2={this.state.character2}
 					narrative={this.state.narrative}>
 					<button onClick={this.handleFight}>FIGHT!</button>
 				</BattleView>
-				{results}
 			</section>
 		)
 	},
 
 	handleFight() {
+		var fight = battleManager.narrativeBattle(this.state.character1, this.state.character2)
 		this.setState({
 			searchResults: null,
-			narrative: battleManager.narrativeBattle(this.state.character1, this.state.character2)
+			narrative: fight
 		});
-		var winner = this.state.narrative.winner,
-			loser = this.state.narrative.loser;
-		
+		var winner = fight.winner.name,
+			loser = fight.loser.name;
+		battleStore.add(winner, 'win');
+		battleStore.add(loser, 'lose');
 	},
 
 	handleClick(e) {

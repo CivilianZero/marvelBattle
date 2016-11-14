@@ -32,19 +32,35 @@ battleStore.fetch = function () {
 	return records;
 };
 
-battleStore.winner = function(winner) {
-	if(records.indexOf(winner) !== -1) {
-		records[records.indexOf(winner)].wins++
-	}
-	$.ajax({
-		url: '/records',
-		method: 'POST',
-		data: ,
-		success: function (response) {
-			records.push(response);
-			battleStore.emit('update');
+battleStore.add = function(c, wl) {
+	var chara = records.find((chara) => chara.name === c)
+	if(chara) {
+		if(wl === 'win') {
+			chara.wins++;
+		} else {
+			chara.losses++;
 		}
-	})
+	} else {
+		if(wl === 'win') { 
+			records.push({name: c, wins:1, losses:0});
+		} else {
+			records.push({name: c, wins:0, losses:1});
+		}
+	}
+	// $.ajax({
+	// 	url: '/records',
+	// 	method: 'POST',
+	// 	data: {
+	// 		wins: records.c.wins,
+	// 		losses: records.c.losses
+	// 	},
+	// 	success: function (response) {
+	// 		records.push(response);
+	// 		battleStore.emit('update');
+	// 	}
+	// })
+	battleStore.emit('update');
 }
 
+window.battleStore = battleStore;
 module.exports = battleStore;
