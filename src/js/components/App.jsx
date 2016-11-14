@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react'),
+	battleManager = require('battlemanager');
 
 var CharacterSelection = require('./CharacterSelection.jsx'),
 	Search = require('./SearchView.jsx'),
@@ -15,7 +16,8 @@ var App = React.createClass({
 			character2: null,
 			image2: null,
 			activeSelect: null,
-			searchResults: null
+			searchResults: null,
+			narrative: null
 		}
 	},
 
@@ -55,9 +57,21 @@ var App = React.createClass({
 					id='right'
 					choose={this.handleChoose}/>
 				{results}
-				<BattleView />
+				<BattleView 
+					character1={this.state.character1}
+					character2={this.state.character2}
+					narrative={this.state.narrative}>
+					<button onClick={this.handleFight}>FIGHT!</button>
+				</BattleView>
 			</section>
 		)
+	},
+
+	handleFight() {
+		this.setState({
+			searchResults: null,
+			narrative: battleManager.narrativeBattle(this.state.character1, this.state.character2)
+		});
 	},
 
 	handleClick(e) {
@@ -77,7 +91,8 @@ var App = React.createClass({
 
 	handleChoose(e) {
 		this.setState({
-			activeSelect: e.target.id
+			activeSelect: e.target.id,
+			searchResults: null
 		});
 	}
 
