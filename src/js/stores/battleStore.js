@@ -6,11 +6,21 @@ EventEmitter.call(battleStore);
 
 var records = [];
 
-battleStore.getRecords = function () {
-	return records;
+function findById(id) {
+	return records.find(function(r) {
+		return r.id === id;
+	});
+}
+
+battleStore.get = function (id) {
+	if(id) {
+		return findById(id);
+	} else {
+		return records;
+	}
 };
 
-battleStore.fetchRecords = function () {
+battleStore.fetch = function () {
 	$.ajax({
 		url: '/records',
 		success: function (response) {
@@ -21,5 +31,21 @@ battleStore.fetchRecords = function () {
 	});
 	return records;
 };
+
+battleStore.post = function(win, lose, draw) {
+	$.ajax({
+		url: '/records',
+		method: 'POST',
+		data: {
+			wins: win,
+			losses: lose,
+			draws: draw
+		},
+		success: function (response) {
+			records.push(response);
+			battleStore.emit('update');
+		}
+	})
+}
 
 module.exports = battleStore;

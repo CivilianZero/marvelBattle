@@ -5,7 +5,8 @@ var CharacterSelection = require('./CharacterSelection.jsx'),
 	Search = require('./SearchView.jsx'),
 	BattleView = require('./BattleView.jsx'),
 	characterStore = require('../stores/characterStore.js'),
-	Results = require('./ResultsView.jsx');
+	Results = require('./ResultsView.jsx'),
+	battleStore = require('../stores/battleStore.js');
 
 var App = React.createClass({
 
@@ -17,7 +18,8 @@ var App = React.createClass({
 			image2: null,
 			activeSelect: null,
 			searchResults: null,
-			narrative: null
+			narrative: null,
+			records: battleStore.fetch()
 		}
 	},
 
@@ -25,7 +27,12 @@ var App = React.createClass({
 		var _this = this;
 		characterStore.on('update', function() {
 			_this.setState({
-			searchResults: characterStore.getCharacters()
+				searchResults: characterStore.getCharacters()
+			});
+		});
+		battleStore.on('update', function() {
+			_this.setState({
+				records: battleStore.get()
 			});
 		});
 	},
@@ -56,13 +63,13 @@ var App = React.createClass({
 					handleCharacter={this.handleClick} 
 					id='right'
 					choose={this.handleChoose}/>
-				{results}
 				<BattleView 
 					character1={this.state.character1}
 					character2={this.state.character2}
 					narrative={this.state.narrative}>
 					<button onClick={this.handleFight}>FIGHT!</button>
 				</BattleView>
+				{results}
 			</section>
 		)
 	},

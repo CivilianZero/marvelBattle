@@ -21429,7 +21429,8 @@
 	    Search = __webpack_require__(174),
 	    BattleView = __webpack_require__(179),
 	    characterStore = __webpack_require__(176),
-	    Results = __webpack_require__(175);
+	    Results = __webpack_require__(175),
+	    battleStore = __webpack_require__(183);
 
 	var App = React.createClass({
 		displayName: 'App',
@@ -21443,7 +21444,8 @@
 				image2: null,
 				activeSelect: null,
 				searchResults: null,
-				narrative: null
+				narrative: null,
+				records: battleStore.fetch()
 			};
 		},
 
@@ -21452,6 +21454,11 @@
 			characterStore.on('update', function () {
 				_this.setState({
 					searchResults: characterStore.getCharacters()
+				});
+			});
+			battleStore.on('update', function () {
+				_this.setState({
+					records: battleStore.get()
 				});
 			});
 		},
@@ -21482,7 +21489,6 @@
 					handleCharacter: this.handleClick,
 					id: 'right',
 					choose: this.handleChoose }),
-				results,
 				React.createElement(
 					BattleView,
 					{
@@ -21494,7 +21500,8 @@
 						{ onClick: this.handleFight },
 						'FIGHT!'
 					)
-				)
+				),
+				results
 			);
 		},
 
@@ -21537,6 +21544,8 @@
 
 	var React = __webpack_require__(1);
 
+	var battleStore = __webpack_require__(183);
+
 	var CharacterSelection = React.createClass({
 		displayName: 'CharacterSelection',
 
@@ -21546,6 +21555,8 @@
 			if (this.props.id) {
 				src = this.props.image;
 			}
+			var record = battleStore.get(this.props.id),
+			    { wins, losses } = record;
 			return React.createElement(
 				'div',
 				{
@@ -21553,6 +21564,16 @@
 					key: this.props.id,
 					id: this.props.id,
 					onClick: this.props.choose },
+				React.createElement(
+					'span',
+					null,
+					wins
+				),
+				React.createElement(
+					'span',
+					null,
+					losses
+				),
 				React.createElement('img', { src: src })
 			);
 		}
@@ -32901,6 +32922,62 @@
 
 
 
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(177),
+	    $ = __webpack_require__(178);
+
+	var battleStore = Object.create(EventEmitter.prototype);
+	EventEmitter.call(battleStore);
+
+	var records = [];
+
+	function findById(id) {
+		return records.find(function (r) {
+			return r.id === id;
+		});
+	}
+
+	battleStore.get = function (id) {
+		if (id) {
+			return findById(id);
+		} else {
+			return records;
+		}
+	};
+
+	battleStore.fetch = function () {
+		$.ajax({
+			url: '/records',
+			success: function (response) {
+				var results = response.results;
+				records.push(results);
+				battleStore.emit('update');
+			}
+		});
+		return records;
+	};
+
+	battleStore.post = function (win, lose, draw) {
+		$.ajax({
+			url: '/records',
+			method: 'POST',
+			data: {
+				wins: win,
+				losses: lose,
+				draws: draw
+			},
+			success: function (response) {
+				records.push(response);
+				battleStore.emit('update');
+			}
+		});
+	};
+
+	module.exports = battleStore;
 
 /***/ }
 /******/ ]);
