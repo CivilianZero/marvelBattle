@@ -67,20 +67,43 @@ header h1 {
 
 }
 
-div.select {
-	width: 40%;
-	height: 35%;
-	/*background-color: blue;*/
-	border: 5px solid #000;
-	display: inline-block;
-	/*float: left;*/
-}
-
-img {
-	width: 100%;
+section {
 	height: 100%;
 }
 
-input[type="text"] {
-	position: 
+.character-wrapper {
+	width: 49.7%;
+	height: 45%;
+	/*margin-right: 2px;*/
+	/*display: inline-block;*/
+	float: left;
+	overflow: hidden;
+	/*clear: both;*/
 }
+
+.character-wrapper:first-child {
+	margin-right: 5px;
+}
+
+div.select {
+	width: 100%;
+	height: 100%;
+	/*background-color: blue;*/
+	border: 5px solid #000;
+	display: inline-block;
+	/*position: absolute;*/
+}
+
+img {
+	/*width: 100%;*/
+	/*height: 100%;*/
+	position: absolute;
+}
+
+.search {
+	position: relative;
+}
+
+/*input[type="text"] {
+	position: relative;
+}*/

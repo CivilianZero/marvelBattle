@@ -21425,19 +21425,11 @@
 	var React = __webpack_require__(1),
 	    battleManager = __webpack_require__(173);
 
-<<<<<<< HEAD
-	var CharacterSelection = __webpack_require__(173),
-	    Search = __webpack_require__(174),
-	    BattleView = __webpack_require__(180),
-	    characterStore = __webpack_require__(177),
-	    Results = __webpack_require__(175);
-=======
 	var CharacterSelection = __webpack_require__(174),
 	    Search = __webpack_require__(175),
 	    BattleView = __webpack_require__(181),
 	    characterStore = __webpack_require__(178),
 	    Results = __webpack_require__(176);
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	var App = React.createClass({
 		displayName: 'App',
@@ -21476,20 +21468,28 @@
 			return React.createElement(
 				'section',
 				null,
-				React.createElement(CharacterSelection, {
-					id: this.state.character1,
-					image: this.state.image1 }),
-				React.createElement(Search, {
-					handleCharacter: this.handleClick,
-					id: 'left',
-					choose: this.handleChoose }),
-				React.createElement(CharacterSelection, {
-					id: this.state.character2,
-					image: this.state.image2 }),
-				React.createElement(Search, {
-					handleCharacter: this.handleClick,
-					id: 'right',
-					choose: this.handleChoose }),
+				React.createElement(
+					'div',
+					{ className: 'character-wrapper' },
+					React.createElement(CharacterSelection, {
+						id: this.state.character1,
+						image: this.state.image1 }),
+					React.createElement(Search, {
+						handleCharacter: this.handleClick,
+						id: 'left',
+						choose: this.handleChoose })
+				),
+				React.createElement(
+					'div',
+					{ className: 'character-wrapper' },
+					React.createElement(CharacterSelection, {
+						id: this.state.character2,
+						image: this.state.image2 }),
+					React.createElement(Search, {
+						handleCharacter: this.handleClick,
+						id: 'right',
+						choose: this.handleChoose })
+				),
 				results,
 				React.createElement(
 					BattleView,
@@ -21641,12 +21641,7 @@
 	        }
 	    };
 
-<<<<<<< HEAD
-	var Results = __webpack_require__(175),
-	    characterStore = __webpack_require__(177);
-=======
 	    //UTILITY FUNCTIONS, PRIVATE
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	    //adds tiny jitter to a number scaled by the maximum
 	    //size of the number
@@ -21691,11 +21686,7 @@
 	        //returns an array of results from func
 	        each = function each( arr, func ){
 
-<<<<<<< HEAD
-	var CharacterViews = __webpack_require__(176);
-=======
 	            var arr2 = [];
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	            for( var i = 0, len = arr.length; i < len; i++ ){
 
@@ -21716,36 +21707,10 @@
 	                sum = f( arr[ i ], sum );
 	            }
 
-<<<<<<< HEAD
-	var React = __webpack_require__(1);
-
-	var CharacterViews = React.createClass({
-		displayName: 'CharacterViews',
-
-
-		render() {
-			return React.createElement(
-				'li',
-				{ onClick: this.props.handleCharacter, id: this.props.id },
-				this.props.name
-			);
-		}
-	});
-
-	module.exports = CharacterViews;
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var EventEmitter = __webpack_require__(178),
-	    $ = __webpack_require__(179);
-=======
 	            return sum;
 	        },
 	        //keeps a number within a certain range
 	        clamp = function clamp( num, min, max ){
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	            if( min >= max ){
 	                throw "clamp: invalid range, min = " + min + ", max = " + max;
@@ -21772,13 +21737,7 @@
 	            //returns an array of dice rolls
 	            toss : function dicethrow( count, sides ){
 
-<<<<<<< HEAD
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-=======
 	                var rolls = [];
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	                for( var i = 0; i < ( count || 1 ); i++ ){
 
@@ -21980,14 +21939,8 @@
 	                return damage;
 	            },
 
-<<<<<<< HEAD
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-=======
 	            //rolls to hit, to wound and armor saves to determine the final damage against a defender
 	            assault : function assault( attacker, defender ){
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 	                var hits, damage;
 
@@ -22231,7 +22184,7 @@
 		render() {
 			return React.createElement(
 				'div',
-				null,
+				{ className: 'search' },
 				React.createElement('input', {
 					type: 'text',
 					ref: 'search',
@@ -32341,14 +32294,6 @@
 	// Detect, normalize options and install callbacks for jsonp requests
 	jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
-<<<<<<< HEAD
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1),
-	    battleManager = __webpack_require__(182);
-=======
 		var callbackName, overwritten, responseContainer,
 			jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 				"url" :
@@ -32357,7 +32302,6 @@
 						.indexOf( "application/x-www-form-urlencoded" ) === 0 &&
 					rjsonp.test( s.data ) && "data"
 			);
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 		// Handle iff the expected data type is "jsonp" or we have a parameter to set
 		if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
@@ -32382,15 +32326,8 @@
 				return responseContainer[ 0 ];
 			};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-=======
 			// Force json dataType
 			s.dataTypes[ 0 ] = "json";
->>>>>>> 8b7fa5528a929703750ecedb6fe4045a00d7926f
 
 			// Install callback
 			overwritten = window[ callbackName ];
@@ -32973,3 +32910,5 @@
 
 	module.exports = BattleView;
 
+/***/ }
+/******/ ]);
