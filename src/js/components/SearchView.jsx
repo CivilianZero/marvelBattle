@@ -23,7 +23,7 @@ var SearchView = React.createClass({
 
 	render() {
 		return (
-			<div>
+			<div className='search'>
 				<input 
 					type='text' 
 					ref='search'
