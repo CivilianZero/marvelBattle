@@ -87,8 +87,7 @@ var App = React.createClass({
 		});
 		var winner = this.state.narrative.winner,
 			loser = this.state.narrative.loser;
-
-
+		
 	},
 
 	handleClick(e) {

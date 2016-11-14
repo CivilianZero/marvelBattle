@@ -33,6 +33,9 @@ battleStore.fetch = function () {
 };
 
 battleStore.winner = function(winner) {
+	if(records.indexOf(winner) !== -1) {
+		records[records.indexOf(winner)].wins++
+	}
 	$.ajax({
 		url: '/records',
 		method: 'POST',
