@@ -21423,13 +21423,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
-	    battleManager = __webpack_require__(182);
+	    battleManager = __webpack_require__(173);
 
-	var CharacterSelection = __webpack_require__(173),
-	    Search = __webpack_require__(174),
-	    BattleView = __webpack_require__(179),
-	    characterStore = __webpack_require__(176),
-	    Results = __webpack_require__(175);
+	var CharacterSelection = __webpack_require__(174),
+	    Search = __webpack_require__(175),
+	    BattleView = __webpack_require__(181),
+	    characterStore = __webpack_require__(178),
+	    Results = __webpack_require__(176);
 
 	var App = React.createClass({
 		displayName: 'App',
@@ -21535,6 +21535,590 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
+	    if (true) {
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else if (typeof exports === "object") {
+	        module.exports = factory();
+	    } else {
+	        root.BattleManager = factory();
+	    }
+	}(this, function() {
+
+	    /**
+	     * Stats
+	     */
+
+	     var stats=[{name:"3-D Man",id:1011334,pageId:"5463",durability:2,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Abomination (Emil Blonsky)",id:1009146,pageId:"9376",durability:6,energy:1,fighting:2,intelligence:2,speed:2,strength:7},{name:"Absorbing Man",id:1009148,pageId:"5714",durability:6,energy:4,fighting:6,intelligence:2,speed:3,strength:6},{name:"Abyss",id:1009149,pageId:"17603",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Abyss (Age of Apocalypse)",id:1010903,pageId:"1898",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Adam Destine",id:1011266,pageId:"9400",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Adam Warlock",id:1010354,pageId:"3706",durability:7,energy:7,fighting:6,intelligence:5,speed:6,strength:6},{name:"Aegis (Trey Rollins)",id:1010846,pageId:"1750",durability:6,energy:6,fighting:2,intelligence:2,speed:2,strength:2},{name:"Agent X (Nijo)",id:1011031,pageId:"1753",durability:7,energy:4,fighting:1,intelligence:1,speed:1,strength:1},{name:"Agent Zero",id:1009150,pageId:"3733",durability:7,energy:4,fighting:7,intelligence:5,speed:3,strength:4},{name:"Aginar",id:1011175,pageId:"5005",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Air-Walker (Gabriel Lan)",id:1011136,pageId:"16293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ajak",id:1011176,pageId:"5006",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ajaxis",id:1010870,pageId:"8513",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Albion",id:1011120,pageId:"1757",durability:3,energy:3,fighting:4,intelligence:3,speed:4,strength:4},{name:"Alex Wilder",id:1010755,pageId:"4625",durability:1,energy:1,fighting:1,intelligence:4,speed:1,strength:1},{name:"Alicia Masters",id:1009435,pageId:"6414",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:2},{name:"American Eagle (Jason Strongbow)",id:1011361,pageId:"10271",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amiko",id:1009151,pageId:"16645",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amphibian (Earth-712)",id:1010673,pageId:"5731",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amun",id:1010905,pageId:"1762",durability:1,energy:2,fighting:5,intelligence:2,speed:3,strength:2},{name:"Ancient One",id:1009152,pageId:"11690",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Thomas Halloway)",id:1011396,pageId:"6246",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Ultimate)",id:1011338,pageId:"1981",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Warren Worthington III)",id:1009153,pageId:"1473",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Anita Blake",id:1010674,pageId:"9833",durability:7,energy:6,fighting:7,intelligence:7,speed:6,strength:4},{name:"Annihilus",id:1009154,pageId:"1823",durability:6,energy:7,fighting:5,intelligence:5,speed:5,strength:6},{name:"Anole",id:1011301,pageId:"1623",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ant-Man (Eric O'Grady)",id:1010802,pageId:"12011",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ant-Man (Scott Lang)",id:1010801,pageId:"2574",durability:2,energy:4,fighting:2,intelligence:4,speed:2,strength:2},{name:"Anthem",id:1011208,pageId:"18306",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Apocalypse",id:1009156,pageId:"9294",durability:6,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Aqueduct",id:1010866,pageId:"8530",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Arachne",id:1010773,pageId:"1819",durability:2,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Arcade",id:1009158,pageId:"4092",durability:2,energy:1,fighting:3,intelligence:5,speed:2,strength:2},{name:"Archangel",id:1009159,pageId:"1473",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Arclight",id:1009160,pageId:"1624",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ares",id:1010784,pageId:"3087",durability:6,energy:1,fighting:7,intelligence:2,speed:2,strength:5},{name:"Armadillo",id:1011012,pageId:"5771",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Armor (Hisako Ichiki)",id:1011298,pageId:"1665",durability:4,energy:2,fighting:3,intelligence:2,speed:2,strength:4},{name:"Arnim Zola",id:1009740,pageId:"8688",durability:3,energy:1,fighting:1,intelligence:6,speed:3,strength:3},{name:"Arsenic",id:1010748,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Asgardian",id:1010718,pageId:"3843",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Asylum",id:1010835,pageId:"8533",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Aurora",id:1009163,pageId:"1625",durability:3,energy:3,fighting:3,intelligence:2,speed:6,strength:2},{name:"Avalanche",id:1009164,pageId:"1626",durability:3,energy:3,fighting:3,intelligence:2,speed:2,strength:2},{name:"Azazel (Mutant)",id:1011766,pageId:"15073",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Banshee",id:1009168,pageId:"1783",durability:3,energy:7,fighting:4,intelligence:3,speed:4,strength:2},{name:"Banshee (Theresa Rourke)",id:1009596,pageId:"1722",durability:2,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Baron Strucker",id:1009169,pageId:"1786",durability:4,energy:3,fighting:5,intelligence:4,speed:2,strength:3},{name:"Baron Zemo (Heinrich Zemo)",id:1009170,pageId:"3981",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Baron Zemo (Helmut Zemo)",id:1010906,pageId:"1787",durability:5,energy:7,fighting:7,intelligence:5,speed:3,strength:4},{name:"Baroness S'Bak",id:1011137,pageId:"14415",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bastion",id:1009171,pageId:"1788",durability:7,energy:4,fighting:4,intelligence:5,speed:3,strength:4},{name:"Batroc the Leaper",id:1009172,pageId:"5858",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Battering Ram",id:1009173,pageId:"4020",durability:6,energy:1,fighting:2,intelligence:2,speed:2,strength:6},{name:"Beak",id:1009174,pageId:"1900",durability:1,energy:1,fighting:6,intelligence:1,speed:1,strength:1},{name:"Beast",id:1009175,pageId:"1627",durability:4,energy:1,fighting:4,intelligence:6,speed:3,strength:4},{name:"Beast (Earth-311)",id:1010909,pageId:"11798",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beast (Ultimate)",id:1010908,pageId:"1982",durability:4,energy:1,fighting:2,intelligence:5,speed:3,strength:4},{name:"Beef",id:1009178,pageId:"4124",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ben Parker",id:1009489,pageId:"8720",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ben Urich",id:1010782,pageId:"6327",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bengal",id:1010829,pageId:"22171",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beta-Ray Bill",id:1009180,pageId:"4084",durability:7,energy:7,fighting:7,intelligence:5,speed:7,strength:7},{name:"Betty Brant",id:1010325,pageId:"1837",durability:1,energy:1,fighting:5,intelligence:5,speed:2,strength:1},{name:"Betty Ross",id:1009548,pageId:"21439",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beyonder",id:1011138,pageId:"1445",durability:7,energy:7,fighting:3,intelligence:4,speed:7,strength:7},{name:"Big Bertha",id:1010843,pageId:"1629",durability:6,energy:4,fighting:4,intelligence:4,speed:4,strength:6},{name:"Big Wheel",id:1009181,pageId:"9732",durability:5,energy:4,fighting:1,intelligence:2,speed:4,strength:3},{name:"Bishop",id:1009182,pageId:"1630",durability:4,energy:7,fighting:5,intelligence:4,speed:2,strength:3},{name:"Black Bolt",id:1009184,pageId:"3412",durability:5,energy:7,fighting:6,intelligence:4,speed:5,strength:5},{name:"Black Cat",id:1009185,pageId:"2502",durability:2,energy:1,fighting:4,intelligence:2,speed:3,strength:2},{name:"Black Cat (Ultimate)",id:1010910,pageId:"2300",durability:4,energy:5,fighting:7,intelligence:7,speed:7,strength:5},{name:"Black Knight (Sir Percy of Scandia)",id:1009186,pageId:"6376",durability:2,energy:1,fighting:6,intelligence:2,speed:2,strength:2},{name:"Black Panther",id:1009187,pageId:"5222",durability:3,energy:1,fighting:6,intelligence:5,speed:4,strength:4},{name:"Black Tarantula",id:1010687,pageId:"11259",durability:4,energy:3,fighting:5,intelligence:4,speed:4,strength:5},{name:"Black Tom",id:1009188,pageId:"2593",durability:7,energy:7,fighting:7,intelligence:6,speed:6,strength:7},{name:"Black Widow",id:1009189,pageId:"2585",durability:3,energy:3,fighting:6,intelligence:3,speed:2,strength:3},{name:"Black Widow (Ultimate)",id:1010911,pageId:"1983",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blackheart",id:1009190,pageId:"1868",durability:7,energy:6,fighting:5,intelligence:6,speed:6,strength:6},{name:"Blacklash",id:1010881,pageId:"8516",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blade",id:1009191,pageId:"1791",durability:5,energy:1,fighting:5,intelligence:4,speed:5,strength:5},{name:"Blastaar",id:1009195,pageId:"5752",durability:6,energy:5,fighting:4,intelligence:3,speed:5,strength:5},{name:"Blazing Skull",id:1010830,pageId:"5998",durability:5,energy:5,fighting:5,intelligence:5,speed:3,strength:5},{name:"Blindfold",id:1011291,pageId:"1632",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blink",id:1009197,pageId:"10360",durability:4,energy:5,fighting:6,intelligence:4,speed:4,strength:4},{name:"Blizzard",id:1009198,pageId:"5518",durability:3,energy:5,fighting:4,intelligence:2,speed:3,strength:2},{name:"Blob",id:1009199,pageId:"3476",durability:6,energy:2,fighting:3,intelligence:2,speed:2,strength:4},{name:"Blob (Ultimate)",id:1011132,pageId:"16274",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blockbuster",id:1009200,pageId:"4130",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bloke",id:1009202,pageId:"4560",durability:5,energy:2,fighting:2,intelligence:2,speed:2,strength:6},{name:"Bloodaxe",id:1011073,pageId:"9110",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bloodscream",id:1009203,pageId:"4781",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Blue Marvel",id:1011339,pageId:"20825",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blue Shield",id:1011264,pageId:"2496",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bob, Agent of Hydra",id:1011119,pageId:"19655",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Boom Boom",id:1010366,pageId:"1724",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Boomerang",id:1010371,pageId:"5857",durability:2,energy:2,fighting:4,intelligence:3,speed:4,strength:3},{name:"Bride of Nine Spiders (Immortal Weapons)",id:1011236,pageId:"18329",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Brother Voodoo",id:1011090,pageId:"1870",durability:4,energy:7,fighting:4,intelligence:5,speed:3,strength:2},{name:"Bruce Banner",id:1009167,pageId:"2288",durability:7,energy:1,fighting:5,intelligence:6,speed:7,strength:7},{name:"Bucky",id:1009211,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Bug",id:1011038,pageId:"14697",durability:3,energy:4,fighting:4,intelligence:3,speed:2,strength:2},{name:"Bulldozer",id:1010887,pageId:"6891",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bullseye",id:1009212,pageId:"2474",durability:2,energy:1,fighting:6,intelligence:2,speed:2,strength:2},{name:"Bushwacker",id:1009213,pageId:"1636",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Butterfly",id:1011101,pageId:"1688",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Cable",id:1009214,pageId:"1475",durability:6,energy:7,fighting:7,intelligence:7,speed:5,strength:6},{name:"Calamity",id:1011209,pageId:"18312",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Caliban",id:1009216,pageId:"1637",durability:5,energy:2,fighting:3,intelligence:2,speed:5,strength:5},{name:"Callisto",id:1009217,pageId:"4703",durability:4,energy:2,fighting:7,intelligence:4,speed:5,strength:4},{name:"Callisto (Age of Apocalypse)",id:1010912,pageId:"11092",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cammi",id:1011139,pageId:"16095",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cannonball",id:1009219,pageId:"1476",durability:6,energy:3,fighting:4,intelligence:2,speed:4,strength:2},{name:"Captain America",id:1009220,pageId:"2270",durability:3,energy:1,fighting:6,intelligence:4,speed:3,strength:3},{name:"Captain America (House of M)",id:1010914,pageId:"1967",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain America (Ultimate)",id:1010913,pageId:"1985",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Captain Britain",id:1009223,pageId:"1477",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Captain Britain (Ultimate)",id:1010915,pageId:"1986",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain Marvel (Carol Danvers)",id:1010338,pageId:"2699",durability:4,energy:5,fighting:4,intelligence:3,speed:5,strength:4},{name:"Captain Marvel (Genis-Vell)",id:1011096,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Captain Marvel (Mar-Vell)",id:1009224,pageId:"2691",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Captain Marvel (Phyla-Vell)",id:1011097,pageId:"13868",durability:4,energy:5,fighting:4,intelligence:4,speed:7,strength:5},{name:"Captain Stacy",id:1009225,pageId:"12577",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain Universe",id:1011027,pageId:"3652",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Cardiac",id:1011052,pageId:"7546",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cargill",id:1009226,pageId:"1638",durability:7,energy:2,fighting:5,intelligence:4,speed:4,strength:7},{name:"Carlie Cooper",id:1011258,pageId:"21430",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Carmella Unuscione",id:1009688,pageId:"11915",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Carnage",id:1009227,pageId:"2486",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Cassandra Nova",id:1009478,pageId:"5359",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Catseye",id:1009230,pageId:"4564",durability:5,energy:1,fighting:4,intelligence:4,speed:6,strength:5},{name:"Cecilia Reyes",id:1009536,pageId:"9308",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Centennial",id:1011039,pageId:"12133",durability:3,energy:1,fighting:6,intelligence:2,speed:2,strength:4},{name:"Cerise",id:1011141,pageId:"16647",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chamber",id:1009233,pageId:"5519",durability:6,energy:4,fighting:4,intelligence:3,speed:2,strength:2},{name:"Chameleon",id:1009234,pageId:"1839",durability:2,energy:3,fighting:2,intelligence:4,speed:2,strength:1},{name:"Changeling",id:1011015,pageId:"4828",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chase Stein",id:1010754,pageId:"4071",durability:7,energy:3,fighting:7,intelligence:1,speed:3,strength:7},{name:"Chimera",id:1009237,pageId:"22345",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chores MacGillicudy",id:1011411,pageId:"18202",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Clea",id:1009239,pageId:"5513",durability:2,energy:4,fighting:2,intelligence:4,speed:7,strength:2},{name:"Clint Barton",id:1010809,pageId:"2623",durability:2,energy:2,fighting:7,intelligence:5,speed:3,strength:3},{name:"Cloak",id:1009241,pageId:"1793",durability:5,energy:5,fighting:3,intelligence:3,speed:5,strength:3},{name:"Cloud 9",id:1010823,pageId:"22208",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cobalt Man",id:1011286,pageId:"5208",durability:7,energy:5,fighting:3,intelligence:7,speed:7,strength:7},{name:"Colleen Wing",id:1010676,pageId:"12129",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Colossus",id:1009243,pageId:"1478",durability:7,energy:5,fighting:5,intelligence:4,speed:4,strength:7},{name:"Colossus (Ultimate)",id:1010917,pageId:"1988",durability:6,energy:1,fighting:4,intelligence:3,speed:3,strength:7},{name:"Constrictor",id:1009245,pageId:"4854",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Contessa (Vera Vidal)",id:1011407,pageId:"18204",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Controller",id:1010346,pageId:"5932",durability:4,energy:7,fighting:3,intelligence:6,speed:2,strength:5},{name:"Corsair",id:1009247,pageId:"6116",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cosmo (dog)",id:1011353,pageId:"17583",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cottonmouth",id:1011362,pageId:"12442",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Count Nefaria",id:1009249,pageId:"1807",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Crimson Crusader",id:1011272,pageId:"9402",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crimson Dynamo",id:1009251,pageId:"14973",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crossbones",id:1009252,pageId:"2587",durability:4,energy:3,fighting:7,intelligence:4,speed:3,strength:4},{name:"Crusher Hogan",id:1009254,pageId:"1847",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crystal",id:1009255,pageId:"4861",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cuckoo",id:1011268,pageId:"9404",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cyber",id:1009256,pageId:"3911",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cyclops",id:1009257,pageId:"1642",durability:4,energy:7,fighting:5,intelligence:5,speed:4,strength:4},{name:"Cyclops (Ultimate)",id:1010918,pageId:"1989",durability:3,energy:7,fighting:3,intelligence:5,speed:4,strength:4},{name:"Cypher",id:1011385,pageId:"4830",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dagger",id:1009258,pageId:"3200",durability:1,energy:5,fighting:3,intelligence:3,speed:2,strength:1},{name:"Daimon Hellstrom",id:1010719,pageId:"1877",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Daken",id:1011001,pageId:"19690",durability:4,energy:1,fighting:7,intelligence:2,speed:3,strength:4},{name:"Dani Moonstar",id:1009453,pageId:"5115",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Danny Rand",id:1010776,pageId:"5308",durability:6,energy:4,fighting:7,intelligence:5,speed:5,strength:5},{name:"Daredevil",id:1009262,pageId:"1794",durability:2,energy:1,fighting:6,intelligence:3,speed:3,strength:2},{name:"Dark Beast",id:1010907,pageId:"1643",durability:4,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Darkhawk",id:1011020,pageId:"3249",durability:4,energy:4,fighting:2,intelligence:3,speed:2,strength:4},{name:"Darkstar",id:1009266,pageId:"7031",durability:3,energy:5,fighting:4,intelligence:2,speed:3,strength:2},{name:"Darwin",id:1011016,pageId:"3896",durability:5,energy:5,fighting:5,intelligence:5,speed:5,strength:5},{name:"Dazzler",id:1009267,pageId:"1644",durability:4,energy:7,fighting:6,intelligence:6,speed:3,strength:4},{name:"Dazzler (Ultimate)",id:1010920,pageId:"1990",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dead Girl",id:1011087,pageId:"3850",durability:6,energy:3,fighting:3,intelligence:3,speed:3,strength:3},{name:"Deadpool",id:1009268,pageId:"2584",durability:7,energy:7,fighting:7,intelligence:5,speed:7,strength:4},{name:"Death",id:1009269,pageId:"5409",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Deathbird",id:1009270,pageId:"9323",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Deathcry",id:1011037,pageId:"17712",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Debrii",id:1010717,pageId:"6868",durability:2,energy:3,fighting:2,intelligence:2,speed:2,strength:2},{name:"Demogoblin",id:1011071,pageId:"5410",durability:5,energy:6,fighting:6,intelligence:3,speed:5,strength:6},{name:"Destiny",id:1009271,pageId:"4742",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Deviants",id:1011107,pageId:"7924",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Devos",id:1011142,pageId:"15643",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Diablo",id:1009273,pageId:"8066",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Diamondback (Rachel Leighton)",id:1009274,pageId:"4773",durability:3,energy:1,fighting:4,intelligence:2,speed:2,strength:3},{name:"Dinah Soar",id:1011040,pageId:"4883",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doc Samson",id:1009275,pageId:"6679",durability:5,energy:1,fighting:1,intelligence:4,speed:2,strength:6},{name:"Doctor Doom",id:1009281,pageId:"1824",durability:6,energy:6,fighting:4,intelligence:6,speed:5,strength:6},{name:"Doctor Doom (Ultimate)",id:1011103,pageId:"3395",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doctor Octopus",id:1009276,pageId:"2471",durability:2,energy:1,fighting:4,intelligence:6,speed:2,strength:2},{name:"Doctor Octopus (Ultimate)",id:1010921,pageId:"2712",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doctor Strange",id:1009282,pageId:"1795",durability:6,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Domino",id:1009277,pageId:"1646",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Donald Blake",id:1010330,pageId:"2605",durability:7,energy:7,fighting:6,intelligence:2,speed:6,strength:7},{name:"Doop",id:1009279,pageId:"2264",durability:6,energy:4,fighting:3,intelligence:5,speed:3,strength:5},{name:"Doorman",id:1010879,pageId:"2613",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dormammu",id:1009280,pageId:"4058",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Dracula",id:1010677,pageId:"1872",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Dragon Man",id:1009283,pageId:"8305",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Drax",id:1010735,pageId:"3128",durability:7,energy:2,fighting:6,intelligence:1,speed:4,strength:6},{name:"Dreadnoughts",id:1010368,pageId:"15144",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dust",id:1009285,pageId:"1648",durability:5,energy:5,fighting:4,intelligence:4,speed:6,strength:4},{name:"Earthquake",id:1009286,pageId:"4193",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Echo",id:1010785,pageId:"4269",durability:4,energy:1,fighting:6,intelligence:5,speed:5,strength:4},{name:"Eddie Brock",id:1010787,pageId:"2305",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Edwin Jarvis",id:1011072,pageId:"2622",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ego",id:1011060,pageId:"8288",durability:7,energy:7,fighting:2,intelligence:6,speed:7,strength:7},{name:"Electro",id:1009287,pageId:"3485",durability:4,energy:7,fighting:5,intelligence:6,speed:6,strength:4},{name:"Electro (Ultimate)",id:1010922,pageId:"2679",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Elektra",id:1009288,pageId:"2308",durability:2,energy:3,fighting:7,intelligence:4,speed:6,strength:4},{name:"Elektra (Ultimate)",id:1010923,pageId:"4356",durability:2,energy:1,fighting:6,intelligence:3,speed:3,strength:3},{name:"Elixir",id:1011082,pageId:"1649",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Elsa Bloodstone",id:1010701,pageId:"1869",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Emma Frost",id:1009310,pageId:"1657",durability:7,energy:7,fighting:6,intelligence:7,speed:4,strength:5},{name:"Enchantress (Amora)",id:1010671,pageId:"1321",durability:5,energy:5,fighting:5,intelligence:6,speed:4,strength:3},{name:"Enchantress (Sylvie Lushton)",id:1011432,pageId:"22207",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Epoch",id:1011065,pageId:"4148",durability:6,energy:6,fighting:2,intelligence:6,speed:7,strength:4},{name:"Eternals",id:1010807,pageId:"7848",durability:7,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Eternity",id:1011061,pageId:"3814",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Exodus",id:1009295,pageId:"1653",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Expediter",id:1009296,pageId:"20083",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ezekiel",id:1011199,pageId:"6278",durability:4,energy:1,fighting:3,intelligence:4,speed:5,strength:4},{name:"Fabian Cortez",id:1009248,pageId:"4829",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Falcon",id:1009297,pageId:"2692",durability:3,energy:3,fighting:5,intelligence:3,speed:4,strength:3},{name:"Fallen One",id:1011143,pageId:"15358",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Fantomex",id:1009301,pageId:"1481",durability:5,energy:4,fighting:5,intelligence:6,speed:4,strength:4},{name:"Fat Cobra",id:1011233,pageId:"18328",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Firebird",id:1010868,pageId:"1808",durability:5,energy:7,fighting:4,intelligence:6,speed:7,strength:6},{name:"Firelord",id:1009305,pageId:"16422",durability:3,energy:5,fighting:2,intelligence:3,speed:4,strength:4},{name:"Firestar",id:1009306,pageId:"1437",durability:3,energy:7,fighting:3,intelligence:3,speed:6,strength:3},{name:"Flatman",id:1010863,pageId:"1655",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Forge",id:1009309,pageId:"1656",durability:2,energy:1,fighting:4,intelligence:4,speed:2,strength:2},{name:"Forgotten One",id:1011177,pageId:"5010",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Franklin Richards",id:1009539,pageId:"1708",durability:1,energy:7,fighting:1,intelligence:7,speed:1,strength:1},{name:"Franklin Storm",id:1010980,pageId:"8293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Galactus",id:1009312,pageId:"1825",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Gambit",id:1009313,pageId:"1658",durability:3,energy:5,fighting:4,intelligence:3,speed:3,strength:3},{name:"Gamora",id:1010763,pageId:"3209",durability:6,energy:1,fighting:7,intelligence:4,speed:5,strength:5},{name:"Garrison Kane",id:1009383,pageId:"5893",durability:5,energy:6,fighting:6,intelligence:2,speed:3,strength:5},{name:"Gateway",id:1009315,pageId:"1659",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Geiger",id:1011248,pageId:"19701",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Genesis",id:1009317,pageId:"2541",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Genis-Vell",id:1011098,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Gertrude Yorkes",id:1010749,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Ghost Rider (Daniel Ketch)",id:1010925,pageId:"1798",durability:6,energy:5,fighting:5,intelligence:3,speed:5,strength:4},{name:"Ghost Rider (Johnny Blaze)",id:1009318,pageId:"1797",durability:7,energy:6,fighting:4,intelligence:3,speed:2,strength:4},{name:"Giant-Man (Ultimate)",id:1010926,pageId:"1994",durability:6,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Gideon",id:1011055,pageId:"7825",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Gladiator (Kallark)",id:1009321,pageId:"2377",durability:6,energy:6,fighting:6,intelligence:4,speed:6,strength:7},{name:"Glenn Talbot",id:1009645,pageId:"16972",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Glorian",id:1011144,pageId:"15002",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Goliath (Bill Foster)",id:1010927,pageId:"6915",durability:4,energy:1,fighting:4,intelligence:6,speed:3,strength:6},{name:"Gorilla Man",id:1010731,pageId:"6387",durability:3,energy:1,fighting:4,intelligence:3,speed:3,strength:4},{name:"Grandmaster",id:1011076,pageId:"2641",durability:7,energy:6,fighting:2,intelligence:6,speed:7,strength:4},{name:"Green Goblin (Harry Osborn)",id:1010928,pageId:"5171",durability:4,energy:5,fighting:5,intelligence:4,speed:5,strength:4},{name:"Green Goblin (Ultimate)",id:1010929,pageId:"2302",durability:6,energy:6,fighting:5,intelligence:6,speed:5,strength:6},{name:"Grim Reaper",id:1009328,pageId:"1809",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Groot",id:1010743,pageId:"20949",durability:5,energy:1,fighting:4,intelligence:6,speed:2,strength:5},{name:"Guardian",id:1009330,pageId:"5543",durability:6,energy:5,fighting:5,intelligence:6,speed:4,strength:5},{name:"GW Bridge",id:1009207,pageId:"17862",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Gwen Stacy",id:1009619,pageId:"3674",durability:1,energy:1,fighting:1,intelligence:3,speed:2,strength:1},{name:"H.E.R.B.I.E.",id:1009332,pageId:"9032",durability:3,energy:3,fighting:3,intelligence:4,speed:2,strength:2},{name:"Hammerhead",id:1009334,pageId:"1846",durability:5,energy:1,fighting:4,intelligence:5,speed:2,strength:4},{name:"Hank Pym",id:1011490,pageId:"2670",durability:4,energy:3,fighting:3,intelligence:7,speed:3,strength:4},{name:"Happy Hogan",id:1009348,pageId:"12465",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Harrier",id:1011069,pageId:"6010",durability:5,energy:1,fighting:4,intelligence:2,speed:3,strength:3},{name:"Harry Osborn",id:1009486,pageId:"5171",durability:4,energy:5,fighting:5,intelligence:4,speed:5,strength:4},{name:"Havok",id:1009337,pageId:"1661",durability:3,energy:6,fighting:3,intelligence:3,speed:2,strength:2},{name:"Hawkeye",id:1009338,pageId:"2623",durability:2,energy:2,fighting:7,intelligence:5,speed:3,strength:3},{name:"Hawkeye (Kate Bishop)",id:1010808,pageId:"6496",durability:2,energy:1,fighting:5,intelligence:3,speed:2,strength:2},{name:"Hawkeye (Ultimate)",id:1011131,pageId:"1995",durability:2,energy:1,fighting:5,intelligence:2,speed:3,strength:1},{name:"Hellcat (Patsy Walker)",id:1010351,pageId:"5296",durability:4,energy:3,fighting:6,intelligence:4,speed:3,strength:4},{name:"Hellion",id:1010678,pageId:"1662",durability:2,energy:6,fighting:3,intelligence:4,speed:4,strength:2},{name:"Henry Peter Gyrich",id:1011371,pageId:"2698",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hepzibah",id:1009342,pageId:"1439",durability:3,energy:1,fighting:4,intelligence:2,speed:3,strength:2},{
+	name:"Hercules",id:1009343,pageId:"2351",durability:7,energy:1,fighting:7,intelligence:4,speed:5,strength:7},{name:"Hex",id:1011274,pageId:"9406",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hindsight Lad",id:1010839,pageId:"12724",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Hobgoblin (Jason Macendale)",id:1010930,pageId:"7409",durability:4,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Hobgoblin (Robin Borne)",id:1010931,pageId:"6359",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hobgoblin (Roderick Kingsley)",id:1009347,pageId:"3427",durability:3,energy:3,fighting:2,intelligence:3,speed:3,strength:4},{name:"Holocaust (Age of Apocalypse)",id:1009349,pageId:"1907",durability:6,energy:6,fighting:3,intelligence:4,speed:2,strength:5},{name:"Hope Summers",id:1011428,pageId:"20071",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Howard The Duck",id:1010373,pageId:"5544",durability:3,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Hulk",id:1009351,pageId:"2288",durability:7,energy:1,fighting:5,intelligence:6,speed:7,strength:7},{name:"Hulk (Marvel Zombies)",id:1011118,pageId:"5887",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hulkling",id:1009355,pageId:"2296",durability:6,energy:2,fighting:3,intelligence:4,speed:3,strength:6},{name:"Human Robot",id:1010722,pageId:"6388",durability:5,energy:6,fighting:3,intelligence:4,speed:3,strength:4},{name:"Human Torch",id:1009356,pageId:"1826",durability:4,energy:6,fighting:4,intelligence:4,speed:5,strength:4},{name:"Human Torch (Jim Hammond)",id:1010932,pageId:"4364",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Human Torch (Ultimate)",id:1011102,pageId:"3319",durability:4,energy:7,fighting:5,intelligence:1,speed:7,strength:4},{name:"Humbug",id:1010675,pageId:"10323",durability:2,energy:4,fighting:2,intelligence:4,speed:2,strength:2},{name:"Husk",id:1009357,pageId:"1482",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hussar",id:1009358,pageId:"4328",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hydro-Man",id:1009360,pageId:"1848",durability:6,energy:6,fighting:5,intelligence:4,speed:5,strength:5},{name:"Hypno-Hustler",id:1011246,pageId:"10859",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iceman",id:1009362,pageId:"1664",durability:4,energy:5,fighting:3,intelligence:2,speed:4,strength:3},{name:"Iceman (Ultimate)",id:1010933,pageId:"1997",durability:6,energy:7,fighting:4,intelligence:3,speed:7,strength:4},{name:"Ikaris",id:1011077,pageId:"5040",durability:7,energy:6,fighting:6,intelligence:2,speed:7,strength:5},{name:"Imp",id:1011273,pageId:"9408",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Impossible Man",id:1009364,pageId:"8009",durability:6,energy:6,fighting:1,intelligence:2,speed:7,strength:6},{name:"In-Betweener",id:1011063,pageId:"7556",durability:7,energy:7,fighting:2,intelligence:6,speed:7,strength:7},{name:"Inertia",id:1011064,pageId:"5738",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Infant Terrible",id:1011146,pageId:"8253",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Invisible Woman",id:1009366,pageId:"1827",durability:6,energy:7,fighting:5,intelligence:5,speed:5,strength:4},{name:"Invisible Woman (Ultimate)",id:1010934,pageId:"3305",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iron Fist (Danny Rand)",id:1009367,pageId:"5308",durability:6,energy:4,fighting:7,intelligence:5,speed:5,strength:5},{name:"Iron Fist (Wu Ao-Shi)",id:1011412,pageId:"17004",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iron Lad",id:1010704,pageId:"2689",durability:5,energy:6,fighting:3,intelligence:4,speed:7,strength:4},{name:"Iron Man",id:1009368,pageId:"2619",durability:6,energy:6,fighting:3,intelligence:6,speed:5,strength:6},{name:"Iron Man (Ultimate)",id:1010935,pageId:"1998",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Iron Monger",id:1009371,pageId:"12110",durability:6,energy:5,fighting:2,intelligence:5,speed:2,strength:6},{name:"Iron Patriot (James Rhodes)",id:1009538,pageId:"20297",durability:6,energy:6,fighting:4,intelligence:3,speed:5,strength:6},{name:"Ironclad",id:1010844,pageId:"8921",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"J. Jonah Jameson",id:1009372,pageId:"1850",durability:2,energy:1,fighting:1,intelligence:2,speed:2,strength:2},{name:"Jack Flag",id:1010736,pageId:"9524",durability:4,energy:1,fighting:6,intelligence:3,speed:3,strength:4},{name:"Jackal",id:1011288,pageId:"1849",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"James Buchanan Barnes",id:1010775,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"James Howlett",id:1010777,pageId:"1746",durability:4,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Jamie Braddock",id:1011343,pageId:"1634",durability:2,energy:6,fighting:1,intelligence:2,speed:2,strength:2},{name:"Jane Foster",id:1010329,pageId:"14765",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jazinda",id:1011344,pageId:"19579",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jean Grey",id:1009327,pageId:"3118",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Jean Grey",id:1009496,pageId:"3118",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Jean Grey (Ultimate)",id:1010946,pageId:"2002",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jessica Jones",id:1009378,pageId:"2293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jimmy Woo",id:1011105,pageId:"12864",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jocasta",id:1009376,pageId:"1810",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"John Jameson",id:1010812,pageId:"1851",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"John Wraith",id:1009721,pageId:"15119",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Johnny Blaze",id:1009196,pageId:"1797",durability:7,energy:6,fighting:4,intelligence:3,speed:2,strength:4},{name:"Joshua Kane",id:1010938,pageId:"7209",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Josiah X",id:1010937,pageId:"2572",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Joystick",id:1011033,pageId:"2556",durability:3,energy:3,fighting:4,intelligence:2,speed:5,strength:4},{name:"Jubilee",id:1009381,pageId:"1483",durability:5,energy:7,fighting:5,intelligence:4,speed:4,strength:4},{name:"Jubilee (Age of Apocalypse)",id:1010936,pageId:"12443",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Juggernaut",id:1009382,pageId:"2337",durability:7,energy:1,fighting:3,intelligence:2,speed:4,strength:7},{name:"Junta",id:1011314,pageId:"6816",durability:2,energy:5,fighting:4,intelligence:2,speed:2,strength:2},{name:"Justice",id:1010760,pageId:"1669",durability:2,energy:5,fighting:3,intelligence:3,speed:3,strength:2},{name:"Justin Hammer",id:1011310,pageId:"4931",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ka-Zar",id:1011081,pageId:"5619",durability:3,energy:1,fighting:5,intelligence:2,speed:3,strength:3},{name:"Kang",id:1009384,pageId:"1811",durability:5,energy:6,fighting:3,intelligence:4,speed:7,strength:2},{name:"Karma",id:1011386,pageId:"1670",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Karnak",id:1009385,pageId:"6686",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Karolina Dean ",id:1010752,pageId:"1443",durability:3,energy:5,fighting:3,intelligence:3,speed:4,strength:2},{name:"Kate Bishop",id:1010810,pageId:"6496",durability:2,energy:1,fighting:5,intelligence:3,speed:2,strength:2},{name:"Ken Ellis",id:1011319,pageId:"17851",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:2},{name:"Kingpin",id:1009389,pageId:"3205",durability:3,energy:1,fighting:5,intelligence:4,speed:2,strength:3},{name:"Kitty Pryde",id:1009508,pageId:"1702",durability:3,energy:2,fighting:4,intelligence:4,speed:2,strength:2},{name:"Klaw",id:1009390,pageId:"5754",durability:5,energy:6,fighting:2,intelligence:5,speed:4,strength:3},{name:"Korath",id:1011147,pageId:"15757",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Korg",id:1011080,pageId:"6461",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Korvac",id:1011312,pageId:"23051",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Kraven the Hunter",id:1009391,pageId:"4696",durability:4,energy:5,fighting:7,intelligence:6,speed:7,strength:6},{name:"Kronos",id:1011178,pageId:"15252",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Kylun",id:1011058,pageId:"1671",durability:2,energy:1,fighting:5,intelligence:2,speed:2,strength:3},{name:"La Nuit",id:1009392,pageId:"6021",durability:3,energy:5,fighting:2,intelligence:3,speed:3,strength:2},{name:"Lady Bullseye",id:1011327,pageId:"22320",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lady Deathstrike",id:1009393,pageId:"4782",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Lady Mastermind",id:1011014,pageId:"1672",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Layla Miller",id:1011100,pageId:"1688",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Leader",id:1009398,pageId:"15163",durability:2,energy:1,fighting:2,intelligence:6,speed:2,strength:2},{name:"Leech",id:1011092,pageId:"1674",durability:2,energy:3,fighting:1,intelligence:2,speed:2,strength:2},{name:"Lieutenant Marcus Stone",id:1010977,pageId:"9693",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lifeguard",id:1009401,pageId:"1675",durability:4,energy:3,fighting:4,intelligence:3,speed:3,strength:4},{name:"Lightspeed",id:1010450,pageId:"11734",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lila Cheney",id:1009236,pageId:"1640",durability:2,energy:1,fighting:3,intelligence:2,speed:7,strength:2},{name:"Lilandra",id:1009402,pageId:"4393",durability:1,energy:2,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lily Hollister",id:1011257,pageId:"21413",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lionheart",id:1010337,pageId:"2388",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Living Tribunal",id:1011059,pageId:"5700",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Lizard",id:1009404,pageId:"4185",durability:5,energy:1,fighting:2,intelligence:5,speed:2,strength:4},{name:"Lizard (Ultimate)",id:1010939,pageId:"6834",durability:5,energy:1,fighting:2,intelligence:4,speed:4,strength:5},{name:"Loa",id:1011414,pageId:"1678",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lockheed",id:1009405,pageId:"1485",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lockjaw",id:1009406,pageId:"8426",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Loki",id:1009407,pageId:"4002",durability:4,energy:5,fighting:2,intelligence:4,speed:3,strength:5},{name:"Longshot",id:1009408,pageId:"5422",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Longshot (Ultimate)",id:1010940,pageId:"1999",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lord Hawal",id:1011145,pageId:"16231",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lucky Pierre",id:1011405,pageId:"18208",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lucy in the Sky",id:1010751,pageId:"1443",durability:3,energy:5,fighting:3,intelligence:3,speed:4,strength:2},{name:"Luke Cage",id:1009215,pageId:"1792",durability:5,energy:1,fighting:4,intelligence:2,speed:2,strength:4},{name:"Lyja",id:1010896,pageId:"8906",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"M (Monet St. Croix)",id:1011068,pageId:"1680",durability:5,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"M.O.D.O.K.",id:1010726,pageId:"10808",durability:1,energy:4,fighting:1,intelligence:6,speed:1,strength:1},{name:"Mac Gargan",id:1009314,pageId:"4938",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:7},{name:"Machine Man",id:1010805,pageId:"5367",durability:6,energy:6,fighting:4,intelligence:4,speed:3,strength:4},{name:"Mad Thinker",id:1009411,pageId:"5757",durability:2,energy:1,fighting:1,intelligence:5,speed:2,strength:1},{name:"Madame Web (Julia Carpenter)",id:1010796,pageId:"1819",durability:2,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Madelyne Pryor",id:1009509,pageId:"3244",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Madrox",id:1009413,pageId:"1800",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Maelstrom",id:1011053,pageId:"4842",durability:3,energy:5,fighting:2,intelligence:6,speed:2,strength:4},{name:"Magik (Amanda Sefton)",id:1010942,pageId:"1444",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magik (Illyana Rasputin)",id:1009415,pageId:"4832",durability:2,energy:7,fighting:4,intelligence:7,speed:3,strength:2},{name:"Magma (Amara Aquilla)",id:1009416,pageId:"1681",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto",id:1009417,pageId:"7938",durability:6,energy:6,fighting:3,intelligence:6,speed:4,strength:2},{name:"Magneto (Age of Apocalypse)",id:1010944,pageId:"1911",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto (House of M)",id:1010945,pageId:"1934",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto (Ultimate)",id:1010943,pageId:"2001",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magus (Adam Warlock)",id:1010904,pageId:"9608",durability:6,energy:7,fighting:4,intelligence:6,speed:6,strength:6},{name:"Malcolm Colcord",id:1009242,pageId:"5860",durability:2,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Man-Thing",id:1009420,pageId:"1801",durability:6,energy:5,fighting:4,intelligence:4,speed:4,strength:5},{name:"Man-Wolf",id:1010811,pageId:"1851",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mandarin",id:1009421,pageId:"5116",durability:4,energy:7,fighting:7,intelligence:7,speed:4,strength:5},{name:"Mandrill",id:1011243,pageId:"5765",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Manta",id:1009423,pageId:"4395",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mantis",id:1011026,pageId:"1813",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Maria Hill",id:1011335,pageId:"15322",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mariko Yashida",id:1009735,pageId:"4794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Marrow",id:1009425,pageId:"5588",durability:4,energy:3,fighting:6,intelligence:3,speed:3,strength:4},{name:"Marvel Boy",id:1009427,pageId:"6389",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mary Jane Watson",id:1009708,pageId:"4811",durability:5,energy:5,fighting:5,intelligence:5,speed:5,strength:5},{name:"Mary Jane Watson (House of M)",id:1010993,pageId:"1978",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mastermind",id:1009434,pageId:"9676",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mathemanic",id:1010877,pageId:"2498",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Matsu'o Tsurayaba",id:1009677,pageId:"4789",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mattie Franklin",id:1010793,pageId:"4898",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Maverick (Chris Bradley)",id:1010947,pageId:"10545",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Maximus",id:1011305,pageId:"8420",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"May Parker",id:1009490,pageId:"9355",durability:1,energy:1,fighting:1,intelligence:2,speed:2,strength:1},{name:"Medusa",id:1009438,pageId:"1446",durability:4,energy:1,fighting:4,intelligence:6,speed:6,strength:2},{name:"Meggan",id:1011399,pageId:"1447",durability:5,energy:6,fighting:4,intelligence:3,speed:3,strength:4},{name:"Meltdown",id:1009439,pageId:"1724",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Menace",id:1011241,pageId:"21413",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mentallo",id:1011099,pageId:"1685",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mephisto",id:1009440,pageId:"1897",durability:7,energy:7,fighting:7,intelligence:6,speed:7,strength:7},{name:"Mercury",id:1010681,pageId:"1686",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mesmero",id:1009442,pageId:"2384",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Microbe",id:1010690,pageId:"4724",durability:2,energy:1,fighting:2,intelligence:3,speed:1,strength:2},{name:"Micromax",id:1010871,pageId:"1687",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:2},{name:"Mikhail Rasputin",id:1009530,pageId:"1705",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mimic",id:1009445,pageId:"6831",durability:3,energy:4,fighting:3,intelligence:2,speed:3,strength:4},{name:"Mindworm",id:1011204,pageId:"1854",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mister Sinister",id:1009447,pageId:"3242",durability:6,energy:6,fighting:6,intelligence:7,speed:5,strength:5},{name:"Mister Sinister (House of M)",id:1010948,pageId:"7613",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Misty Knight",id:1010682,pageId:"1442",durability:3,energy:1,fighting:7,intelligence:7,speed:1,strength:5},{name:"Mockingbird",id:1011220,pageId:"3398",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moira MacTaggert",id:1009410,pageId:"4241",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moira MacTaggert (Ultimate)",id:1010941,pageId:"2000",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mojo",id:1009448,pageId:"5458",durability:4,energy:5,fighting:2,intelligence:5,speed:2,strength:4},{name:"Mole Man",id:1009449,pageId:"1829",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Molecule Man",id:1011019,pageId:"8018",durability:1,energy:7,fighting:1,intelligence:3,speed:1,strength:1},{name:"Molly Hayes",id:1010691,pageId:"1635",durability:3,energy:1,fighting:2,intelligence:2,speed:2,strength:4},{name:"Mongoose",id:1010876,pageId:"9072",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moon Knight",id:1009452,pageId:"1802",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:4},{name:"Moon Knight (House of M)",id:1010949,pageId:"1972",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moondragon",id:1009451,pageId:"1449",durability:4,energy:7,fighting:5,intelligence:4,speed:4,strength:3},{name:"Moonstone",id:1010362,pageId:"1450",durability:4,energy:5,fighting:4,intelligence:5,speed:5,strength:4},{name:"Morbius",id:1009454,pageId:"1855",durability:5,energy:3,fighting:4,intelligence:4,speed:4,strength:4},{name:"Mordo",id:1010902,pageId:"1785",durability:4,energy:6,fighting:3,intelligence:3,speed:7,strength:2},{name:"Morlun",id:1011088,pageId:"3636",durability:3,energy:1,fighting:4,intelligence:3,speed:3,strength:4},{name:"Morph",id:1009456,pageId:"1914",durability:7,energy:5,fighting:7,intelligence:7,speed:7,strength:5},{name:"Mr. Fantastic",id:1009459,pageId:"1828",durability:6,energy:1,fighting:2,intelligence:6,speed:2,strength:3},{name:"Mr. Fantastic (Ultimate)",id:1010950,pageId:"3410",durability:7,energy:1,fighting:5,intelligence:7,speed:7,strength:5},{name:"Mr. Hyde",id:1010347,pageId:"6091",durability:5,energy:3,fighting:4,intelligence:3,speed:3,strength:5},{name:"Multiple Man",id:1011056,pageId:"1800",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Mysterio",id:1009464,pageId:"1856",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mysterio (Daniel Berkhart)",id:1010951,pageId:"6945",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mysterio (Francis Klum)",id:1010952,pageId:"9841",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mystique",id:1009465,pageId:"1691",durability:4,energy:1,fighting:5,intelligence:4,speed:2,strength:2},{name:"Mystique (Age of Apocalypse)",id:1010953,pageId:"11250",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mystique (House of M)",id:1010954,pageId:"1941",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Namor",id:1009466,pageId:"2335",durability:6,energy:1,fighting:4,intelligence:4,speed:5,strength:6},{name:"Namora",id:1009468,pageId:"1915",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Namorita",id:1009469,pageId:"1452",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Nebula",id:1010365,pageId:"8846",durability:3,energy:6,fighting:4,intelligence:4,speed:2,strength:4},{name:"Nekra",id:1011422,pageId:"10468",durability:5,energy:1,fighting:4,intelligence:3,speed:2,strength:4},{name:"Nick Fury",id:1009471,pageId:"1796",durability:2,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Nick Fury (Ultimate)",id:1011007,pageId:"2003",durability:6,energy:1,fighting:7,intelligence:7,speed:2,strength:2},{name:"Nico Minoru",id:1010746,pageId:"1462",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Nightcrawler",id:1009472,pageId:"1692",durability:5,energy:7,fighting:7,intelligence:5,speed:7,strength:4},{name:"Nightcrawler (Ultimate)",id:1011337,pageId:"2004",durability:7,energy:5,fighting:7,intelligence:5,speed:7,strength:4},{name:"Nighthawk",id:1010349,pageId:"7939",durability:3,energy:4,fighting:4,intelligence:3,speed:3,strength:4},{name:"Nightmare",id:1009473,pageId:"1886",durability:7,energy:7,fighting:3,intelligence:4,speed:7,strength:6},{name:"Nitro",id:1010797,pageId:"5276",durability:5,energy:5,fighting:6,intelligence:7,speed:4,strength:5},{name:"Nocturne",id:1009474,pageId:"3612",durability:5,energy:5,fighting:6,intelligence:4,speed:4,strength:3},{name:"Nomad",id:1009475,pageId:"5293",durability:2,energy:1,fighting:3,intelligence:1,speed:1,strength:3},{name:"Norman Osborn",id:1009325,pageId:"3576",durability:6,energy:6,fighting:3,intelligence:6,speed:5,strength:6},{name:"Norrin Radd",id:1010063,pageId:"1834",durability:7,energy:7,fighting:5,intelligence:4,speed:7,strength:6},{name:"Northstar",id:1009476,pageId:"1487",durability:1,energy:2,fighting:1,intelligence:1,speed:2,strength:1},{name:"Nova",id:1009477,pageId:"3381",durability:5,energy:6,fighting:4,intelligence:3,speed:5,strength:4},{name:"Nova (Frankie Raye)",id:1010956,pageId:"2588",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Nuke",id:1010707,pageId:"4611",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Odin",id:1009480,pageId:"4190",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Old Lace",id:1010882,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Omega Red",id:1009482,pageId:"1695",durability:5,energy:4,fighting:6,intelligence:4,speed:3,strength:5},{name:"Omega Sentinel",id:1011329,pageId:"17898",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Onslaught",id:1009483,pageId:"3158",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Oracle",id:1009484,pageId:"4468",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ord",id:1011202,pageId:"1488",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Orphan-Maker",id:1010957,pageId:"7977",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Owl",id:1011028,pageId:"2504",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ozymandias",id:1009488,pageId:"5917",durability:5,energy:3,fighting:4,intelligence:4,speed:1,strength:1},{name:"Paibok",id:1011150,pageId:"5888",durability:6,energy:6,fighting:4,intelligence:2,speed:5,strength:4},{name:"Paladin",id:1010873,pageId:"5645",durability:1,energy:1,fighting:7,intelligence:5,speed:1,strength:6},{name:"Patriot",id:1009492,pageId:"2292",durability:4,energy:1,fighting:5,intelligence:3,speed:4,strength:4},{name:"Penance (Robert Baldwin)",id:1009493,pageId:"2457",durability:6,energy:4,fighting:4,intelligence:2,speed:3,strength:3},{name:"Pepper Potts",id:1009494,pageId:"10794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pete Wisdom",id:1010779,pageId:"1742",durability:2,energy:3,fighting:3,intelligence:2,speed:2,strength:2},{name:"Photon",id:1011045,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Piledriver",id:1010886,pageId:"6892",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pixie",id:1011179,pageId:"9277",durability:6,energy:3,fighting:2,intelligence:2,speed:3,strength:4},{name:"Polaris",id:1009499,pageId:"3794",durability:5,energy:7,fighting:7,intelligence:6,speed:5,strength:6},{name:"Praxagora",id:1011151,pageId:"14784",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Preak",id:1011152,pageId:"15942",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pretty Boy",id:1009502,pageId:"4559",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Princess Powerful",id:1010750,pageId:"1635",durability:3,energy:1,fighting:2,intelligence:2,speed:2,strength:4},{name:"Prism",id:1009503,pageId:"1701",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Prodigy",id:1011030,pageId:"7585",durability:1,energy:1,fighting:1,intelligence:6,speed:1,strength:1},{name:"Professor X",id:1009504,pageId:"3139",durability:4,energy:7,fighting:4,intelligence:7,speed:2,strength:4},{name:"Professor X (Ultimate)",id:1010958,pageId:"2005",durability:1,energy:3,fighting:1,intelligence:7,speed:1,strength:1},{name:"Proteus (House of M)",id:1010960,pageId:"3658",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Proteus (Ultimate)",id:1010959,pageId:"2006",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Prowler",id:1009507,pageId:"5649",durability:2,energy:3,fighting:3,intelligence:4,speed:2,strength:2},{name:"Psycho-Man",id:1009511,pageId:"1831",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Psylocke",id:1009512,pageId:"1490",durability:3,energy:6,fighting:6,intelligence:4,speed:3,strength:3},{name:"Puck",id:1009513,pageId:"5670",durability:3,energy:3,fighting:2,intelligence:2,speed:4,strength:2},{name:"Puck (Zuzha Yu)",id:1010962,pageId:"1454",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Puma",id:1009514,pageId:"5449",durability:4,energy:1,fighting:5,intelligence:3,speed:3,strength:4},{name:"Punisher",id:1009515,pageId:"1803",durability:6,energy:4,fighting:6,intelligence:5,speed:5,strength:6},{name:"Punisher (2099)",id:1009517,pageId:"6803",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Puppet Master",id:1009519,pageId:"8015",durability:3,energy:4,fighting:4,intelligence:5,speed:2,strength:2},{name:"Purple Man",id:1009520,pageId:"5204",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pyro",id:1009522,pageId:"4834",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quasar (Wendell Vaughn)",id:1010778,pageId:"2497",durability:6,energy:6,fighting:4,intelligence:4,speed:7,strength:5},{name:"Quasimodo",id:1010334,pageId:"8490",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quentin Quire",id:1009387,pageId:"1484",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quicksilver",id:1009524,pageId:"3132",durability:2,energy:2,fighting:4,intelligence:3,speed:7,strength:2},{name:"Quicksilver (Ultimate)",id:1010963,pageId:"2007",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rachel Grey",id:1009430,pageId:"1683",durability:4,energy:7,fighting:4,intelligence:3,speed:6,strength:3},{name:"Radioactive Man",id:1009526,pageId:"5660",durability:6,energy:6,fighting:3,intelligence:5,speed:2,strength:4},{name:"Rage",id:1010817,pageId:"1816",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Random",id:1010767,pageId:"1704",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ravenous",id:1011154,pageId:"14492",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Red Ghost",id:1009534,pageId:"8008",durability:3,energy:2,fighting:2,intelligence:4,speed:2,strength:2},{name:"Red Hulk",id:1011360,pageId:"19397",durability:7,energy:2,fighting:5,intelligence:5,speed:4,strength:7},{name:"Red Shift",id:1011155,pageId:"8761",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Red Skull",id:1009535,pageId:"3619",durability:3,energy:1,fighting:5,intelligence:4,speed:3,strength:3},{name:"Red Skull (Albert Malik)",id:1010965,pageId:"3662",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Reptil",id:1011376,pageId:"22319",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Revanche",id:1011330,pageId:"16583",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rhino",id:1009537,pageId:"4348",durability:7,energy:1,fighting:6,intelligence:1,speed:7,strength:7},{name:"Rhodey",id:1009702,pageId:"20297",durability:6,energy:6,fighting:4,intelligence:3,speed:5,strength:6},{name:"Rick Jones",id:1009379,pageId:"4756",durability:3,energy:1,fighting:5,intelligence:4,speed:3,strength:3},{name:"Rictor",id:1009542,pageId:"6172",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Risque",id:1009544,pageId:"11917",durability:2,energy:4,fighting:2,intelligence:2,speed:2,strength:2},{name:"Robbie Robertson",id:1009545,pageId:"1860"},{name:"Robert Baldwin ",id:1010792,pageId:"2457",durability:6,energy:4,fighting:4,intelligence:2,speed:3,strength:3},{name:"Rocket Raccoon",id:1010744,pageId:"17320",durability:2,energy:1,fighting:4,intelligence:4,speed:3,strength:1},{name:"Rocket Racer",id:1010769,pageId:"6528",durability:2,energy:2,fighting:2,intelligence:4,speed:3,strength:2},{name:"Rockslide",id:1010692,pageId:"1710",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rogue",id:1009546,pageId:"1455",durability:7,energy:4,fighting:6,intelligence:3,speed:2,strength:7},{name:"Rogue (Age of Apocalypse)",id:1010967,pageId:"1919",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rogue (Ultimate)",id:1010966,pageId:"2008",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Romulus",id:1011398,pageId:"22943",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ronan",id:1010344,pageId:"2590",durability:7,energy:7,fighting:6,intelligence:4,speed:4,strength:6},{name:"Russian",id:1009551,pageId:"10916",durability:6,
+	energy:1,fighting:5,intelligence:2,speed:3,strength:4},{name:"Sabra",id:1009553,pageId:"1711",durability:5,energy:3,fighting:4,intelligence:2,speed:3,strength:5},{name:"Sabretooth",id:1009554,pageId:"1712",durability:4,energy:1,fighting:7,intelligence:2,speed:2,strength:4},{name:"Sabretooth (Age of Apocalypse)",id:1010969,pageId:"1920",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sabretooth (House of M)",id:1010970,pageId:"1957",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sabretooth (Ultimate)",id:1010968,pageId:"2010",durability:6,energy:1,fighting:7,intelligence:3,speed:4,strength:6},{name:"Sage",id:1009555,pageId:"1714",durability:2,energy:1,fighting:5,intelligence:6,speed:4,strength:3},{name:"Salo",id:1011156,pageId:"16143",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sandman",id:1009558,pageId:"4629",durability:7,energy:4,fighting:5,intelligence:4,speed:4,strength:5},{name:"Sasquatch (Walter Langkowski)",id:1009560,pageId:"4421",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Sauron",id:1009561,pageId:"5076",durability:2,energy:4,fighting:2,intelligence:2,speed:4,strength:3},{name:"Scalphunter",id:1011048,pageId:"1715",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scarecrow (Ebenezer Laughton)",id:1010861,pageId:"1888",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scarlet Spider (Ben Reilly)",id:1011197,pageId:"5675",durability:3,energy:3,fighting:4,intelligence:4,speed:3,strength:4},{name:"Scarlet Spider (Kaine)",id:1011426,pageId:"1852",durability:3,energy:1,fighting:4,intelligence:4,speed:3,strength:4},{name:"Scarlet Witch",id:1009562,pageId:"1458",durability:3,energy:7,fighting:3,intelligence:3,speed:3,strength:3},{name:"Scarlet Witch (Age of Apocalypse)",id:1010972,pageId:"10863",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scorpion (Carmilla Black)",id:1010790,pageId:"3967",durability:3,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Scrambler",id:1011230,pageId:"1716",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Screwball",id:1011242,pageId:"21425",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sebastian Shaw",id:1009581,pageId:"1719",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Selene",id:1009568,pageId:"1717",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Senator Kelly",id:1009569,pageId:"10542",durability:2,energy:1,fighting:3,intelligence:3,speed:2,strength:2},{name:"Sentry (Robert Reynolds)",id:1009571,pageId:"1817",durability:6,energy:4,fighting:3,intelligence:5,speed:5,strength:6},{name:"Sersi",id:1010345,pageId:"1459",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shadow King",id:1009573,pageId:"13184",durability:7,energy:7,fighting:5,intelligence:5,speed:6,strength:4},{name:"Shadowcat",id:1009574,pageId:"1702",durability:3,energy:2,fighting:4,intelligence:4,speed:2,strength:2},{name:"Shadowcat (Age of Apocalypse)",id:1010975,pageId:"1922",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shadowcat (Ultimate)",id:1010974,pageId:"2012",durability:3,energy:4,fighting:5,intelligence:7,speed:5,strength:3},{name:"Shadu the Shady",id:1011406,pageId:"18200",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shalla-bal",id:1009575,pageId:"18773",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shaman",id:1009576,pageId:"9780",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shang-Chi",id:1009577,pageId:"1804",durability:4,energy:3,fighting:7,intelligence:4,speed:4,strength:3},{name:"Shanna the She-Devil",id:1009578,pageId:"1460",durability:2,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Shape",id:1010712,pageId:"5744",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shard",id:1009579,pageId:"5267",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sharon Carter",id:1009228,pageId:"11548",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sharon Ventura",id:1010895,pageId:"9161",durability:6,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Shatterstar",id:1009580,pageId:"1718",durability:4,energy:3,fighting:6,intelligence:3,speed:3,strength:3},{name:"She-Hulk (Jennifer Walters)",id:1009583,pageId:"2458",durability:7,energy:1,fighting:6,intelligence:5,speed:4,strength:7},{name:"She-Hulk (Lyra)",id:1011392,pageId:"20644",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"She-Hulk (Ultimate)",id:1011393,pageId:"2009",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shinobi Shaw",id:1009582,pageId:"1720",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shiver Man",id:1011394,pageId:"4819",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shocker (Herman Schultz)",id:1009585,pageId:"4291",durability:4,energy:6,fighting:6,intelligence:4,speed:4,strength:4},{name:"Shockwave",id:1010858,pageId:"6175",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shriek",id:1009587,pageId:"7226",durability:2,energy:1,fighting:2,intelligence:2,speed:1,strength:1},{name:"Sif",id:1009588,pageId:"3917",durability:5,energy:1,fighting:5,intelligence:4,speed:4,strength:5},{name:"Silhouette",id:1010848,pageId:"17029",durability:3,energy:5,fighting:2,intelligence:2,speed:7,strength:4},{name:"Silver Fox",id:1009589,pageId:"3792",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Sable",id:1009590,pageId:"1461",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Samurai",id:1009591,pageId:"1721",durability:4,energy:5,fighting:6,intelligence:3,speed:2,strength:3},{name:"Silver Samurai (Age of Apocalypse)",id:1010976,pageId:"1923",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Surfer",id:1009592,pageId:"1834",durability:7,energy:7,fighting:5,intelligence:4,speed:7,strength:6},{name:"Silverclaw",id:1010864,pageId:"1818",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silvermane",id:1009594,pageId:"8586",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sin",id:1010898,pageId:"22284",durability:2,energy:1,fighting:4,intelligence:3,speed:2,strength:1},{name:"Siren (Earth-93060)",id:1010834,pageId:"17000",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sister Grimm",id:1010745,pageId:"1462",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Skaar",id:1011223,pageId:"18993",durability:7,energy:1,fighting:6,intelligence:3,speed:5,strength:7},{name:"Skin",id:1009598,pageId:"4837",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Skreet",id:1011157,pageId:"16403",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slapstick",id:1011057,pageId:"4150",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slayback",id:1011070,pageId:"2547",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sleepwalker",id:1010761,pageId:"2468",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slipstream",id:1009602,pageId:"17650",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slyde",id:1010874,pageId:"6158",durability:4,energy:5,fighting:6,intelligence:6,speed:7,strength:4},{name:"Smasher (Vril Rokk)",id:1009603,pageId:"4471",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Snowbird",id:1009606,pageId:"1463",durability:4,energy:1,fighting:4,intelligence:3,speed:4,strength:4},{name:"Solo (James Bourne)",id:1010855,pageId:"4538",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Songbird",id:1010693,pageId:"1464",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spectrum",id:1010705,pageId:"1815",durability:5,energy:7,fighting:4,intelligence:4,speed:6,strength:3},{name:"Speed",id:1010833,pageId:"7488",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Speed Demon",id:1011032,pageId:"2625",durability:3,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Sphinx (Anath-Na Mut)",id:1011366,pageId:"15212",durability:7,energy:7,fighting:5,intelligence:6,speed:4,strength:7},{name:"Spider-Girl (Anya Corazon)",id:1009157,pageId:"4528",durability:5,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Spider-Girl (May Parker)",id:1009609,pageId:"1465",durability:3,energy:2,fighting:5,intelligence:4,speed:3,strength:4},{name:"Spider-Ham (Larval Earth)",id:1011347,pageId:"10883",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man",id:1009610,pageId:"2022",durability:3,energy:4,fighting:5,intelligence:4,speed:5,strength:4},{name:"Spider-Man (1602)",id:1011054,pageId:"8827",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (House of M)",id:1012200,pageId:"1965",durability:4,energy:3,fighting:6,intelligence:6,speed:5,strength:5},{name:"Spider-Man (Marvel Zombies)",id:1011114,pageId:"4820",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (Miles Morales)",id:1016181,pageId:"23245",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (Ultimate)",id:1011010,pageId:"3084",durability:3,energy:1,fighting:7,intelligence:6,speed:7,strength:7},{name:"Spider-Woman (Jessica Drew)",id:1009608,pageId:"1466",durability:5,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Spider-Woman (Mattie Franklin)",id:1010794,pageId:"4898",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Spiral (Rita Wayword)",id:1009614,pageId:"5558",durability:3,energy:6,fighting:5,intelligence:2,speed:2,strength:4},{name:"Spirit",id:1011158,pageId:"14574",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spitfire",id:1010899,pageId:"7101",durability:3,energy:1,fighting:3,intelligence:3,speed:6,strength:2},{name:"Spot",id:1009616,pageId:"5894",durability:3,energy:1,fighting:2,intelligence:5,speed:2,strength:2},{name:"Sprite",id:1011180,pageId:"14979",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Squirrel Girl",id:1010860,pageId:"1725",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Star-Lord (Peter Quill)",id:1010733,pageId:"14641",durability:4,energy:6,fighting:5,intelligence:5,speed:7,strength:5},{name:"Starbolt",id:1009621,pageId:"4473",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stardust",id:1010764,pageId:"7984",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Starfox",id:1011084,pageId:"1820",durability:6,energy:1,fighting:5,intelligence:5,speed:6,strength:7},{name:"Starhawk (Stakar Ogord)",id:1011341,pageId:"19346",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stature",id:1010828,pageId:"8096",durability:2,energy:1,fighting:3,intelligence:2,speed:2,strength:2},{name:"Stellaris",id:1011159,pageId:"8962",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stepford Cuckoos",id:1009625,pageId:"1492",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stephen Strange",id:1010901,pageId:"1795",durability:6,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Stick",id:1009626,pageId:"15123",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stilt-Man (Wibur Day)",id:1009627,pageId:"8872",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stingray (Walter Newell)",id:1009628,pageId:"10799",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Storm",id:1009629,pageId:"1726",durability:3,energy:6,fighting:5,intelligence:5,speed:5,strength:2},{name:"Storm (Age of Apocalypse)",id:1010979,pageId:"1925",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Storm (Ultimate)",id:1010978,pageId:"2014",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:5},{name:"Stranger",id:1011062,pageId:"7428",durability:6,energy:7,fighting:2,intelligence:7,speed:7,strength:7},{name:"Strong Guy",id:1011051,pageId:"1727",durability:4,energy:1,fighting:4,intelligence:3,speed:2,strength:6},{name:"Stryfe",id:1009632,pageId:"3134",durability:3,energy:4,fighting:6,intelligence:5,speed:3,strength:4},{name:"Sub-Mariner",id:1010791,pageId:"2335",durability:6,energy:1,fighting:4,intelligence:4,speed:5,strength:6},{name:"Sugar Man",id:1011212,pageId:"1926",durability:3,energy:2,fighting:3,intelligence:5,speed:2,strength:3},{name:"Sunfire",id:1009636,pageId:"1493",durability:4,energy:7,fighting:6,intelligence:4,speed:6,strength:4},{name:"Sunfire (Age of Apocalypse)",id:1010981,pageId:"1927",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sunset Bain",id:1009637,pageId:"1781",durability:2,energy:1,fighting:3,intelligence:5,speed:2,strength:2},{name:"Sunspot",id:1009638,pageId:"1728",durability:4,energy:7,fighting:5,intelligence:4,speed:4,strength:5},{name:"Super-Adaptoid",id:1011022,pageId:"5632",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Super-Skrull",id:1009639,pageId:"2591",durability:6,energy:6,fighting:4,intelligence:3,speed:3,strength:6},{name:"Supernaut",id:1011232,pageId:"18315",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Supreme Intelligence",id:1011160,pageId:"8571",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Surge",id:1010695,pageId:"5050",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Swarm",id:1011075,pageId:"5377",durability:7,energy:1,fighting:2,intelligence:4,speed:3,strength:1},{name:"Sway",id:1011017,pageId:"3779",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Swordsman",id:1009641,pageId:"10137",durability:6,energy:7,fighting:7,intelligence:7,speed:7,strength:5},{name:"Swordsman (Jaques Duquesne)",id:1010982,pageId:"7722",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Synch",id:1009643,pageId:"4839",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talisman (Elizabeth Twoyoungmen)",id:1009646,pageId:"16210",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talon (Fraternity of Raptors)",id:1011395,pageId:"20398",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talos",id:1011161,pageId:"15769",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tana Nile",id:1011149,pageId:"16279",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tarantula (Luis Alvarez)",id:1010713,pageId:"15220",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Taskmaster",id:1009648,pageId:"22197",durability:2,energy:1,fighting:7,intelligence:4,speed:2,strength:3},{name:"Tenebrous",id:1011162,pageId:"16445",durability:7,energy:7,fighting:7,intelligence:6,speed:7,strength:7},{name:"Terrax",id:1009651,pageId:"2548",durability:7,energy:6,fighting:6,intelligence:5,speed:6,strength:7},{name:"Terror",id:1011034,pageId:"1891",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Texas Twister",id:1010819,pageId:"12436",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thanos",id:1009652,pageId:"8432",durability:7,energy:7,fighting:7,intelligence:7,speed:6,strength:7},{name:"The Anarchist",id:1009653,pageId:"1763",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:3},{name:"The Executioner",id:1010728,pageId:"4003",durability:6,energy:5,fighting:6,intelligence:4,speed:4,strength:7},{name:"The Fury",id:1011219,pageId:"10261",durability:7,energy:6,fighting:5,intelligence:1,speed:3,strength:7},{name:"The Hood",id:1010715,pageId:"16104",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"The Shiver Man",id:1009658,pageId:"4819",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"The Stranger",id:1009660,pageId:"7428",durability:6,energy:7,fighting:2,intelligence:7,speed:7,strength:7},{name:"Thena",id:1011181,pageId:"14798",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thing",id:1009662,pageId:"5309",durability:6,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Thing (Ultimate)",id:1010983,pageId:"2369",durability:7,energy:1,fighting:5,intelligence:4,speed:3,strength:7},{name:"Thor",id:1009664,pageId:"2605",durability:7,energy:7,fighting:6,intelligence:2,speed:6,strength:7},{name:"Thor (Ultimate)",id:1011025,pageId:"2015",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Thor Girl",id:1010820,pageId:"1467",durability:6,energy:7,fighting:7,intelligence:7,speed:6,strength:6},{name:"Thunderball",id:1010885,pageId:"6334",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thunderbird (John Proudstar)",id:1009666,pageId:"4840",durability:3,energy:1,fighting:5,intelligence:3,speed:3,strength:4},{name:"Thunderbird (Neal Shaara)",id:1009667,pageId:"1731",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thundra",id:1011304,pageId:"16417",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tiger Shark",id:1009669,pageId:"6284",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:6},{name:"Tigra (Greer Nelson)",id:1009670,pageId:"3650",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Timeslip",id:1010857,pageId:"21070",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tinkerer",id:1011345,pageId:"4502",durability:1,energy:1,fighting:1,intelligence:6,speed:2,strength:1},{name:"Titania",id:1010669,pageId:"5935",durability:5,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Toad",id:1009673,pageId:"1732",durability:4,energy:3,fighting:6,intelligence:5,speed:5,strength:5},{name:"Tombstone",id:1009675,pageId:"4342",durability:6,energy:2,fighting:5,intelligence:3,speed:3,strength:5},{name:"Toro (Thomas Raymond)",id:1011309,pageId:"7191",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Toxin",id:1009676,pageId:"1864",durability:5,energy:1,fighting:3,intelligence:5,speed:3,strength:6},{name:"Toxin (Eddie Brock)",id:1009692,pageId:"2305",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Trauma",id:1010822,pageId:"13565",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Triathlon",id:1010825,pageId:"1821",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Triton",id:1010335,pageId:"8424",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Turbo",id:1011047,pageId:"11717",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Two-Gun Kid",id:1010852,pageId:"17010",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Typhoid Mary",id:1010369,pageId:"4334",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"U-Go Girl",id:1009681,pageId:"4023",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:1},{name:"U.S. Agent",id:1009682,pageId:"5593",durability:5,energy:4,fighting:6,intelligence:3,speed:5,strength:5},{name:"Uatu The Watcher",id:1009683,pageId:"1836",durability:6,energy:6,fighting:3,intelligence:7,speed:6,strength:5},{name:"Ulik",id:1010358,pageId:"10882",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ultimo",id:1011311,pageId:"12474",durability:7,energy:5,fighting:7,intelligence:2,speed:3,strength:7},{name:"Ultron",id:1009685,pageId:"1822",durability:7,energy:6,fighting:4,intelligence:4,speed:2,strength:6},{name:"Umar",id:1009686,pageId:"16335",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unicorn",id:1010862,pageId:"8340",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Union Jack (Brian Falsworth)",id:1010985,pageId:"7105",durability:3,energy:2,fighting:5,intelligence:3,speed:3,strength:2},{name:"Union Jack (Joseph Chapman)",id:1010696,pageId:"6167",durability:3,energy:1,fighting:4,intelligence:2,speed:2,strength:3},{name:"Union Jack (Montgomery Falsworth)",id:1010984,pageId:"7103",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus",id:1009687,pageId:"4432",durability:6,energy:2,fighting:3,intelligence:2,speed:2,strength:2},{name:"Unus (Age of Apocalypse)",id:1010987,pageId:"6542",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus (House of M)",id:1010988,pageId:"6537",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus (Ultimate)",id:1010986,pageId:"5747",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Valeria Richards",id:1009525,pageId:"1833",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vampiro",id:1011182,pageId:"16514",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vance Astro",id:1011342,pageId:"18519",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vanisher (Age of Apocalypse)",id:1010989,pageId:"6813",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vanisher (Ultimate)",id:1009689,pageId:"5968",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vapor",id:1011316,pageId:"8923",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vargas",id:1009690,pageId:"10171",durability:3,energy:1,fighting:6,intelligence:3,speed:2,strength:3},{name:"Vector",id:1010872,pageId:"2449",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Veda",id:1011231,pageId:"18318",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vengeance (Michael Badilino)",id:1009691,pageId:"21540",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Venom (Flash Thompson)",id:1009663,pageId:"1863",durability:2,energy:1,fighting:3,intelligence:2,speed:2,strength:2},{name:"Venom (Mac Gargan)",id:1010788,pageId:"4938",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:7},{name:"Venom (Ultimate)",id:1011128,pageId:"2542",durability:6,energy:1,fighting:4,intelligence:4,speed:4,strength:6},{name:"Venus (Siren)",id:1011106,pageId:"13013",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Venus Dee Milo",id:1009693,pageId:"13014",durability:4,energy:6,fighting:2,intelligence:2,speed:2,strength:1},{name:"Vermin (Edward Whelan)",id:1010353,pageId:"15227",durability:3,energy:1,fighting:4,intelligence:1,speed:3,strength:4},{name:"Vertigo (Savage Land Mutate)",id:1009694,pageId:"19718",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Victor Mancha",id:1011066,pageId:"3631",durability:5,energy:6,fighting:1,intelligence:5,speed:3,strength:4},{name:"Vin Gonzales",id:1011261,pageId:"22159",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vindicator",id:1009695,pageId:"1471",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Viper",id:1009696,pageId:"4486",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Virginia Dare",id:1010697,pageId:"15125",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vision",id:1009697,pageId:"2758",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Vulcan (Gabriel Summers)",id:1011011,pageId:"3043",durability:3,energy:7,fighting:3,intelligence:2,speed:3,strength:3},{name:"Vulture (Adrian Toomes)",id:1009699,pageId:"3639",durability:4,energy:3,fighting:4,intelligence:4,speed:5,strength:3},{name:"Vulture (Blackie Drago)",id:1010990,pageId:"9371",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallflower",id:1010849,pageId:"1738",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallop",id:1011267,pageId:"9410",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallow",id:1009700,pageId:"19548",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"War Machine (Parnell Jacobs)",id:1010991,pageId:"6910",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Warlock (Janie Chin)",id:1009704,pageId:"15188",durability:5,energy:7,fighting:2,intelligence:4,speed:4,strength:5},{name:"Warlock (Technarchy)",id:1011287,pageId:"10366",durability:7,energy:6,fighting:2,intelligence:2,speed:7,strength:7},{name:"Warpath",id:1009705,pageId:"1739",durability:6,energy:1,fighting:5,intelligence:3,speed:5,strength:5},{name:"Warstar",id:1009706,pageId:"4476",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wasp",id:1009707,pageId:"4383",durability:3,energy:2,fighting:3,intelligence:4,speed:5,strength:4},{name:"Wasp (Ultimate)",id:1010992,pageId:"2017",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Weapon Omega",id:1011133,pageId:"5891",durability:4,energy:1,fighting:3,intelligence:2,speed:2,strength:3},{name:"Wendell Vaughn",id:1010742,pageId:"2497",durability:6,energy:6,fighting:4,intelligence:4,speed:7,strength:5},{name:"Werewolf By Night",id:1010765,pageId:"1894",durability:5,energy:3,fighting:5,intelligence:3,speed:4,strength:5},{name:"Whiplash (Mark Scarlotti)",id:1009711,pageId:"8558",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Whirlwind",id:1010348,pageId:"1741",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Whizzer (Stanley Stewart)",id:1011425,pageId:"4579",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wiccan",id:1009714,pageId:"22821",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wild Child",id:1009715,pageId:"5891",durability:4,energy:1,fighting:3,intelligence:2,speed:2,strength:3},{name:"Wild Child (Age of Apocalypse)",id:1010994,pageId:"1931",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"William Stryker",id:1009633,pageId:"7881",durability:2,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Wind Dancer",id:1011009,pageId:"7458",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Winter Soldier",id:1010740,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Wither",id:1011043,pageId:"1743",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wolfsbane",id:1009717,pageId:"1745",durability:3,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Wolfsbane (Age of Apocalypse)",id:1010995,pageId:"1932",durability:3,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Wolverine",id:1009718,pageId:"1746",durability:4,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Wolverine (Ultimate)",id:1011006,pageId:"2018",durability:7,energy:4,fighting:6,intelligence:3,speed:3,strength:5},{name:"Wonder Man",id:1009719,pageId:"7833",durability:6,energy:7,fighting:5,intelligence:5,speed:4,strength:6},{name:"Wong",id:1009720,pageId:"12800",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wrecker",id:1010884,pageId:"6390",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"X-23",id:1009722,pageId:"1494",durability:7,energy:3,fighting:7,intelligence:5,speed:7,strength:7},{name:"X-51",id:1010804,pageId:"5367",durability:6,energy:6,fighting:4,intelligence:4,speed:3,strength:4},{name:"X-Man",id:1009725,pageId:"3149",durability:6,energy:5,fighting:6,intelligence:4,speed:4,strength:6},{name:"X-Ray (James Darnell)",id:1010875,pageId:"2451",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Yellow Claw",id:1009736,pageId:"13051",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Yellowjacket (Rita DeMara)",id:1010996,pageId:"6078",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zarek",id:1011163,pageId:"14472",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zodiak",id:1011127,pageId:"17993",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zombie (Simon Garth)",id:1009741,pageId:"1895",durability:6,energy:3,fighting:4,intelligence:2,speed:3,strength:4},{name:"Zuras",id:1011183,pageId:"14794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zzzax",id:1009742,pageId:"6678",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1}];
+
+	    /**
+	     * Messages
+	     */
+
+	    // all messages must follow this format
+	    // you may add additional messages to each array, but don't break the format
+	    // in each array the '0' is the attacker, and '1', is the defender
+	    // feel free to fix typos and such
+
+	    var messages = {
+	        round : {
+	            full : [
+	                [ "The two combatants stumble back, weary from battle. ", 0, " crouches in anticipation for the next attack. ", 1, " takes a fighting stance." ],
+	                [ "Both fighters step back, breathing heavily. 'You can't win', says ", 0, ". 'We'll see about that', replies ", 1, " through gritted teeth."  ]
+	            ],
+	            partial : [
+	                [ 1, " tumbles to the ground, unconscious and defeated. ", 0, " raises a fist to the sky, crying, 'Victory is mine!' ", 0, " wins!" ],
+	                [ "After the final blow, ", 0, " is weary, but standing. ", 1, " lies unmoving and defeated. ", 0, " wins!" ],
+	                [ "'No more...' says ", 1, "'You win.' ", 0, " gazes down at ", 1, ", pitiless and victorious. ", 0, " wins!" ],
+	                [ "As the dust settles around both combatants, ", 0, " kneels. The day is won and ", 1, " is finally defeated. ", 0, " wins!" ],
+	                [ 0, " throws ", 1, "'s limp body into the street, where it tumbles to a stop in the gutter. 'You asked for this...' ", 0, " says. ", 1, " groans in pain. ", 0, " wins!" ]
+	            ],
+	            draw : [
+	                [ "The combatants stare across the broken and devistated landscape. They have found to a standstill. 'This isn't over', says ", 0, ". ", 1, " nods and turns away, teeth gritted in frustration. 'I'll get you next time.' The fight is a draw!"  ],
+	                [ "Damaged and beaten, ", 0, " and ", 1, " have fought until neither combatant can continue. The fight is a draw!" ],
+	                [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. The fight is a draw!" ]
+	            ]
+	        },
+	        shoot : {
+	            failed : {
+	                hit : [
+	                    [ 0, " peels off an attack from a distance, narrowly missing ", 1 ],
+	                    [ "Off balance, ", 0, "attacks at range, missing ", 1, "as the fighter stumbles over debree." ],
+	                    [ "Jumpy with anticipation, ", 0, " fires from a distance, narrowly missing ", 1 ],
+	                    [ 0, " slips on the uneven terrain, shooting wide and missing ", 1 ],
+	                    [ "The sun is in ", 0, "'s eyes. Squinting in the light, ", 0, " fires. Missing ", 1, " by a wide margin." ]
+	                ],
+	                blocked : [
+	                    [ 0, " launches a devistating blow, but ", 1, " deftly parries it." ],
+	                    [ "Though, ", 0, " lands the ranged attack, ", 1, " withstands it and dives away, taking no damage." ],
+	                    [ 1, " moves like a viper, dodging ", 0, "'s powerful ranged attack" ],
+	                    [ "Shielded by the fallen debris of a nearby, demolished building, ", 1, " blocks ", 0, "'s attack." ],
+	                    [ 1, " dives to the ground, ducking", 0, "'s attack and rolling to safety" ]
+	                ]
+	            },
+	            success : [
+	                [ 0, " launches a devistating salvo of attacks against ", 1 ],
+	                [ "Suddenly, ", 0, " blasts a long range attack, catching ", 1, " off balance and knocking the fighter back." ],
+	                [ "Faster than ", 1, " can react, ", 0, " fires a ranged attack that cannot be dodged." ],
+	                [ 1, " is knocked back by force of ", 0, "'s attack, stumbling to the ground." ],
+	                [ "Unable to evade ", 0, "'s attack, ", 1, " tries to block the blow, but the force is too great to withstand." ]
+	            ]
+	        },
+	        assault : {
+	            failed : {
+	                hit : [
+	                    [ "Lunging forward ", 0, " strikes at ", 1, " but swings wide, missing ", 1, " by a mile." ],
+	                    [ "Enraged and desperate, ", 0, " lashes out at random.", 1, " dodges it easily." ],
+	                    [ "Furious and fumbling", 0, " dives in to assault ", 1, " clumsily missing." ],
+	                    [ 0, " stumbles while charging forward. Thrown off balance, ", 0, " is unable to land a blow to, ", 1, "." ],
+	                    [ 0, " assaults repeatedly in close range, but", 1, " dodges it all." ]
+	                ],
+	                blocked : [
+	                    [ "As ", 0, " steps forward to assault, ", 1, " steps forward to block, anticipating the attack and stopping it before its begun." ],
+	                    [ 0, " charges in, but the blow landed is blocked, by ", 1, "." ],
+	                    [ 0, "'s blows lack the force to damage ", 1, ". ", 1, " parries them easily with one hand." ],
+	                    [ 1, " stands firm, blocking all attacks by", 0, ". " ],
+	                    [ 0, " Sees ", 1, "'s blow coming just in time to block it and dodge away." ]
+	                ]
+	            },
+	            success : [
+	                [ 0, " lunges forward and lashes out at close range. Caught off guard, ", 1, " stumbles as the blow lands." ],
+	                [ "Dodging into close range, ", 0, "lands a blow, knocking ", 1, " to the ground." ],
+	                [ 0, " smashes into ", 1 ],
+	                [ 0, " delivers a crushing punch to ", 1, "'s jaw." ],
+	                [ 0, "Rips a manhole cover from the road, swinging it wildly and smashing it into", 1, "'s face." ]
+	            ]
+	        }
+	    };
+
+	    //UTILITY FUNCTIONS, PRIVATE
+
+	    //adds tiny jitter to a number scaled by the maximum
+	    //size of the number
+	    var jitter = function jitter( num, size ){
+
+	            var s = size || 0.1,
+	                s2 = s * 2;
+
+	            return num + s - Math.random() * s2;
+	        },
+	        //nonlinear, scales lower numbers aggressively
+	        ramp = function ramp( x ){
+
+	            return 15 * x / ( 5 + x );
+	        },
+	        //nonlinear, scales higher numbers agressively
+	        scale = function scale( x ){
+
+	            return x * x / ( x / 2 + 5 );
+	        },
+
+	        //maps a number in one range to anther range
+	        //both ranges start with 0
+	        remap = function( x, range, newrange ){
+
+	            return newrange * ( x / range );
+	        },
+	        //returns sub array of elements that return true when
+	        //passed to func
+	        filter = function filter( arr, func ){
+
+	            var arr2 = [];
+
+	            for( var i = 0, len = arr.length; i < len; i++ ){
+
+	                if( func( arr[ i ], i, arr ) ){ arr2.push( arr[ i ] ); }  
+	            }
+
+	            return arr2;
+	        },
+	        //runs func for each element in arr
+	        //returns an array of results from func
+	        each = function each( arr, func ){
+
+	            var arr2 = [];
+
+	            for( var i = 0, len = arr.length; i < len; i++ ){
+
+	                arr2.push( func( arr[ i ], i, arr ) );
+	            }
+
+	            return arr2;
+	        },
+	        //iterates over an array and adds up all of the
+	        //elements of the array, non-standard reduce
+	        reduce = function reduce( arr, func, init ){
+
+	            var sum = init != undefined ? init : 0,
+	                f   = func || function( val, sum ){ return sum + val; };
+
+	            for( var i = 0, len = arr.length; i < len; i++ ){
+
+	                sum = f( arr[ i ], sum );
+	            }
+
+	            return sum;
+	        },
+	        //keeps a number within a certain range
+	        clamp = function clamp( num, min, max ){
+
+	            if( min >= max ){
+	                throw "clamp: invalid range, min = " + min + ", max = " + max;
+	            }
+
+	            if( num < min ){ return min; }
+	            if( num > max ){ return max; }
+
+	            return num;
+	        },
+	        //random element from an array
+	        random = function random( arr ){
+
+	            return arr[ Math.floor( Math.random() * arr.length ) ];
+	        };
+
+	    //dic rolls
+	    var dice = {
+	            //one dice roll
+	            roll : function diceroll( sides ){
+
+	                return Math.floor( Math.random() * ( sides || 6 ) + 1 );
+	            },
+	            //returns an array of dice rolls
+	            toss : function dicethrow( count, sides ){
+
+	                var rolls = [];
+
+	                for( var i = 0; i < ( count || 1 ); i++ ){
+
+	                    rolls.push( this.roll( sides ) );
+	                }
+
+	                return rolls;
+	            }
+	        };
+
+
+	    //constructor function for fighter objects
+	    //used by BattleManager to reconstruct fighter stats for use by the manager
+	    var Fighter = function Fighter( stats ){
+
+	            this.name = stats.name;
+	            this.id   = stats.id;
+	            this.x    = 0;
+
+	            this.__type = "Fighter";
+
+	            this.source = {
+	                durability   : jitter( remap( stats.durability, 7, 6 ),   0.25 ),
+	                energy       : jitter( remap( stats.energy, 7, 6 ),       0.25 ) ,
+	                fighting     : jitter( remap( stats.fighting, 7, 6 ),     0.25 ),
+	                intelligence : jitter( remap( stats.intelligence, 7, 6 ), 0.25 ),
+	                speed        : jitter( remap( stats.speed, 7, 6 ),        0.25 ),
+	                strength     : jitter( remap( stats.strength, 7, 6 ),     0.25 )
+	            };
+
+	            this.armor = 5 - remap( 0.3 * this.source.durability + 0.1 * this.source.fighting + 0.3 * this.source.speed + 0.3 * this.source.strength, 6, 5 );
+
+	            if( this.armor < 0 ){ this.armor = 0; }
+	            this.armor = Math.floor( this.armor + 2 );
+	            
+	            this.assaultStrength = 0.6 * this.source.strength + 0.4 * this.source.speed;
+	            this.assaultSkill    = ramp( 0.7 * this.source.fighting + 0.3 * this.source.speed );
+	            this.toughness       = 0.3 * this.source.strength + 0.7 * this.source.durability;
+	            this.initiative      = 0.8 * this.source.speed + 0.2 * this.source.intelligence;
+	            this.attacks           = 1 + Math.floor( ( 0.2 * this.source.fighting + 0.8 * this.source.speed ) * 0.6 );
+	            this.wounds            = Math.floor( 10 * ramp( remap( this.source.durability, 6, 10 ) ) );
+	            this.ballisticStrength = 0.9 * this.source.energy + 0.1 * this.source.intelligence;
+	            this.ballisticSkill    = ramp( 0.8 * this.source.energy + 0.1 * this.source.fighting + 0.1 * this.source.intelligence ); 
+	        };
+
+	    //simple messenger object that manages the fight messages by type
+	    var messenger = {
+
+
+	        message : function message( type, attacker, defender ){
+	            return reduce( random( this.get( type ) ), function( val, sum ){
+	                return sum += ( val === 0 ? attacker.name : ( val === 1 ? defender.name : val ) );
+	            }, "" );
+	        },
+
+	        get : function( type ){
+
+	            var typeArray = type.split( ":" ),
+	                len       = typeArray.length,
+	                messages  = this.messages;
+
+	            for( var i = 0; i < len; i++ ){
+
+	                if( messages[ typeArray[ i ] ] != undefined ){
+
+	                    messages = messages[ typeArray[ i ] ];
+	                }
+	                else{
+	                    throw "messenger.get( type ): requested message type does not exist.";
+	                }
+	            }
+
+	            return messages;
+	        },
+
+	        messages : messages
+	    };
+
+
+	    var BattleManager = {
+
+	            fightdata : [],
+
+	            //should the fight continue?
+	            //Are both combatants still breathing?
+	            shouldContinue : function shouldContinue( c1, c2 ){
+
+	                return c2.wounds > 0 && c1.wounds > 0;
+	            },
+	            //initiate the fight.
+	            battle : function battle( fighter1, fighter2 ){
+
+	                var count = 0,
+	                    isDraw = false,
+	                    //who attacks first in close combat?
+	                    ix  = fighter1.initiative > fighter2.initiative,
+
+	                    //whomever is faster is c1,
+	                    //and will always attack first
+	                    c1  = ix ? fighter1 : fighter2,
+	                    c2  = ix ? fighter2 : fighter1;
+	                
+	                //holds all of the messages and data from the battle
+	                this.fightdata = [];
+
+	                //while both combatants are active and the fight hasn't gone on too long
+	                //keep fighting, turn by turn fighting
+	                while( this.shouldContinue( c1, c2 ) && count < 10 ){
+
+	                    //run a turn for the first combatant
+	                    this.characterTurn( c1, c2 );
+
+	                    //if someone has won, break out of the loop
+	                    if( !this.shouldContinue( c1, c2 ) ){ break; }
+
+	                    //run a turn for the second combatant
+	                    this.characterTurn( c2, c1 );
+
+	                    //if someone has won, break out of the loop
+	                    if( !this.shouldContinue( c1, c2 ) ){ break; }
+
+	                    //issue a round completion message
+	                    this.message( "round:full", c1, c2 );
+
+	                    //iterate the count
+	                    count++;
+	                }
+
+	                //if the fight is a draw issue a message
+	                if( count === 10 ){
+
+	                    this.message( "round:draw", c1, c2 );
+	                    isDraw = true;
+	                }
+	                else{
+	                    //if the fight has ended, calculate the winner and loser
+	                    if( c1.wounds > c2.wounds ){
+	                        //issue the winner message
+	                        this.message( "round:partial", c1, c2 );
+	                    }else{
+	                        //issue the winner message
+	                        this.message( "round:partial", c2, c1 );
+	                    }
+	                }
+
+	                //return the fight data
+	                return {
+	                    fightData : this.fightdata,
+	                    rounds    : count,
+	                    winner    : isDraw ? "draw" : c1.wounds > c2.wounds ? c1 : c2,
+	                    loser     : isDraw ? "draw" : c1.wounds > c2.wounds ? c2 : c1
+	                };
+	            },
+	            //runs shooting and assault for one character, c1
+	            characterTurn : function characterTurn( c1, c2 ){
+
+	                //shooting phase
+	                this.takeDamage( c2, this.shoot( c1, c2 ) );
+	                // //assault phase
+	                this.takeDamage( c2, this.assault( c1, c2 ) );
+	            },
+
+	            //assigns damage to defender character
+	            takeDamage : function takeDamage( defender, damage ){
+
+	                if( damage === 0 || damage === undefined ){ return false; }
+	                
+	                defender.wounds -= damage;
+	                return true;
+	            },
+
+	            shoot : function shoot( attacker, defender ){
+
+	                var hits, damage;
+
+	                //returns the number of successful hits by the attacker against the defender
+	                //depends solely on the attackers ballistic skill
+	                hits = this.ballisticHitsRoll( attacker, 6 );
+
+	                //if no hits, issue a message and return 0 damage
+	                if( hits <= 0 ){
+	                    this.message( "shoot:failed:hit", attacker, defender );
+	                    return 0;
+	                }
+
+	                //returns the total damage inflicted by the attacker against the defender
+	                damage = this.armorSaveRoll( hits, attacker, defender, 6 );
+
+	                //if all hits are blocked, issue a message and return 0 damage
+	                if( damage <= 0 ){
+	                    this.message( "shoot:failed:blocked", attacker, defender );
+	                    return 0;
+	                }
+
+	                damage *= attacker.ballisticStrength * 3;
+	                this.message( "shoot:success", attacker, defender, damage );
+
+	                //returns the total damage inflicted by the attacker against the defender
+	                return damage;
+	            },
+
+	            //rolls to hit, to wound and armor saves to determine the final damage against a defender
+	            assault : function assault( attacker, defender ){
+
+	                var hits, damage;
+
+	                //returns the number of successful hits by the attacker against the defender
+	                hits = this.assaultHitsRoll( attacker, defender, 6 );
+	                
+	                //if no hits, issue a message and return 0 damage
+	                if( hits <= 0 ){
+	                    this.message( "assault:failed:hit", attacker, defender );
+	                    return 0;
+	                }
+
+	                damage = this.armorSaveRoll( hits, attacker, defender, 6 );
+
+	                //if all hits are blocked, issue a message and return 0 damage
+	                if( damage <= 0 ){
+	                    this.message( "assault:failed:blocked", attacker, defender );
+	                    return 0;
+	                }
+
+	                //if some hits are unblocked, calculate the damage done and issue a message
+	                damage *= attacker.assaultStrength * 3;
+	                this.message( "assault:success", attacker, defender, damage );
+
+	                //return the total damage inflicted by the attacker against the defender
+	                return damage;
+	            },
+
+	            //roll a number of dice equal to the number of attacks,
+	            //filter them by sucessful hits and return the number of hits
+	            //'attacker' is the Fighter object attacking, 'faces' is the number of faces on the dice rolled
+	            ballisticHitsRoll : function ballisticHitsRoll( attacker, faces ){
+
+	                
+	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
+
+	                        return thr >= attacker.ballisticSkill;
+	                    } );
+	            },
+
+	            //rolls the attacker attacks against the defender
+	            //returns an array of successful attacks
+	            //'attacker' is the Fighter object attacking, 'faces' is the number of faces on the dice rolled
+	            overwatchHitsRoll : function overwatchHitsRoll( attacker, faces ){
+
+
+	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
+
+	                        return thr >= 6;
+	                    } );
+	            },
+
+	            //rolls the attacker attacks against the defender
+	            //returns an array of successful attacks
+	            //'attacker' is the Fighter object attacking,
+	            //'defender' is the Figheter object being attacked,
+	            //'faces' is the number of faces on the dice rolled
+	            assaultHitsRoll : function assautlHitsRoll( attacker, defender, faces ){
+
+	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
+
+	                        return thr >= clamp( 4 - ( attacker.assaultSkill - defender.assaultSkill ) / 2, 2, 6 );
+	                    } );
+	            },
+
+	            //rolls armor saves to stop damage from wounds inflicted by the attacker
+	            //returns an integer of damage unsaved
+	            //'wounds' is the number of dice rolls not blocked by the defender
+	            //'attacker' is the Fighter object attacking,
+	            //'defender' is the Figheter object being attacked,
+	            //'faces' is the number of faces on the saving dice rolled
+	            armorSaveRoll : function armorSaveRoll( wounds, attacker, defender, sides ){
+
+	                return reduce( each( dice.toss( wounds.length, sides ), function( thr, index, arr ){
+
+	                        return thr < defender.armor ? 1 : 0;
+	                    } ) );
+	            },
+
+	            //constructs the event object for each attack and defense
+	            //adds the object to the BattleManager data object
+	            message : function message( type, attacker, defender, wounds ){
+
+	                this.fightdata.push( {
+	                    "type"           : type,
+	                    "attacker"       : attacker,
+	                    "attackerName"   : attacker.name,
+	                    "attackerWounds" : attacker.wounds,
+	                    "defender"       : defender,
+	                    "defenderName"   : defender.name,
+	                    "defenderWounds" : defender.wounds,
+	                    "message"        : messenger.message( type, attacker, defender ),
+	                    "wounds"         : wounds || null
+	                } );
+	            }
+	        };
+
+	    function getId (fighter) {
+	        var fighterId;
+	        if (typeof fighter === 'number' || typeof fighter === 'string') {
+	            fighterId = Number(fighter);
+	        } else if (typeof fighter === 'object' && 'id' in fighter) {
+	            fighterId = Number(fighter.id);
+	        } else {
+	            throw new Error('Fighter must be an object with "id" property or number.');
+	        }
+	        return fighterId;
+	    }
+
+	    function getStats (fighter) {
+	        var id = getId(fighter);
+	        return stats.find(function (s) {
+	            return s.id === id;
+	        });
+	    }
+
+	    return {
+	        narrativeBattle : function narrativeBattle( query1, query2 ){
+	            var fighter1Stats = getStats(query1),
+	                fighter2Stats = getStats(query2),
+	                fighter1 = new Fighter( fighter1Stats ),
+	                fighter2 = new Fighter( fighter2Stats );
+	            
+	            return BattleManager.battle( fighter1, fighter2 );
+	        },
+
+	        statBattle : function statBattle( query1, query2, count ){
+	            var fighter1Stats = getStats(query1);
+	            var fighter2Stats = getStats(query2);
+
+	            var sample,
+	                returnObj = {
+	                    fighter1 : {
+	                        name : fighter1Stats.name,
+	                        wins : 0,
+	                        draws : 0
+	                    },
+	                    fighter2 : {
+	                        name : fighter2Stats.name,
+	                        wins : 0,
+	                        draws : 0
+	                    },
+	                    data : []
+	                };
+
+	            for( var i = 0; i < count; i++ ){
+
+	                sample = this.narrativeBattle( fighter1Stats, fighter2Stats );
+
+	                if( sample.winner === "draw" ){
+
+	                    returnObj.fighter1.draws += 1;
+	                    returnObj.fighter2.draws += 1;
+	                }
+	                else{
+
+	                    returnObj[ sample.winner.name === returnObj.fighter1.name ? "fighter1" : "fighter2" ].wins += 1;
+	                } 
+
+	                returnObj.data.push( sample );
+	            }
+	            
+	            return returnObj;
+	        },
+
+	        addMessages : function( messages ){
+	            messenger.messages = messages;
+	        }
+	    };
+	    
+	}));
+
+
+
+
+
+
+
+
+
+
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var React = __webpack_require__(1);
 
 	var CharacterSelection = React.createClass({
@@ -21561,13 +22145,13 @@
 	module.exports = CharacterSelection;
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 
-	var Results = __webpack_require__(175),
-	    characterStore = __webpack_require__(176);
+	var Results = __webpack_require__(176),
+	    characterStore = __webpack_require__(178);
 
 	var SearchView = React.createClass({
 		displayName: 'SearchView',
@@ -21636,12 +22220,12 @@
 	module.exports = SearchView;
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
 
-	var CharacterViews = __webpack_require__(180);
+	var CharacterViews = __webpack_require__(177);
 
 	var ResultsView = React.createClass({
 		displayName: 'ResultsView',
@@ -21673,11 +22257,37 @@
 	module.exports = ResultsView;
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(177),
-	    $ = __webpack_require__(178);
+	var React = __webpack_require__(1);
+
+	var CharacterViews = React.createClass({
+		displayName: 'CharacterViews',
+
+
+		render() {
+			return React.createElement(
+				'li',
+				{ id: this.props.id },
+				React.createElement('img', {
+					className: 'thumnbnail',
+					onClick: this.props.handleCharacter,
+					src: this.props.photo,
+					id: this.props.id }),
+				this.props.name
+			);
+		}
+	});
+
+	module.exports = CharacterViews;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(179),
+	    $ = __webpack_require__(180);
 
 	var characterStore = Object.create(EventEmitter.prototype);
 	EventEmitter.call(characterStore);
@@ -21712,7 +22322,7 @@
 	module.exports = characterStore;
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22029,7 +22639,7 @@
 
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -32255,11 +32865,11 @@
 
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
-	    battleManager = __webpack_require__(182);
+	    battleManager = __webpack_require__(173);
 
 	var BattleView = React.createClass({
 		displayName: 'BattleView',
@@ -32291,616 +32901,6 @@
 	});
 
 	module.exports = BattleView;
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var CharacterViews = React.createClass({
-		displayName: 'CharacterViews',
-
-
-		render() {
-			return React.createElement(
-				'li',
-				{ id: this.props.id },
-				React.createElement('img', {
-					onClick: this.props.handleCharacter,
-					src: this.props.photo,
-					id: this.props.id }),
-				this.props.name
-			);
-		}
-	});
-
-	module.exports = CharacterViews;
-
-/***/ },
-/* 181 */,
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
-	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	    } else if (typeof exports === "object") {
-	        module.exports = factory();
-	    } else {
-	        root.BattleManager = factory();
-	    }
-	}(this, function() {
-
-	    /**
-	     * Stats
-	     */
-
-	     var stats=[{name:"3-D Man",id:1011334,pageId:"5463",durability:2,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Abomination (Emil Blonsky)",id:1009146,pageId:"9376",durability:6,energy:1,fighting:2,intelligence:2,speed:2,strength:7},{name:"Absorbing Man",id:1009148,pageId:"5714",durability:6,energy:4,fighting:6,intelligence:2,speed:3,strength:6},{name:"Abyss",id:1009149,pageId:"17603",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Abyss (Age of Apocalypse)",id:1010903,pageId:"1898",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Adam Destine",id:1011266,pageId:"9400",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Adam Warlock",id:1010354,pageId:"3706",durability:7,energy:7,fighting:6,intelligence:5,speed:6,strength:6},{name:"Aegis (Trey Rollins)",id:1010846,pageId:"1750",durability:6,energy:6,fighting:2,intelligence:2,speed:2,strength:2},{name:"Agent X (Nijo)",id:1011031,pageId:"1753",durability:7,energy:4,fighting:1,intelligence:1,speed:1,strength:1},{name:"Agent Zero",id:1009150,pageId:"3733",durability:7,energy:4,fighting:7,intelligence:5,speed:3,strength:4},{name:"Aginar",id:1011175,pageId:"5005",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Air-Walker (Gabriel Lan)",id:1011136,pageId:"16293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ajak",id:1011176,pageId:"5006",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ajaxis",id:1010870,pageId:"8513",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Albion",id:1011120,pageId:"1757",durability:3,energy:3,fighting:4,intelligence:3,speed:4,strength:4},{name:"Alex Wilder",id:1010755,pageId:"4625",durability:1,energy:1,fighting:1,intelligence:4,speed:1,strength:1},{name:"Alicia Masters",id:1009435,pageId:"6414",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:2},{name:"American Eagle (Jason Strongbow)",id:1011361,pageId:"10271",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amiko",id:1009151,pageId:"16645",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amphibian (Earth-712)",id:1010673,pageId:"5731",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Amun",id:1010905,pageId:"1762",durability:1,energy:2,fighting:5,intelligence:2,speed:3,strength:2},{name:"Ancient One",id:1009152,pageId:"11690",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Thomas Halloway)",id:1011396,pageId:"6246",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Ultimate)",id:1011338,pageId:"1981",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Angel (Warren Worthington III)",id:1009153,pageId:"1473",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Anita Blake",id:1010674,pageId:"9833",durability:7,energy:6,fighting:7,intelligence:7,speed:6,strength:4},{name:"Annihilus",id:1009154,pageId:"1823",durability:6,energy:7,fighting:5,intelligence:5,speed:5,strength:6},{name:"Anole",id:1011301,pageId:"1623",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ant-Man (Eric O'Grady)",id:1010802,pageId:"12011",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ant-Man (Scott Lang)",id:1010801,pageId:"2574",durability:2,energy:4,fighting:2,intelligence:4,speed:2,strength:2},{name:"Anthem",id:1011208,pageId:"18306",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Apocalypse",id:1009156,pageId:"9294",durability:6,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Aqueduct",id:1010866,pageId:"8530",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Arachne",id:1010773,pageId:"1819",durability:2,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Arcade",id:1009158,pageId:"4092",durability:2,energy:1,fighting:3,intelligence:5,speed:2,strength:2},{name:"Archangel",id:1009159,pageId:"1473",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:3},{name:"Arclight",id:1009160,pageId:"1624",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ares",id:1010784,pageId:"3087",durability:6,energy:1,fighting:7,intelligence:2,speed:2,strength:5},{name:"Armadillo",id:1011012,pageId:"5771",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Armor (Hisako Ichiki)",id:1011298,pageId:"1665",durability:4,energy:2,fighting:3,intelligence:2,speed:2,strength:4},{name:"Arnim Zola",id:1009740,pageId:"8688",durability:3,energy:1,fighting:1,intelligence:6,speed:3,strength:3},{name:"Arsenic",id:1010748,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Asgardian",id:1010718,pageId:"3843",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Asylum",id:1010835,pageId:"8533",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Aurora",id:1009163,pageId:"1625",durability:3,energy:3,fighting:3,intelligence:2,speed:6,strength:2},{name:"Avalanche",id:1009164,pageId:"1626",durability:3,energy:3,fighting:3,intelligence:2,speed:2,strength:2},{name:"Azazel (Mutant)",id:1011766,pageId:"15073",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Banshee",id:1009168,pageId:"1783",durability:3,energy:7,fighting:4,intelligence:3,speed:4,strength:2},{name:"Banshee (Theresa Rourke)",id:1009596,pageId:"1722",durability:2,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Baron Strucker",id:1009169,pageId:"1786",durability:4,energy:3,fighting:5,intelligence:4,speed:2,strength:3},{name:"Baron Zemo (Heinrich Zemo)",id:1009170,pageId:"3981",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Baron Zemo (Helmut Zemo)",id:1010906,pageId:"1787",durability:5,energy:7,fighting:7,intelligence:5,speed:3,strength:4},{name:"Baroness S'Bak",id:1011137,pageId:"14415",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bastion",id:1009171,pageId:"1788",durability:7,energy:4,fighting:4,intelligence:5,speed:3,strength:4},{name:"Batroc the Leaper",id:1009172,pageId:"5858",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Battering Ram",id:1009173,pageId:"4020",durability:6,energy:1,fighting:2,intelligence:2,speed:2,strength:6},{name:"Beak",id:1009174,pageId:"1900",durability:1,energy:1,fighting:6,intelligence:1,speed:1,strength:1},{name:"Beast",id:1009175,pageId:"1627",durability:4,energy:1,fighting:4,intelligence:6,speed:3,strength:4},{name:"Beast (Earth-311)",id:1010909,pageId:"11798",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beast (Ultimate)",id:1010908,pageId:"1982",durability:4,energy:1,fighting:2,intelligence:5,speed:3,strength:4},{name:"Beef",id:1009178,pageId:"4124",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ben Parker",id:1009489,pageId:"8720",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ben Urich",id:1010782,pageId:"6327",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bengal",id:1010829,pageId:"22171",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beta-Ray Bill",id:1009180,pageId:"4084",durability:7,energy:7,fighting:7,intelligence:5,speed:7,strength:7},{name:"Betty Brant",id:1010325,pageId:"1837",durability:1,energy:1,fighting:5,intelligence:5,speed:2,strength:1},{name:"Betty Ross",id:1009548,pageId:"21439",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Beyonder",id:1011138,pageId:"1445",durability:7,energy:7,fighting:3,intelligence:4,speed:7,strength:7},{name:"Big Bertha",id:1010843,pageId:"1629",durability:6,energy:4,fighting:4,intelligence:4,speed:4,strength:6},{name:"Big Wheel",id:1009181,pageId:"9732",durability:5,energy:4,fighting:1,intelligence:2,speed:4,strength:3},{name:"Bishop",id:1009182,pageId:"1630",durability:4,energy:7,fighting:5,intelligence:4,speed:2,strength:3},{name:"Black Bolt",id:1009184,pageId:"3412",durability:5,energy:7,fighting:6,intelligence:4,speed:5,strength:5},{name:"Black Cat",id:1009185,pageId:"2502",durability:2,energy:1,fighting:4,intelligence:2,speed:3,strength:2},{name:"Black Cat (Ultimate)",id:1010910,pageId:"2300",durability:4,energy:5,fighting:7,intelligence:7,speed:7,strength:5},{name:"Black Knight (Sir Percy of Scandia)",id:1009186,pageId:"6376",durability:2,energy:1,fighting:6,intelligence:2,speed:2,strength:2},{name:"Black Panther",id:1009187,pageId:"5222",durability:3,energy:1,fighting:6,intelligence:5,speed:4,strength:4},{name:"Black Tarantula",id:1010687,pageId:"11259",durability:4,energy:3,fighting:5,intelligence:4,speed:4,strength:5},{name:"Black Tom",id:1009188,pageId:"2593",durability:7,energy:7,fighting:7,intelligence:6,speed:6,strength:7},{name:"Black Widow",id:1009189,pageId:"2585",durability:3,energy:3,fighting:6,intelligence:3,speed:2,strength:3},{name:"Black Widow (Ultimate)",id:1010911,pageId:"1983",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blackheart",id:1009190,pageId:"1868",durability:7,energy:6,fighting:5,intelligence:6,speed:6,strength:6},{name:"Blacklash",id:1010881,pageId:"8516",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blade",id:1009191,pageId:"1791",durability:5,energy:1,fighting:5,intelligence:4,speed:5,strength:5},{name:"Blastaar",id:1009195,pageId:"5752",durability:6,energy:5,fighting:4,intelligence:3,speed:5,strength:5},{name:"Blazing Skull",id:1010830,pageId:"5998",durability:5,energy:5,fighting:5,intelligence:5,speed:3,strength:5},{name:"Blindfold",id:1011291,pageId:"1632",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blink",id:1009197,pageId:"10360",durability:4,energy:5,fighting:6,intelligence:4,speed:4,strength:4},{name:"Blizzard",id:1009198,pageId:"5518",durability:3,energy:5,fighting:4,intelligence:2,speed:3,strength:2},{name:"Blob",id:1009199,pageId:"3476",durability:6,energy:2,fighting:3,intelligence:2,speed:2,strength:4},{name:"Blob (Ultimate)",id:1011132,pageId:"16274",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blockbuster",id:1009200,pageId:"4130",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bloke",id:1009202,pageId:"4560",durability:5,energy:2,fighting:2,intelligence:2,speed:2,strength:6},{name:"Bloodaxe",id:1011073,pageId:"9110",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bloodscream",id:1009203,pageId:"4781",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Blue Marvel",id:1011339,pageId:"20825",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Blue Shield",id:1011264,pageId:"2496",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bob, Agent of Hydra",id:1011119,pageId:"19655",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Boom Boom",id:1010366,pageId:"1724",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Boomerang",id:1010371,pageId:"5857",durability:2,energy:2,fighting:4,intelligence:3,speed:4,strength:3},{name:"Bride of Nine Spiders (Immortal Weapons)",id:1011236,pageId:"18329",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Brother Voodoo",id:1011090,pageId:"1870",durability:4,energy:7,fighting:4,intelligence:5,speed:3,strength:2},{name:"Bruce Banner",id:1009167,pageId:"2288",durability:7,energy:1,fighting:5,intelligence:6,speed:7,strength:7},{name:"Bucky",id:1009211,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Bug",id:1011038,pageId:"14697",durability:3,energy:4,fighting:4,intelligence:3,speed:2,strength:2},{name:"Bulldozer",id:1010887,pageId:"6891",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Bullseye",id:1009212,pageId:"2474",durability:2,energy:1,fighting:6,intelligence:2,speed:2,strength:2},{name:"Bushwacker",id:1009213,pageId:"1636",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Butterfly",id:1011101,pageId:"1688",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Cable",id:1009214,pageId:"1475",durability:6,energy:7,fighting:7,intelligence:7,speed:5,strength:6},{name:"Calamity",id:1011209,pageId:"18312",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Caliban",id:1009216,pageId:"1637",durability:5,energy:2,fighting:3,intelligence:2,speed:5,strength:5},{name:"Callisto",id:1009217,pageId:"4703",durability:4,energy:2,fighting:7,intelligence:4,speed:5,strength:4},{name:"Callisto (Age of Apocalypse)",id:1010912,pageId:"11092",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cammi",id:1011139,pageId:"16095",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cannonball",id:1009219,pageId:"1476",durability:6,energy:3,fighting:4,intelligence:2,speed:4,strength:2},{name:"Captain America",id:1009220,pageId:"2270",durability:3,energy:1,fighting:6,intelligence:4,speed:3,strength:3},{name:"Captain America (House of M)",id:1010914,pageId:"1967",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain America (Ultimate)",id:1010913,pageId:"1985",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Captain Britain",id:1009223,pageId:"1477",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Captain Britain (Ultimate)",id:1010915,pageId:"1986",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain Marvel (Carol Danvers)",id:1010338,pageId:"2699",durability:4,energy:5,fighting:4,intelligence:3,speed:5,strength:4},{name:"Captain Marvel (Genis-Vell)",id:1011096,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Captain Marvel (Mar-Vell)",id:1009224,pageId:"2691",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Captain Marvel (Phyla-Vell)",id:1011097,pageId:"13868",durability:4,energy:5,fighting:4,intelligence:4,speed:7,strength:5},{name:"Captain Stacy",id:1009225,pageId:"12577",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Captain Universe",id:1011027,pageId:"3652",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Cardiac",id:1011052,pageId:"7546",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cargill",id:1009226,pageId:"1638",durability:7,energy:2,fighting:5,intelligence:4,speed:4,strength:7},{name:"Carlie Cooper",id:1011258,pageId:"21430",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Carmella Unuscione",id:1009688,pageId:"11915",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Carnage",id:1009227,pageId:"2486",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Cassandra Nova",id:1009478,pageId:"5359",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Catseye",id:1009230,pageId:"4564",durability:5,energy:1,fighting:4,intelligence:4,speed:6,strength:5},{name:"Cecilia Reyes",id:1009536,pageId:"9308",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Centennial",id:1011039,pageId:"12133",durability:3,energy:1,fighting:6,intelligence:2,speed:2,strength:4},{name:"Cerise",id:1011141,pageId:"16647",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chamber",id:1009233,pageId:"5519",durability:6,energy:4,fighting:4,intelligence:3,speed:2,strength:2},{name:"Chameleon",id:1009234,pageId:"1839",durability:2,energy:3,fighting:2,intelligence:4,speed:2,strength:1},{name:"Changeling",id:1011015,pageId:"4828",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chase Stein",id:1010754,pageId:"4071",durability:7,energy:3,fighting:7,intelligence:1,speed:3,strength:7},{name:"Chimera",id:1009237,pageId:"22345",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Chores MacGillicudy",id:1011411,pageId:"18202",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Clea",id:1009239,pageId:"5513",durability:2,energy:4,fighting:2,intelligence:4,speed:7,strength:2},{name:"Clint Barton",id:1010809,pageId:"2623",durability:2,energy:2,fighting:7,intelligence:5,speed:3,strength:3},{name:"Cloak",id:1009241,pageId:"1793",durability:5,energy:5,fighting:3,intelligence:3,speed:5,strength:3},{name:"Cloud 9",id:1010823,pageId:"22208",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cobalt Man",id:1011286,pageId:"5208",durability:7,energy:5,fighting:3,intelligence:7,speed:7,strength:7},{name:"Colleen Wing",id:1010676,pageId:"12129",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Colossus",id:1009243,pageId:"1478",durability:7,energy:5,fighting:5,intelligence:4,speed:4,strength:7},{name:"Colossus (Ultimate)",id:1010917,pageId:"1988",durability:6,energy:1,fighting:4,intelligence:3,speed:3,strength:7},{name:"Constrictor",id:1009245,pageId:"4854",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Contessa (Vera Vidal)",id:1011407,pageId:"18204",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Controller",id:1010346,pageId:"5932",durability:4,energy:7,fighting:3,intelligence:6,speed:2,strength:5},{name:"Corsair",id:1009247,pageId:"6116",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cosmo (dog)",id:1011353,pageId:"17583",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cottonmouth",id:1011362,pageId:"12442",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Count Nefaria",id:1009249,pageId:"1807",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Crimson Crusader",id:1011272,pageId:"9402",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crimson Dynamo",id:1009251,pageId:"14973",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crossbones",id:1009252,pageId:"2587",durability:4,energy:3,fighting:7,intelligence:4,speed:3,strength:4},{name:"Crusher Hogan",id:1009254,pageId:"1847",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Crystal",id:1009255,pageId:"4861",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cuckoo",id:1011268,pageId:"9404",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cyber",id:1009256,pageId:"3911",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Cyclops",id:1009257,pageId:"1642",durability:4,energy:7,fighting:5,intelligence:5,speed:4,strength:4},{name:"Cyclops (Ultimate)",id:1010918,pageId:"1989",durability:3,energy:7,fighting:3,intelligence:5,speed:4,strength:4},{name:"Cypher",id:1011385,pageId:"4830",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dagger",id:1009258,pageId:"3200",durability:1,energy:5,fighting:3,intelligence:3,speed:2,strength:1},{name:"Daimon Hellstrom",id:1010719,pageId:"1877",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Daken",id:1011001,pageId:"19690",durability:4,energy:1,fighting:7,intelligence:2,speed:3,strength:4},{name:"Dani Moonstar",id:1009453,pageId:"5115",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Danny Rand",id:1010776,pageId:"5308",durability:6,energy:4,fighting:7,intelligence:5,speed:5,strength:5},{name:"Daredevil",id:1009262,pageId:"1794",durability:2,energy:1,fighting:6,intelligence:3,speed:3,strength:2},{name:"Dark Beast",id:1010907,pageId:"1643",durability:4,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Darkhawk",id:1011020,pageId:"3249",durability:4,energy:4,fighting:2,intelligence:3,speed:2,strength:4},{name:"Darkstar",id:1009266,pageId:"7031",durability:3,energy:5,fighting:4,intelligence:2,speed:3,strength:2},{name:"Darwin",id:1011016,pageId:"3896",durability:5,energy:5,fighting:5,intelligence:5,speed:5,strength:5},{name:"Dazzler",id:1009267,pageId:"1644",durability:4,energy:7,fighting:6,intelligence:6,speed:3,strength:4},{name:"Dazzler (Ultimate)",id:1010920,pageId:"1990",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dead Girl",id:1011087,pageId:"3850",durability:6,energy:3,fighting:3,intelligence:3,speed:3,strength:3},{name:"Deadpool",id:1009268,pageId:"2584",durability:7,energy:7,fighting:7,intelligence:5,speed:7,strength:4},{name:"Death",id:1009269,pageId:"5409",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Deathbird",id:1009270,pageId:"9323",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Deathcry",id:1011037,pageId:"17712",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Debrii",id:1010717,pageId:"6868",durability:2,energy:3,fighting:2,intelligence:2,speed:2,strength:2},{name:"Demogoblin",id:1011071,pageId:"5410",durability:5,energy:6,fighting:6,intelligence:3,speed:5,strength:6},{name:"Destiny",id:1009271,pageId:"4742",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Deviants",id:1011107,pageId:"7924",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Devos",id:1011142,pageId:"15643",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Diablo",id:1009273,pageId:"8066",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Diamondback (Rachel Leighton)",id:1009274,pageId:"4773",durability:3,energy:1,fighting:4,intelligence:2,speed:2,strength:3},{name:"Dinah Soar",id:1011040,pageId:"4883",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doc Samson",id:1009275,pageId:"6679",durability:5,energy:1,fighting:1,intelligence:4,speed:2,strength:6},{name:"Doctor Doom",id:1009281,pageId:"1824",durability:6,energy:6,fighting:4,intelligence:6,speed:5,strength:6},{name:"Doctor Doom (Ultimate)",id:1011103,pageId:"3395",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doctor Octopus",id:1009276,pageId:"2471",durability:2,energy:1,fighting:4,intelligence:6,speed:2,strength:2},{name:"Doctor Octopus (Ultimate)",id:1010921,pageId:"2712",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Doctor Strange",id:1009282,pageId:"1795",durability:6,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Domino",id:1009277,pageId:"1646",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Donald Blake",id:1010330,pageId:"2605",durability:7,energy:7,fighting:6,intelligence:2,speed:6,strength:7},{name:"Doop",id:1009279,pageId:"2264",durability:6,energy:4,fighting:3,intelligence:5,speed:3,strength:5},{name:"Doorman",id:1010879,pageId:"2613",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dormammu",id:1009280,pageId:"4058",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Dracula",id:1010677,pageId:"1872",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Dragon Man",id:1009283,pageId:"8305",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Drax",id:1010735,pageId:"3128",durability:7,energy:2,fighting:6,intelligence:1,speed:4,strength:6},{name:"Dreadnoughts",id:1010368,pageId:"15144",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Dust",id:1009285,pageId:"1648",durability:5,energy:5,fighting:4,intelligence:4,speed:6,strength:4},{name:"Earthquake",id:1009286,pageId:"4193",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Echo",id:1010785,pageId:"4269",durability:4,energy:1,fighting:6,intelligence:5,speed:5,strength:4},{name:"Eddie Brock",id:1010787,pageId:"2305",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Edwin Jarvis",id:1011072,pageId:"2622",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ego",id:1011060,pageId:"8288",durability:7,energy:7,fighting:2,intelligence:6,speed:7,strength:7},{name:"Electro",id:1009287,pageId:"3485",durability:4,energy:7,fighting:5,intelligence:6,speed:6,strength:4},{name:"Electro (Ultimate)",id:1010922,pageId:"2679",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Elektra",id:1009288,pageId:"2308",durability:2,energy:3,fighting:7,intelligence:4,speed:6,strength:4},{name:"Elektra (Ultimate)",id:1010923,pageId:"4356",durability:2,energy:1,fighting:6,intelligence:3,speed:3,strength:3},{name:"Elixir",id:1011082,pageId:"1649",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Elsa Bloodstone",id:1010701,pageId:"1869",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Emma Frost",id:1009310,pageId:"1657",durability:7,energy:7,fighting:6,intelligence:7,speed:4,strength:5},{name:"Enchantress (Amora)",id:1010671,pageId:"1321",durability:5,energy:5,fighting:5,intelligence:6,speed:4,strength:3},{name:"Enchantress (Sylvie Lushton)",id:1011432,pageId:"22207",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Epoch",id:1011065,pageId:"4148",durability:6,energy:6,fighting:2,intelligence:6,speed:7,strength:4},{name:"Eternals",id:1010807,pageId:"7848",durability:7,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Eternity",id:1011061,pageId:"3814",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Exodus",id:1009295,pageId:"1653",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Expediter",id:1009296,pageId:"20083",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ezekiel",id:1011199,pageId:"6278",durability:4,energy:1,fighting:3,intelligence:4,speed:5,strength:4},{name:"Fabian Cortez",id:1009248,pageId:"4829",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Falcon",id:1009297,pageId:"2692",durability:3,energy:3,fighting:5,intelligence:3,speed:4,strength:3},{name:"Fallen One",id:1011143,pageId:"15358",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Fantomex",id:1009301,pageId:"1481",durability:5,energy:4,fighting:5,intelligence:6,speed:4,strength:4},{name:"Fat Cobra",id:1011233,pageId:"18328",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Firebird",id:1010868,pageId:"1808",durability:5,energy:7,fighting:4,intelligence:6,speed:7,strength:6},{name:"Firelord",id:1009305,pageId:"16422",durability:3,energy:5,fighting:2,intelligence:3,speed:4,strength:4},{name:"Firestar",id:1009306,pageId:"1437",durability:3,energy:7,fighting:3,intelligence:3,speed:6,strength:3},{name:"Flatman",id:1010863,pageId:"1655",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Forge",id:1009309,pageId:"1656",durability:2,energy:1,fighting:4,intelligence:4,speed:2,strength:2},{name:"Forgotten One",id:1011177,pageId:"5010",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Franklin Richards",id:1009539,pageId:"1708",durability:1,energy:7,fighting:1,intelligence:7,speed:1,strength:1},{name:"Franklin Storm",id:1010980,pageId:"8293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Galactus",id:1009312,pageId:"1825",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Gambit",id:1009313,pageId:"1658",durability:3,energy:5,fighting:4,intelligence:3,speed:3,strength:3},{name:"Gamora",id:1010763,pageId:"3209",durability:6,energy:1,fighting:7,intelligence:4,speed:5,strength:5},{name:"Garrison Kane",id:1009383,pageId:"5893",durability:5,energy:6,fighting:6,intelligence:2,speed:3,strength:5},{name:"Gateway",id:1009315,pageId:"1659",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Geiger",id:1011248,pageId:"19701",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Genesis",id:1009317,pageId:"2541",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Genis-Vell",id:1011098,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Gertrude Yorkes",id:1010749,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Ghost Rider (Daniel Ketch)",id:1010925,pageId:"1798",durability:6,energy:5,fighting:5,intelligence:3,speed:5,strength:4},{name:"Ghost Rider (Johnny Blaze)",id:1009318,pageId:"1797",durability:7,energy:6,fighting:4,intelligence:3,speed:2,strength:4},{name:"Giant-Man (Ultimate)",id:1010926,pageId:"1994",durability:6,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Gideon",id:1011055,pageId:"7825",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Gladiator (Kallark)",id:1009321,pageId:"2377",durability:6,energy:6,fighting:6,intelligence:4,speed:6,strength:7},{name:"Glenn Talbot",id:1009645,pageId:"16972",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Glorian",id:1011144,pageId:"15002",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Goliath (Bill Foster)",id:1010927,pageId:"6915",durability:4,energy:1,fighting:4,intelligence:6,speed:3,strength:6},{name:"Gorilla Man",id:1010731,pageId:"6387",durability:3,energy:1,fighting:4,intelligence:3,speed:3,strength:4},{name:"Grandmaster",id:1011076,pageId:"2641",durability:7,energy:6,fighting:2,intelligence:6,speed:7,strength:4},{name:"Green Goblin (Harry Osborn)",id:1010928,pageId:"5171",durability:4,energy:5,fighting:5,intelligence:4,speed:5,strength:4},{name:"Green Goblin (Ultimate)",id:1010929,pageId:"2302",durability:6,energy:6,fighting:5,intelligence:6,speed:5,strength:6},{name:"Grim Reaper",id:1009328,pageId:"1809",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Groot",id:1010743,pageId:"20949",durability:5,energy:1,fighting:4,intelligence:6,speed:2,strength:5},{name:"Guardian",id:1009330,pageId:"5543",durability:6,energy:5,fighting:5,intelligence:6,speed:4,strength:5},{name:"GW Bridge",id:1009207,pageId:"17862",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Gwen Stacy",id:1009619,pageId:"3674",durability:1,energy:1,fighting:1,intelligence:3,speed:2,strength:1},{name:"H.E.R.B.I.E.",id:1009332,pageId:"9032",durability:3,energy:3,fighting:3,intelligence:4,speed:2,strength:2},{name:"Hammerhead",id:1009334,pageId:"1846",durability:5,energy:1,fighting:4,intelligence:5,speed:2,strength:4},{name:"Hank Pym",id:1011490,pageId:"2670",durability:4,energy:3,fighting:3,intelligence:7,speed:3,strength:4},{name:"Happy Hogan",id:1009348,pageId:"12465",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Harrier",id:1011069,pageId:"6010",durability:5,energy:1,fighting:4,intelligence:2,speed:3,strength:3},{name:"Harry Osborn",id:1009486,pageId:"5171",durability:4,energy:5,fighting:5,intelligence:4,speed:5,strength:4},{name:"Havok",id:1009337,pageId:"1661",durability:3,energy:6,fighting:3,intelligence:3,speed:2,strength:2},{name:"Hawkeye",id:1009338,pageId:"2623",durability:2,energy:2,fighting:7,intelligence:5,speed:3,strength:3},{name:"Hawkeye (Kate Bishop)",id:1010808,pageId:"6496",durability:2,energy:1,fighting:5,intelligence:3,speed:2,strength:2},{name:"Hawkeye (Ultimate)",id:1011131,pageId:"1995",durability:2,energy:1,fighting:5,intelligence:2,speed:3,strength:1},{name:"Hellcat (Patsy Walker)",id:1010351,pageId:"5296",durability:4,energy:3,fighting:6,intelligence:4,speed:3,strength:4},{name:"Hellion",id:1010678,pageId:"1662",durability:2,energy:6,fighting:3,intelligence:4,speed:4,strength:2},{name:"Henry Peter Gyrich",id:1011371,pageId:"2698",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hepzibah",id:1009342,pageId:"1439",durability:3,energy:1,fighting:4,intelligence:2,speed:3,strength:2},{
-	name:"Hercules",id:1009343,pageId:"2351",durability:7,energy:1,fighting:7,intelligence:4,speed:5,strength:7},{name:"Hex",id:1011274,pageId:"9406",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hindsight Lad",id:1010839,pageId:"12724",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Hobgoblin (Jason Macendale)",id:1010930,pageId:"7409",durability:4,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"Hobgoblin (Robin Borne)",id:1010931,pageId:"6359",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hobgoblin (Roderick Kingsley)",id:1009347,pageId:"3427",durability:3,energy:3,fighting:2,intelligence:3,speed:3,strength:4},{name:"Holocaust (Age of Apocalypse)",id:1009349,pageId:"1907",durability:6,energy:6,fighting:3,intelligence:4,speed:2,strength:5},{name:"Hope Summers",id:1011428,pageId:"20071",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Howard The Duck",id:1010373,pageId:"5544",durability:3,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Hulk",id:1009351,pageId:"2288",durability:7,energy:1,fighting:5,intelligence:6,speed:7,strength:7},{name:"Hulk (Marvel Zombies)",id:1011118,pageId:"5887",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hulkling",id:1009355,pageId:"2296",durability:6,energy:2,fighting:3,intelligence:4,speed:3,strength:6},{name:"Human Robot",id:1010722,pageId:"6388",durability:5,energy:6,fighting:3,intelligence:4,speed:3,strength:4},{name:"Human Torch",id:1009356,pageId:"1826",durability:4,energy:6,fighting:4,intelligence:4,speed:5,strength:4},{name:"Human Torch (Jim Hammond)",id:1010932,pageId:"4364",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Human Torch (Ultimate)",id:1011102,pageId:"3319",durability:4,energy:7,fighting:5,intelligence:1,speed:7,strength:4},{name:"Humbug",id:1010675,pageId:"10323",durability:2,energy:4,fighting:2,intelligence:4,speed:2,strength:2},{name:"Husk",id:1009357,pageId:"1482",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hussar",id:1009358,pageId:"4328",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Hydro-Man",id:1009360,pageId:"1848",durability:6,energy:6,fighting:5,intelligence:4,speed:5,strength:5},{name:"Hypno-Hustler",id:1011246,pageId:"10859",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iceman",id:1009362,pageId:"1664",durability:4,energy:5,fighting:3,intelligence:2,speed:4,strength:3},{name:"Iceman (Ultimate)",id:1010933,pageId:"1997",durability:6,energy:7,fighting:4,intelligence:3,speed:7,strength:4},{name:"Ikaris",id:1011077,pageId:"5040",durability:7,energy:6,fighting:6,intelligence:2,speed:7,strength:5},{name:"Imp",id:1011273,pageId:"9408",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Impossible Man",id:1009364,pageId:"8009",durability:6,energy:6,fighting:1,intelligence:2,speed:7,strength:6},{name:"In-Betweener",id:1011063,pageId:"7556",durability:7,energy:7,fighting:2,intelligence:6,speed:7,strength:7},{name:"Inertia",id:1011064,pageId:"5738",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Infant Terrible",id:1011146,pageId:"8253",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Invisible Woman",id:1009366,pageId:"1827",durability:6,energy:7,fighting:5,intelligence:5,speed:5,strength:4},{name:"Invisible Woman (Ultimate)",id:1010934,pageId:"3305",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iron Fist (Danny Rand)",id:1009367,pageId:"5308",durability:6,energy:4,fighting:7,intelligence:5,speed:5,strength:5},{name:"Iron Fist (Wu Ao-Shi)",id:1011412,pageId:"17004",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Iron Lad",id:1010704,pageId:"2689",durability:5,energy:6,fighting:3,intelligence:4,speed:7,strength:4},{name:"Iron Man",id:1009368,pageId:"2619",durability:6,energy:6,fighting:3,intelligence:6,speed:5,strength:6},{name:"Iron Man (Ultimate)",id:1010935,pageId:"1998",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Iron Monger",id:1009371,pageId:"12110",durability:6,energy:5,fighting:2,intelligence:5,speed:2,strength:6},{name:"Iron Patriot (James Rhodes)",id:1009538,pageId:"20297",durability:6,energy:6,fighting:4,intelligence:3,speed:5,strength:6},{name:"Ironclad",id:1010844,pageId:"8921",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"J. Jonah Jameson",id:1009372,pageId:"1850",durability:2,energy:1,fighting:1,intelligence:2,speed:2,strength:2},{name:"Jack Flag",id:1010736,pageId:"9524",durability:4,energy:1,fighting:6,intelligence:3,speed:3,strength:4},{name:"Jackal",id:1011288,pageId:"1849",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"James Buchanan Barnes",id:1010775,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"James Howlett",id:1010777,pageId:"1746",durability:4,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Jamie Braddock",id:1011343,pageId:"1634",durability:2,energy:6,fighting:1,intelligence:2,speed:2,strength:2},{name:"Jane Foster",id:1010329,pageId:"14765",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jazinda",id:1011344,pageId:"19579",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jean Grey",id:1009327,pageId:"3118",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Jean Grey",id:1009496,pageId:"3118",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Jean Grey (Ultimate)",id:1010946,pageId:"2002",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jessica Jones",id:1009378,pageId:"2293",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jimmy Woo",id:1011105,pageId:"12864",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Jocasta",id:1009376,pageId:"1810",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"John Jameson",id:1010812,pageId:"1851",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"John Wraith",id:1009721,pageId:"15119",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Johnny Blaze",id:1009196,pageId:"1797",durability:7,energy:6,fighting:4,intelligence:3,speed:2,strength:4},{name:"Joshua Kane",id:1010938,pageId:"7209",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Josiah X",id:1010937,pageId:"2572",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Joystick",id:1011033,pageId:"2556",durability:3,energy:3,fighting:4,intelligence:2,speed:5,strength:4},{name:"Jubilee",id:1009381,pageId:"1483",durability:5,energy:7,fighting:5,intelligence:4,speed:4,strength:4},{name:"Jubilee (Age of Apocalypse)",id:1010936,pageId:"12443",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Juggernaut",id:1009382,pageId:"2337",durability:7,energy:1,fighting:3,intelligence:2,speed:4,strength:7},{name:"Junta",id:1011314,pageId:"6816",durability:2,energy:5,fighting:4,intelligence:2,speed:2,strength:2},{name:"Justice",id:1010760,pageId:"1669",durability:2,energy:5,fighting:3,intelligence:3,speed:3,strength:2},{name:"Justin Hammer",id:1011310,pageId:"4931",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ka-Zar",id:1011081,pageId:"5619",durability:3,energy:1,fighting:5,intelligence:2,speed:3,strength:3},{name:"Kang",id:1009384,pageId:"1811",durability:5,energy:6,fighting:3,intelligence:4,speed:7,strength:2},{name:"Karma",id:1011386,pageId:"1670",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Karnak",id:1009385,pageId:"6686",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Karolina Dean ",id:1010752,pageId:"1443",durability:3,energy:5,fighting:3,intelligence:3,speed:4,strength:2},{name:"Kate Bishop",id:1010810,pageId:"6496",durability:2,energy:1,fighting:5,intelligence:3,speed:2,strength:2},{name:"Ken Ellis",id:1011319,pageId:"17851",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:2},{name:"Kingpin",id:1009389,pageId:"3205",durability:3,energy:1,fighting:5,intelligence:4,speed:2,strength:3},{name:"Kitty Pryde",id:1009508,pageId:"1702",durability:3,energy:2,fighting:4,intelligence:4,speed:2,strength:2},{name:"Klaw",id:1009390,pageId:"5754",durability:5,energy:6,fighting:2,intelligence:5,speed:4,strength:3},{name:"Korath",id:1011147,pageId:"15757",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Korg",id:1011080,pageId:"6461",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Korvac",id:1011312,pageId:"23051",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Kraven the Hunter",id:1009391,pageId:"4696",durability:4,energy:5,fighting:7,intelligence:6,speed:7,strength:6},{name:"Kronos",id:1011178,pageId:"15252",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Kylun",id:1011058,pageId:"1671",durability:2,energy:1,fighting:5,intelligence:2,speed:2,strength:3},{name:"La Nuit",id:1009392,pageId:"6021",durability:3,energy:5,fighting:2,intelligence:3,speed:3,strength:2},{name:"Lady Bullseye",id:1011327,pageId:"22320",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lady Deathstrike",id:1009393,pageId:"4782",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Lady Mastermind",id:1011014,pageId:"1672",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Layla Miller",id:1011100,pageId:"1688",durability:2,energy:1,fighting:2,intelligence:4,speed:2,strength:2},{name:"Leader",id:1009398,pageId:"15163",durability:2,energy:1,fighting:2,intelligence:6,speed:2,strength:2},{name:"Leech",id:1011092,pageId:"1674",durability:2,energy:3,fighting:1,intelligence:2,speed:2,strength:2},{name:"Lieutenant Marcus Stone",id:1010977,pageId:"9693",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lifeguard",id:1009401,pageId:"1675",durability:4,energy:3,fighting:4,intelligence:3,speed:3,strength:4},{name:"Lightspeed",id:1010450,pageId:"11734",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lila Cheney",id:1009236,pageId:"1640",durability:2,energy:1,fighting:3,intelligence:2,speed:7,strength:2},{name:"Lilandra",id:1009402,pageId:"4393",durability:1,energy:2,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lily Hollister",id:1011257,pageId:"21413",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lionheart",id:1010337,pageId:"2388",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Living Tribunal",id:1011059,pageId:"5700",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Lizard",id:1009404,pageId:"4185",durability:5,energy:1,fighting:2,intelligence:5,speed:2,strength:4},{name:"Lizard (Ultimate)",id:1010939,pageId:"6834",durability:5,energy:1,fighting:2,intelligence:4,speed:4,strength:5},{name:"Loa",id:1011414,pageId:"1678",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lockheed",id:1009405,pageId:"1485",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lockjaw",id:1009406,pageId:"8426",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Loki",id:1009407,pageId:"4002",durability:4,energy:5,fighting:2,intelligence:4,speed:3,strength:5},{name:"Longshot",id:1009408,pageId:"5422",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Longshot (Ultimate)",id:1010940,pageId:"1999",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lord Hawal",id:1011145,pageId:"16231",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lucky Pierre",id:1011405,pageId:"18208",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Lucy in the Sky",id:1010751,pageId:"1443",durability:3,energy:5,fighting:3,intelligence:3,speed:4,strength:2},{name:"Luke Cage",id:1009215,pageId:"1792",durability:5,energy:1,fighting:4,intelligence:2,speed:2,strength:4},{name:"Lyja",id:1010896,pageId:"8906",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"M (Monet St. Croix)",id:1011068,pageId:"1680",durability:5,energy:1,fighting:4,intelligence:5,speed:3,strength:4},{name:"M.O.D.O.K.",id:1010726,pageId:"10808",durability:1,energy:4,fighting:1,intelligence:6,speed:1,strength:1},{name:"Mac Gargan",id:1009314,pageId:"4938",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:7},{name:"Machine Man",id:1010805,pageId:"5367",durability:6,energy:6,fighting:4,intelligence:4,speed:3,strength:4},{name:"Mad Thinker",id:1009411,pageId:"5757",durability:2,energy:1,fighting:1,intelligence:5,speed:2,strength:1},{name:"Madame Web (Julia Carpenter)",id:1010796,pageId:"1819",durability:2,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Madelyne Pryor",id:1009509,pageId:"3244",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Madrox",id:1009413,pageId:"1800",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Maelstrom",id:1011053,pageId:"4842",durability:3,energy:5,fighting:2,intelligence:6,speed:2,strength:4},{name:"Magik (Amanda Sefton)",id:1010942,pageId:"1444",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magik (Illyana Rasputin)",id:1009415,pageId:"4832",durability:2,energy:7,fighting:4,intelligence:7,speed:3,strength:2},{name:"Magma (Amara Aquilla)",id:1009416,pageId:"1681",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto",id:1009417,pageId:"7938",durability:6,energy:6,fighting:3,intelligence:6,speed:4,strength:2},{name:"Magneto (Age of Apocalypse)",id:1010944,pageId:"1911",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto (House of M)",id:1010945,pageId:"1934",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magneto (Ultimate)",id:1010943,pageId:"2001",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Magus (Adam Warlock)",id:1010904,pageId:"9608",durability:6,energy:7,fighting:4,intelligence:6,speed:6,strength:6},{name:"Malcolm Colcord",id:1009242,pageId:"5860",durability:2,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Man-Thing",id:1009420,pageId:"1801",durability:6,energy:5,fighting:4,intelligence:4,speed:4,strength:5},{name:"Man-Wolf",id:1010811,pageId:"1851",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mandarin",id:1009421,pageId:"5116",durability:4,energy:7,fighting:7,intelligence:7,speed:4,strength:5},{name:"Mandrill",id:1011243,pageId:"5765",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Manta",id:1009423,pageId:"4395",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mantis",id:1011026,pageId:"1813",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Maria Hill",id:1011335,pageId:"15322",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mariko Yashida",id:1009735,pageId:"4794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Marrow",id:1009425,pageId:"5588",durability:4,energy:3,fighting:6,intelligence:3,speed:3,strength:4},{name:"Marvel Boy",id:1009427,pageId:"6389",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mary Jane Watson",id:1009708,pageId:"4811",durability:5,energy:5,fighting:5,intelligence:5,speed:5,strength:5},{name:"Mary Jane Watson (House of M)",id:1010993,pageId:"1978",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mastermind",id:1009434,pageId:"9676",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mathemanic",id:1010877,pageId:"2498",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Matsu'o Tsurayaba",id:1009677,pageId:"4789",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mattie Franklin",id:1010793,pageId:"4898",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Maverick (Chris Bradley)",id:1010947,pageId:"10545",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Maximus",id:1011305,pageId:"8420",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"May Parker",id:1009490,pageId:"9355",durability:1,energy:1,fighting:1,intelligence:2,speed:2,strength:1},{name:"Medusa",id:1009438,pageId:"1446",durability:4,energy:1,fighting:4,intelligence:6,speed:6,strength:2},{name:"Meggan",id:1011399,pageId:"1447",durability:5,energy:6,fighting:4,intelligence:3,speed:3,strength:4},{name:"Meltdown",id:1009439,pageId:"1724",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Menace",id:1011241,pageId:"21413",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mentallo",id:1011099,pageId:"1685",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mephisto",id:1009440,pageId:"1897",durability:7,energy:7,fighting:7,intelligence:6,speed:7,strength:7},{name:"Mercury",id:1010681,pageId:"1686",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mesmero",id:1009442,pageId:"2384",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Microbe",id:1010690,pageId:"4724",durability:2,energy:1,fighting:2,intelligence:3,speed:1,strength:2},{name:"Micromax",id:1010871,pageId:"1687",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:2},{name:"Mikhail Rasputin",id:1009530,pageId:"1705",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mimic",id:1009445,pageId:"6831",durability:3,energy:4,fighting:3,intelligence:2,speed:3,strength:4},{name:"Mindworm",id:1011204,pageId:"1854",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mister Sinister",id:1009447,pageId:"3242",durability:6,energy:6,fighting:6,intelligence:7,speed:5,strength:5},{name:"Mister Sinister (House of M)",id:1010948,pageId:"7613",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Misty Knight",id:1010682,pageId:"1442",durability:3,energy:1,fighting:7,intelligence:7,speed:1,strength:5},{name:"Mockingbird",id:1011220,pageId:"3398",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moira MacTaggert",id:1009410,pageId:"4241",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moira MacTaggert (Ultimate)",id:1010941,pageId:"2000",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mojo",id:1009448,pageId:"5458",durability:4,energy:5,fighting:2,intelligence:5,speed:2,strength:4},{name:"Mole Man",id:1009449,pageId:"1829",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Molecule Man",id:1011019,pageId:"8018",durability:1,energy:7,fighting:1,intelligence:3,speed:1,strength:1},{name:"Molly Hayes",id:1010691,pageId:"1635",durability:3,energy:1,fighting:2,intelligence:2,speed:2,strength:4},{name:"Mongoose",id:1010876,pageId:"9072",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moon Knight",id:1009452,pageId:"1802",durability:4,energy:1,fighting:3,intelligence:3,speed:3,strength:4},{name:"Moon Knight (House of M)",id:1010949,pageId:"1972",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Moondragon",id:1009451,pageId:"1449",durability:4,energy:7,fighting:5,intelligence:4,speed:4,strength:3},{name:"Moonstone",id:1010362,pageId:"1450",durability:4,energy:5,fighting:4,intelligence:5,speed:5,strength:4},{name:"Morbius",id:1009454,pageId:"1855",durability:5,energy:3,fighting:4,intelligence:4,speed:4,strength:4},{name:"Mordo",id:1010902,pageId:"1785",durability:4,energy:6,fighting:3,intelligence:3,speed:7,strength:2},{name:"Morlun",id:1011088,pageId:"3636",durability:3,energy:1,fighting:4,intelligence:3,speed:3,strength:4},{name:"Morph",id:1009456,pageId:"1914",durability:7,energy:5,fighting:7,intelligence:7,speed:7,strength:5},{name:"Mr. Fantastic",id:1009459,pageId:"1828",durability:6,energy:1,fighting:2,intelligence:6,speed:2,strength:3},{name:"Mr. Fantastic (Ultimate)",id:1010950,pageId:"3410",durability:7,energy:1,fighting:5,intelligence:7,speed:7,strength:5},{name:"Mr. Hyde",id:1010347,pageId:"6091",durability:5,energy:3,fighting:4,intelligence:3,speed:3,strength:5},{name:"Multiple Man",id:1011056,pageId:"1800",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Mysterio",id:1009464,pageId:"1856",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mysterio (Daniel Berkhart)",id:1010951,pageId:"6945",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mysterio (Francis Klum)",id:1010952,pageId:"9841",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mystique",id:1009465,pageId:"1691",durability:4,energy:1,fighting:5,intelligence:4,speed:2,strength:2},{name:"Mystique (Age of Apocalypse)",id:1010953,pageId:"11250",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Mystique (House of M)",id:1010954,pageId:"1941",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Namor",id:1009466,pageId:"2335",durability:6,energy:1,fighting:4,intelligence:4,speed:5,strength:6},{name:"Namora",id:1009468,pageId:"1915",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Namorita",id:1009469,pageId:"1452",durability:7,energy:7,fighting:6,intelligence:7,speed:7,strength:7},{name:"Nebula",id:1010365,pageId:"8846",durability:3,energy:6,fighting:4,intelligence:4,speed:2,strength:4},{name:"Nekra",id:1011422,pageId:"10468",durability:5,energy:1,fighting:4,intelligence:3,speed:2,strength:4},{name:"Nick Fury",id:1009471,pageId:"1796",durability:2,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Nick Fury (Ultimate)",id:1011007,pageId:"2003",durability:6,energy:1,fighting:7,intelligence:7,speed:2,strength:2},{name:"Nico Minoru",id:1010746,pageId:"1462",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Nightcrawler",id:1009472,pageId:"1692",durability:5,energy:7,fighting:7,intelligence:5,speed:7,strength:4},{name:"Nightcrawler (Ultimate)",id:1011337,pageId:"2004",durability:7,energy:5,fighting:7,intelligence:5,speed:7,strength:4},{name:"Nighthawk",id:1010349,pageId:"7939",durability:3,energy:4,fighting:4,intelligence:3,speed:3,strength:4},{name:"Nightmare",id:1009473,pageId:"1886",durability:7,energy:7,fighting:3,intelligence:4,speed:7,strength:6},{name:"Nitro",id:1010797,pageId:"5276",durability:5,energy:5,fighting:6,intelligence:7,speed:4,strength:5},{name:"Nocturne",id:1009474,pageId:"3612",durability:5,energy:5,fighting:6,intelligence:4,speed:4,strength:3},{name:"Nomad",id:1009475,pageId:"5293",durability:2,energy:1,fighting:3,intelligence:1,speed:1,strength:3},{name:"Norman Osborn",id:1009325,pageId:"3576",durability:6,energy:6,fighting:3,intelligence:6,speed:5,strength:6},{name:"Norrin Radd",id:1010063,pageId:"1834",durability:7,energy:7,fighting:5,intelligence:4,speed:7,strength:6},{name:"Northstar",id:1009476,pageId:"1487",durability:1,energy:2,fighting:1,intelligence:1,speed:2,strength:1},{name:"Nova",id:1009477,pageId:"3381",durability:5,energy:6,fighting:4,intelligence:3,speed:5,strength:4},{name:"Nova (Frankie Raye)",id:1010956,pageId:"2588",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Nuke",id:1010707,pageId:"4611",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Odin",id:1009480,pageId:"4190",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Old Lace",id:1010882,pageId:"1772",durability:2,energy:1,fighting:1,intelligence:4,speed:2,strength:1},{name:"Omega Red",id:1009482,pageId:"1695",durability:5,energy:4,fighting:6,intelligence:4,speed:3,strength:5},{name:"Omega Sentinel",id:1011329,pageId:"17898",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Onslaught",id:1009483,pageId:"3158",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Oracle",id:1009484,pageId:"4468",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ord",id:1011202,pageId:"1488",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Orphan-Maker",id:1010957,pageId:"7977",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Owl",id:1011028,pageId:"2504",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ozymandias",id:1009488,pageId:"5917",durability:5,energy:3,fighting:4,intelligence:4,speed:1,strength:1},{name:"Paibok",id:1011150,pageId:"5888",durability:6,energy:6,fighting:4,intelligence:2,speed:5,strength:4},{name:"Paladin",id:1010873,pageId:"5645",durability:1,energy:1,fighting:7,intelligence:5,speed:1,strength:6},{name:"Patriot",id:1009492,pageId:"2292",durability:4,energy:1,fighting:5,intelligence:3,speed:4,strength:4},{name:"Penance (Robert Baldwin)",id:1009493,pageId:"2457",durability:6,energy:4,fighting:4,intelligence:2,speed:3,strength:3},{name:"Pepper Potts",id:1009494,pageId:"10794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pete Wisdom",id:1010779,pageId:"1742",durability:2,energy:3,fighting:3,intelligence:2,speed:2,strength:2},{name:"Photon",id:1011045,pageId:"2695",durability:7,energy:6,fighting:3,intelligence:2,speed:7,strength:5},{name:"Piledriver",id:1010886,pageId:"6892",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pixie",id:1011179,pageId:"9277",durability:6,energy:3,fighting:2,intelligence:2,speed:3,strength:4},{name:"Polaris",id:1009499,pageId:"3794",durability:5,energy:7,fighting:7,intelligence:6,speed:5,strength:6},{name:"Praxagora",id:1011151,pageId:"14784",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Preak",id:1011152,pageId:"15942",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pretty Boy",id:1009502,pageId:"4559",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Princess Powerful",id:1010750,pageId:"1635",durability:3,energy:1,fighting:2,intelligence:2,speed:2,strength:4},{name:"Prism",id:1009503,pageId:"1701",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Prodigy",id:1011030,pageId:"7585",durability:1,energy:1,fighting:1,intelligence:6,speed:1,strength:1},{name:"Professor X",id:1009504,pageId:"3139",durability:4,energy:7,fighting:4,intelligence:7,speed:2,strength:4},{name:"Professor X (Ultimate)",id:1010958,pageId:"2005",durability:1,energy:3,fighting:1,intelligence:7,speed:1,strength:1},{name:"Proteus (House of M)",id:1010960,pageId:"3658",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Proteus (Ultimate)",id:1010959,pageId:"2006",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Prowler",id:1009507,pageId:"5649",durability:2,energy:3,fighting:3,intelligence:4,speed:2,strength:2},{name:"Psycho-Man",id:1009511,pageId:"1831",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Psylocke",id:1009512,pageId:"1490",durability:3,energy:6,fighting:6,intelligence:4,speed:3,strength:3},{name:"Puck",id:1009513,pageId:"5670",durability:3,energy:3,fighting:2,intelligence:2,speed:4,strength:2},{name:"Puck (Zuzha Yu)",id:1010962,pageId:"1454",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Puma",id:1009514,pageId:"5449",durability:4,energy:1,fighting:5,intelligence:3,speed:3,strength:4},{name:"Punisher",id:1009515,pageId:"1803",durability:6,energy:4,fighting:6,intelligence:5,speed:5,strength:6},{name:"Punisher (2099)",id:1009517,pageId:"6803",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Puppet Master",id:1009519,pageId:"8015",durability:3,energy:4,fighting:4,intelligence:5,speed:2,strength:2},{name:"Purple Man",id:1009520,pageId:"5204",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Pyro",id:1009522,pageId:"4834",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quasar (Wendell Vaughn)",id:1010778,pageId:"2497",durability:6,energy:6,fighting:4,intelligence:4,speed:7,strength:5},{name:"Quasimodo",id:1010334,pageId:"8490",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quentin Quire",id:1009387,pageId:"1484",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Quicksilver",id:1009524,pageId:"3132",durability:2,energy:2,fighting:4,intelligence:3,speed:7,strength:2},{name:"Quicksilver (Ultimate)",id:1010963,pageId:"2007",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rachel Grey",id:1009430,pageId:"1683",durability:4,energy:7,fighting:4,intelligence:3,speed:6,strength:3},{name:"Radioactive Man",id:1009526,pageId:"5660",durability:6,energy:6,fighting:3,intelligence:5,speed:2,strength:4},{name:"Rage",id:1010817,pageId:"1816",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Random",id:1010767,pageId:"1704",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ravenous",id:1011154,pageId:"14492",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Red Ghost",id:1009534,pageId:"8008",durability:3,energy:2,fighting:2,intelligence:4,speed:2,strength:2},{name:"Red Hulk",id:1011360,pageId:"19397",durability:7,energy:2,fighting:5,intelligence:5,speed:4,strength:7},{name:"Red Shift",id:1011155,pageId:"8761",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Red Skull",id:1009535,pageId:"3619",durability:3,energy:1,fighting:5,intelligence:4,speed:3,strength:3},{name:"Red Skull (Albert Malik)",id:1010965,pageId:"3662",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Reptil",id:1011376,pageId:"22319",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Revanche",id:1011330,pageId:"16583",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rhino",id:1009537,pageId:"4348",durability:7,energy:1,fighting:6,intelligence:1,speed:7,strength:7},{name:"Rhodey",id:1009702,pageId:"20297",durability:6,energy:6,fighting:4,intelligence:3,speed:5,strength:6},{name:"Rick Jones",id:1009379,pageId:"4756",durability:3,energy:1,fighting:5,intelligence:4,speed:3,strength:3},{name:"Rictor",id:1009542,pageId:"6172",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Risque",id:1009544,pageId:"11917",durability:2,energy:4,fighting:2,intelligence:2,speed:2,strength:2},{name:"Robbie Robertson",id:1009545,pageId:"1860"},{name:"Robert Baldwin ",id:1010792,pageId:"2457",durability:6,energy:4,fighting:4,intelligence:2,speed:3,strength:3},{name:"Rocket Raccoon",id:1010744,pageId:"17320",durability:2,energy:1,fighting:4,intelligence:4,speed:3,strength:1},{name:"Rocket Racer",id:1010769,pageId:"6528",durability:2,energy:2,fighting:2,intelligence:4,speed:3,strength:2},{name:"Rockslide",id:1010692,pageId:"1710",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rogue",id:1009546,pageId:"1455",durability:7,energy:4,fighting:6,intelligence:3,speed:2,strength:7},{name:"Rogue (Age of Apocalypse)",id:1010967,pageId:"1919",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Rogue (Ultimate)",id:1010966,pageId:"2008",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Romulus",id:1011398,pageId:"22943",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ronan",id:1010344,pageId:"2590",durability:7,energy:7,fighting:6,intelligence:4,speed:4,strength:6},{name:"Russian",id:1009551,pageId:"10916",durability:6,
-	energy:1,fighting:5,intelligence:2,speed:3,strength:4},{name:"Sabra",id:1009553,pageId:"1711",durability:5,energy:3,fighting:4,intelligence:2,speed:3,strength:5},{name:"Sabretooth",id:1009554,pageId:"1712",durability:4,energy:1,fighting:7,intelligence:2,speed:2,strength:4},{name:"Sabretooth (Age of Apocalypse)",id:1010969,pageId:"1920",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sabretooth (House of M)",id:1010970,pageId:"1957",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sabretooth (Ultimate)",id:1010968,pageId:"2010",durability:6,energy:1,fighting:7,intelligence:3,speed:4,strength:6},{name:"Sage",id:1009555,pageId:"1714",durability:2,energy:1,fighting:5,intelligence:6,speed:4,strength:3},{name:"Salo",id:1011156,pageId:"16143",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sandman",id:1009558,pageId:"4629",durability:7,energy:4,fighting:5,intelligence:4,speed:4,strength:5},{name:"Sasquatch (Walter Langkowski)",id:1009560,pageId:"4421",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Sauron",id:1009561,pageId:"5076",durability:2,energy:4,fighting:2,intelligence:2,speed:4,strength:3},{name:"Scalphunter",id:1011048,pageId:"1715",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scarecrow (Ebenezer Laughton)",id:1010861,pageId:"1888",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scarlet Spider (Ben Reilly)",id:1011197,pageId:"5675",durability:3,energy:3,fighting:4,intelligence:4,speed:3,strength:4},{name:"Scarlet Spider (Kaine)",id:1011426,pageId:"1852",durability:3,energy:1,fighting:4,intelligence:4,speed:3,strength:4},{name:"Scarlet Witch",id:1009562,pageId:"1458",durability:3,energy:7,fighting:3,intelligence:3,speed:3,strength:3},{name:"Scarlet Witch (Age of Apocalypse)",id:1010972,pageId:"10863",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Scorpion (Carmilla Black)",id:1010790,pageId:"3967",durability:3,energy:4,fighting:4,intelligence:2,speed:2,strength:2},{name:"Scrambler",id:1011230,pageId:"1716",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Screwball",id:1011242,pageId:"21425",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sebastian Shaw",id:1009581,pageId:"1719",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Selene",id:1009568,pageId:"1717",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Senator Kelly",id:1009569,pageId:"10542",durability:2,energy:1,fighting:3,intelligence:3,speed:2,strength:2},{name:"Sentry (Robert Reynolds)",id:1009571,pageId:"1817",durability:6,energy:4,fighting:3,intelligence:5,speed:5,strength:6},{name:"Sersi",id:1010345,pageId:"1459",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shadow King",id:1009573,pageId:"13184",durability:7,energy:7,fighting:5,intelligence:5,speed:6,strength:4},{name:"Shadowcat",id:1009574,pageId:"1702",durability:3,energy:2,fighting:4,intelligence:4,speed:2,strength:2},{name:"Shadowcat (Age of Apocalypse)",id:1010975,pageId:"1922",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shadowcat (Ultimate)",id:1010974,pageId:"2012",durability:3,energy:4,fighting:5,intelligence:7,speed:5,strength:3},{name:"Shadu the Shady",id:1011406,pageId:"18200",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shalla-bal",id:1009575,pageId:"18773",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shaman",id:1009576,pageId:"9780",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shang-Chi",id:1009577,pageId:"1804",durability:4,energy:3,fighting:7,intelligence:4,speed:4,strength:3},{name:"Shanna the She-Devil",id:1009578,pageId:"1460",durability:2,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Shape",id:1010712,pageId:"5744",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shard",id:1009579,pageId:"5267",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sharon Carter",id:1009228,pageId:"11548",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sharon Ventura",id:1010895,pageId:"9161",durability:6,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Shatterstar",id:1009580,pageId:"1718",durability:4,energy:3,fighting:6,intelligence:3,speed:3,strength:3},{name:"She-Hulk (Jennifer Walters)",id:1009583,pageId:"2458",durability:7,energy:1,fighting:6,intelligence:5,speed:4,strength:7},{name:"She-Hulk (Lyra)",id:1011392,pageId:"20644",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"She-Hulk (Ultimate)",id:1011393,pageId:"2009",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shinobi Shaw",id:1009582,pageId:"1720",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shiver Man",id:1011394,pageId:"4819",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shocker (Herman Schultz)",id:1009585,pageId:"4291",durability:4,energy:6,fighting:6,intelligence:4,speed:4,strength:4},{name:"Shockwave",id:1010858,pageId:"6175",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Shriek",id:1009587,pageId:"7226",durability:2,energy:1,fighting:2,intelligence:2,speed:1,strength:1},{name:"Sif",id:1009588,pageId:"3917",durability:5,energy:1,fighting:5,intelligence:4,speed:4,strength:5},{name:"Silhouette",id:1010848,pageId:"17029",durability:3,energy:5,fighting:2,intelligence:2,speed:7,strength:4},{name:"Silver Fox",id:1009589,pageId:"3792",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Sable",id:1009590,pageId:"1461",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Samurai",id:1009591,pageId:"1721",durability:4,energy:5,fighting:6,intelligence:3,speed:2,strength:3},{name:"Silver Samurai (Age of Apocalypse)",id:1010976,pageId:"1923",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silver Surfer",id:1009592,pageId:"1834",durability:7,energy:7,fighting:5,intelligence:4,speed:7,strength:6},{name:"Silverclaw",id:1010864,pageId:"1818",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Silvermane",id:1009594,pageId:"8586",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sin",id:1010898,pageId:"22284",durability:2,energy:1,fighting:4,intelligence:3,speed:2,strength:1},{name:"Siren (Earth-93060)",id:1010834,pageId:"17000",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sister Grimm",id:1010745,pageId:"1462",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Skaar",id:1011223,pageId:"18993",durability:7,energy:1,fighting:6,intelligence:3,speed:5,strength:7},{name:"Skin",id:1009598,pageId:"4837",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Skreet",id:1011157,pageId:"16403",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slapstick",id:1011057,pageId:"4150",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slayback",id:1011070,pageId:"2547",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sleepwalker",id:1010761,pageId:"2468",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slipstream",id:1009602,pageId:"17650",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Slyde",id:1010874,pageId:"6158",durability:4,energy:5,fighting:6,intelligence:6,speed:7,strength:4},{name:"Smasher (Vril Rokk)",id:1009603,pageId:"4471",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Snowbird",id:1009606,pageId:"1463",durability:4,energy:1,fighting:4,intelligence:3,speed:4,strength:4},{name:"Solo (James Bourne)",id:1010855,pageId:"4538",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Songbird",id:1010693,pageId:"1464",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spectrum",id:1010705,pageId:"1815",durability:5,energy:7,fighting:4,intelligence:4,speed:6,strength:3},{name:"Speed",id:1010833,pageId:"7488",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Speed Demon",id:1011032,pageId:"2625",durability:3,energy:1,fighting:3,intelligence:3,speed:5,strength:3},{name:"Sphinx (Anath-Na Mut)",id:1011366,pageId:"15212",durability:7,energy:7,fighting:5,intelligence:6,speed:4,strength:7},{name:"Spider-Girl (Anya Corazon)",id:1009157,pageId:"4528",durability:5,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Spider-Girl (May Parker)",id:1009609,pageId:"1465",durability:3,energy:2,fighting:5,intelligence:4,speed:3,strength:4},{name:"Spider-Ham (Larval Earth)",id:1011347,pageId:"10883",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man",id:1009610,pageId:"2022",durability:3,energy:4,fighting:5,intelligence:4,speed:5,strength:4},{name:"Spider-Man (1602)",id:1011054,pageId:"8827",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (House of M)",id:1012200,pageId:"1965",durability:4,energy:3,fighting:6,intelligence:6,speed:5,strength:5},{name:"Spider-Man (Marvel Zombies)",id:1011114,pageId:"4820",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (Miles Morales)",id:1016181,pageId:"23245",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spider-Man (Ultimate)",id:1011010,pageId:"3084",durability:3,energy:1,fighting:7,intelligence:6,speed:7,strength:7},{name:"Spider-Woman (Jessica Drew)",id:1009608,pageId:"1466",durability:5,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Spider-Woman (Mattie Franklin)",id:1010794,pageId:"4898",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:6},{name:"Spiral (Rita Wayword)",id:1009614,pageId:"5558",durability:3,energy:6,fighting:5,intelligence:2,speed:2,strength:4},{name:"Spirit",id:1011158,pageId:"14574",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Spitfire",id:1010899,pageId:"7101",durability:3,energy:1,fighting:3,intelligence:3,speed:6,strength:2},{name:"Spot",id:1009616,pageId:"5894",durability:3,energy:1,fighting:2,intelligence:5,speed:2,strength:2},{name:"Sprite",id:1011180,pageId:"14979",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Squirrel Girl",id:1010860,pageId:"1725",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Star-Lord (Peter Quill)",id:1010733,pageId:"14641",durability:4,energy:6,fighting:5,intelligence:5,speed:7,strength:5},{name:"Starbolt",id:1009621,pageId:"4473",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stardust",id:1010764,pageId:"7984",durability:7,energy:7,fighting:6,intelligence:6,speed:7,strength:6},{name:"Starfox",id:1011084,pageId:"1820",durability:6,energy:1,fighting:5,intelligence:5,speed:6,strength:7},{name:"Starhawk (Stakar Ogord)",id:1011341,pageId:"19346",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stature",id:1010828,pageId:"8096",durability:2,energy:1,fighting:3,intelligence:2,speed:2,strength:2},{name:"Stellaris",id:1011159,pageId:"8962",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stepford Cuckoos",id:1009625,pageId:"1492",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stephen Strange",id:1010901,pageId:"1795",durability:6,energy:7,fighting:7,intelligence:4,speed:5,strength:3},{name:"Stick",id:1009626,pageId:"15123",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stilt-Man (Wibur Day)",id:1009627,pageId:"8872",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Stingray (Walter Newell)",id:1009628,pageId:"10799",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Storm",id:1009629,pageId:"1726",durability:3,energy:6,fighting:5,intelligence:5,speed:5,strength:2},{name:"Storm (Age of Apocalypse)",id:1010979,pageId:"1925",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Storm (Ultimate)",id:1010978,pageId:"2014",durability:6,energy:6,fighting:6,intelligence:6,speed:6,strength:5},{name:"Stranger",id:1011062,pageId:"7428",durability:6,energy:7,fighting:2,intelligence:7,speed:7,strength:7},{name:"Strong Guy",id:1011051,pageId:"1727",durability:4,energy:1,fighting:4,intelligence:3,speed:2,strength:6},{name:"Stryfe",id:1009632,pageId:"3134",durability:3,energy:4,fighting:6,intelligence:5,speed:3,strength:4},{name:"Sub-Mariner",id:1010791,pageId:"2335",durability:6,energy:1,fighting:4,intelligence:4,speed:5,strength:6},{name:"Sugar Man",id:1011212,pageId:"1926",durability:3,energy:2,fighting:3,intelligence:5,speed:2,strength:3},{name:"Sunfire",id:1009636,pageId:"1493",durability:4,energy:7,fighting:6,intelligence:4,speed:6,strength:4},{name:"Sunfire (Age of Apocalypse)",id:1010981,pageId:"1927",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Sunset Bain",id:1009637,pageId:"1781",durability:2,energy:1,fighting:3,intelligence:5,speed:2,strength:2},{name:"Sunspot",id:1009638,pageId:"1728",durability:4,energy:7,fighting:5,intelligence:4,speed:4,strength:5},{name:"Super-Adaptoid",id:1011022,pageId:"5632",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Super-Skrull",id:1009639,pageId:"2591",durability:6,energy:6,fighting:4,intelligence:3,speed:3,strength:6},{name:"Supernaut",id:1011232,pageId:"18315",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Supreme Intelligence",id:1011160,pageId:"8571",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Surge",id:1010695,pageId:"5050",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Swarm",id:1011075,pageId:"5377",durability:7,energy:1,fighting:2,intelligence:4,speed:3,strength:1},{name:"Sway",id:1011017,pageId:"3779",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Swordsman",id:1009641,pageId:"10137",durability:6,energy:7,fighting:7,intelligence:7,speed:7,strength:5},{name:"Swordsman (Jaques Duquesne)",id:1010982,pageId:"7722",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Synch",id:1009643,pageId:"4839",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talisman (Elizabeth Twoyoungmen)",id:1009646,pageId:"16210",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talon (Fraternity of Raptors)",id:1011395,pageId:"20398",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Talos",id:1011161,pageId:"15769",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tana Nile",id:1011149,pageId:"16279",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tarantula (Luis Alvarez)",id:1010713,pageId:"15220",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Taskmaster",id:1009648,pageId:"22197",durability:2,energy:1,fighting:7,intelligence:4,speed:2,strength:3},{name:"Tenebrous",id:1011162,pageId:"16445",durability:7,energy:7,fighting:7,intelligence:6,speed:7,strength:7},{name:"Terrax",id:1009651,pageId:"2548",durability:7,energy:6,fighting:6,intelligence:5,speed:6,strength:7},{name:"Terror",id:1011034,pageId:"1891",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Texas Twister",id:1010819,pageId:"12436",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thanos",id:1009652,pageId:"8432",durability:7,energy:7,fighting:7,intelligence:7,speed:6,strength:7},{name:"The Anarchist",id:1009653,pageId:"1763",durability:2,energy:4,fighting:4,intelligence:2,speed:2,strength:3},{name:"The Executioner",id:1010728,pageId:"4003",durability:6,energy:5,fighting:6,intelligence:4,speed:4,strength:7},{name:"The Fury",id:1011219,pageId:"10261",durability:7,energy:6,fighting:5,intelligence:1,speed:3,strength:7},{name:"The Hood",id:1010715,pageId:"16104",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"The Shiver Man",id:1009658,pageId:"4819",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"The Stranger",id:1009660,pageId:"7428",durability:6,energy:7,fighting:2,intelligence:7,speed:7,strength:7},{name:"Thena",id:1011181,pageId:"14798",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thing",id:1009662,pageId:"5309",durability:6,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Thing (Ultimate)",id:1010983,pageId:"2369",durability:7,energy:1,fighting:5,intelligence:4,speed:3,strength:7},{name:"Thor",id:1009664,pageId:"2605",durability:7,energy:7,fighting:6,intelligence:2,speed:6,strength:7},{name:"Thor (Ultimate)",id:1011025,pageId:"2015",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Thor Girl",id:1010820,pageId:"1467",durability:6,energy:7,fighting:7,intelligence:7,speed:6,strength:6},{name:"Thunderball",id:1010885,pageId:"6334",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thunderbird (John Proudstar)",id:1009666,pageId:"4840",durability:3,energy:1,fighting:5,intelligence:3,speed:3,strength:4},{name:"Thunderbird (Neal Shaara)",id:1009667,pageId:"1731",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Thundra",id:1011304,pageId:"16417",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tiger Shark",id:1009669,pageId:"6284",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:6},{name:"Tigra (Greer Nelson)",id:1009670,pageId:"3650",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Timeslip",id:1010857,pageId:"21070",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Tinkerer",id:1011345,pageId:"4502",durability:1,energy:1,fighting:1,intelligence:6,speed:2,strength:1},{name:"Titania",id:1010669,pageId:"5935",durability:5,energy:1,fighting:4,intelligence:2,speed:2,strength:6},{name:"Toad",id:1009673,pageId:"1732",durability:4,energy:3,fighting:6,intelligence:5,speed:5,strength:5},{name:"Tombstone",id:1009675,pageId:"4342",durability:6,energy:2,fighting:5,intelligence:3,speed:3,strength:5},{name:"Toro (Thomas Raymond)",id:1011309,pageId:"7191",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Toxin",id:1009676,pageId:"1864",durability:5,energy:1,fighting:3,intelligence:5,speed:3,strength:6},{name:"Toxin (Eddie Brock)",id:1009692,pageId:"2305",durability:5,energy:3,fighting:4,intelligence:4,speed:3,strength:5},{name:"Trauma",id:1010822,pageId:"13565",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Triathlon",id:1010825,pageId:"1821",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Triton",id:1010335,pageId:"8424",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Turbo",id:1011047,pageId:"11717",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Two-Gun Kid",id:1010852,pageId:"17010",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Typhoid Mary",id:1010369,pageId:"4334",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"U-Go Girl",id:1009681,pageId:"4023",durability:2,energy:1,fighting:2,intelligence:2,speed:2,strength:1},{name:"U.S. Agent",id:1009682,pageId:"5593",durability:5,energy:4,fighting:6,intelligence:3,speed:5,strength:5},{name:"Uatu The Watcher",id:1009683,pageId:"1836",durability:6,energy:6,fighting:3,intelligence:7,speed:6,strength:5},{name:"Ulik",id:1010358,pageId:"10882",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Ultimo",id:1011311,pageId:"12474",durability:7,energy:5,fighting:7,intelligence:2,speed:3,strength:7},{name:"Ultron",id:1009685,pageId:"1822",durability:7,energy:6,fighting:4,intelligence:4,speed:2,strength:6},{name:"Umar",id:1009686,pageId:"16335",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unicorn",id:1010862,pageId:"8340",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Union Jack (Brian Falsworth)",id:1010985,pageId:"7105",durability:3,energy:2,fighting:5,intelligence:3,speed:3,strength:2},{name:"Union Jack (Joseph Chapman)",id:1010696,pageId:"6167",durability:3,energy:1,fighting:4,intelligence:2,speed:2,strength:3},{name:"Union Jack (Montgomery Falsworth)",id:1010984,pageId:"7103",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus",id:1009687,pageId:"4432",durability:6,energy:2,fighting:3,intelligence:2,speed:2,strength:2},{name:"Unus (Age of Apocalypse)",id:1010987,pageId:"6542",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus (House of M)",id:1010988,pageId:"6537",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Unus (Ultimate)",id:1010986,pageId:"5747",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Valeria Richards",id:1009525,pageId:"1833",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vampiro",id:1011182,pageId:"16514",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vance Astro",id:1011342,pageId:"18519",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vanisher (Age of Apocalypse)",id:1010989,pageId:"6813",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vanisher (Ultimate)",id:1009689,pageId:"5968",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vapor",id:1011316,pageId:"8923",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vargas",id:1009690,pageId:"10171",durability:3,energy:1,fighting:6,intelligence:3,speed:2,strength:3},{name:"Vector",id:1010872,pageId:"2449",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Veda",id:1011231,pageId:"18318",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vengeance (Michael Badilino)",id:1009691,pageId:"21540",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Venom (Flash Thompson)",id:1009663,pageId:"1863",durability:2,energy:1,fighting:3,intelligence:2,speed:2,strength:2},{name:"Venom (Mac Gargan)",id:1010788,pageId:"4938",durability:6,energy:1,fighting:2,intelligence:2,speed:3,strength:7},{name:"Venom (Ultimate)",id:1011128,pageId:"2542",durability:6,energy:1,fighting:4,intelligence:4,speed:4,strength:6},{name:"Venus (Siren)",id:1011106,pageId:"13013",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Venus Dee Milo",id:1009693,pageId:"13014",durability:4,energy:6,fighting:2,intelligence:2,speed:2,strength:1},{name:"Vermin (Edward Whelan)",id:1010353,pageId:"15227",durability:3,energy:1,fighting:4,intelligence:1,speed:3,strength:4},{name:"Vertigo (Savage Land Mutate)",id:1009694,pageId:"19718",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Victor Mancha",id:1011066,pageId:"3631",durability:5,energy:6,fighting:1,intelligence:5,speed:3,strength:4},{name:"Vin Gonzales",id:1011261,pageId:"22159",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vindicator",id:1009695,pageId:"1471",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Viper",id:1009696,pageId:"4486",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Virginia Dare",id:1010697,pageId:"15125",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Vision",id:1009697,pageId:"2758",durability:7,energy:7,fighting:7,intelligence:7,speed:7,strength:7},{name:"Vulcan (Gabriel Summers)",id:1011011,pageId:"3043",durability:3,energy:7,fighting:3,intelligence:2,speed:3,strength:3},{name:"Vulture (Adrian Toomes)",id:1009699,pageId:"3639",durability:4,energy:3,fighting:4,intelligence:4,speed:5,strength:3},{name:"Vulture (Blackie Drago)",id:1010990,pageId:"9371",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallflower",id:1010849,pageId:"1738",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallop",id:1011267,pageId:"9410",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wallow",id:1009700,pageId:"19548",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"War Machine (Parnell Jacobs)",id:1010991,pageId:"6910",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Warlock (Janie Chin)",id:1009704,pageId:"15188",durability:5,energy:7,fighting:2,intelligence:4,speed:4,strength:5},{name:"Warlock (Technarchy)",id:1011287,pageId:"10366",durability:7,energy:6,fighting:2,intelligence:2,speed:7,strength:7},{name:"Warpath",id:1009705,pageId:"1739",durability:6,energy:1,fighting:5,intelligence:3,speed:5,strength:5},{name:"Warstar",id:1009706,pageId:"4476",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wasp",id:1009707,pageId:"4383",durability:3,energy:2,fighting:3,intelligence:4,speed:5,strength:4},{name:"Wasp (Ultimate)",id:1010992,pageId:"2017",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Weapon Omega",id:1011133,pageId:"5891",durability:4,energy:1,fighting:3,intelligence:2,speed:2,strength:3},{name:"Wendell Vaughn",id:1010742,pageId:"2497",durability:6,energy:6,fighting:4,intelligence:4,speed:7,strength:5},{name:"Werewolf By Night",id:1010765,pageId:"1894",durability:5,energy:3,fighting:5,intelligence:3,speed:4,strength:5},{name:"Whiplash (Mark Scarlotti)",id:1009711,pageId:"8558",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Whirlwind",id:1010348,pageId:"1741",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Whizzer (Stanley Stewart)",id:1011425,pageId:"4579",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wiccan",id:1009714,pageId:"22821",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wild Child",id:1009715,pageId:"5891",durability:4,energy:1,fighting:3,intelligence:2,speed:2,strength:3},{name:"Wild Child (Age of Apocalypse)",id:1010994,pageId:"1931",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"William Stryker",id:1009633,pageId:"7881",durability:2,energy:1,fighting:3,intelligence:4,speed:2,strength:2},{name:"Wind Dancer",id:1011009,pageId:"7458",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Winter Soldier",id:1010740,pageId:"2626",durability:3,energy:1,fighting:7,intelligence:3,speed:2,strength:3},{name:"Wither",id:1011043,pageId:"1743",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wolfsbane",id:1009717,pageId:"1745",durability:3,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Wolfsbane (Age of Apocalypse)",id:1010995,pageId:"1932",durability:3,energy:1,fighting:3,intelligence:2,speed:3,strength:3},{name:"Wolverine",id:1009718,pageId:"1746",durability:4,energy:1,fighting:4,intelligence:2,speed:3,strength:4},{name:"Wolverine (Ultimate)",id:1011006,pageId:"2018",durability:7,energy:4,fighting:6,intelligence:3,speed:3,strength:5},{name:"Wonder Man",id:1009719,pageId:"7833",durability:6,energy:7,fighting:5,intelligence:5,speed:4,strength:6},{name:"Wong",id:1009720,pageId:"12800",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Wrecker",id:1010884,pageId:"6390",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"X-23",id:1009722,pageId:"1494",durability:7,energy:3,fighting:7,intelligence:5,speed:7,strength:7},{name:"X-51",id:1010804,pageId:"5367",durability:6,energy:6,fighting:4,intelligence:4,speed:3,strength:4},{name:"X-Man",id:1009725,pageId:"3149",durability:6,energy:5,fighting:6,intelligence:4,speed:4,strength:6},{name:"X-Ray (James Darnell)",id:1010875,pageId:"2451",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Yellow Claw",id:1009736,pageId:"13051",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Yellowjacket (Rita DeMara)",id:1010996,pageId:"6078",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zarek",id:1011163,pageId:"14472",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zodiak",id:1011127,pageId:"17993",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zombie (Simon Garth)",id:1009741,pageId:"1895",durability:6,energy:3,fighting:4,intelligence:2,speed:3,strength:4},{name:"Zuras",id:1011183,pageId:"14794",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1},{name:"Zzzax",id:1009742,pageId:"6678",durability:1,energy:1,fighting:1,intelligence:1,speed:1,strength:1}];
-
-	    /**
-	     * Messages
-	     */
-
-	    // all messages must follow this format
-	    // you may add additional messages to each array, but don't break the format
-	    // in each array the '0' is the attacker, and '1', is the defender
-	    // feel free to fix typos and such
-
-	    var messages = {
-	        round : {
-	            full : [
-	                [ "The two combatants stumble back, weary from battle. ", 0, " crouches in anticipation for the next attack. ", 1, " takes a fighting stance." ],
-	                [ "Both fighters step back, breathing heavily. 'You can't win', says ", 0, ". 'We'll see about that', replies ", 1, " through gritted teeth."  ]
-	            ],
-	            partial : [
-	                [ 1, " tumbles to the ground, unconscious and defeated. ", 0, " raises a fist to the sky, crying, 'Victory is mine!' ", 0, " wins!" ],
-	                [ "After the final blow, ", 0, " is weary, but standing. ", 1, " lies unmoving and defeated. ", 0, " wins!" ],
-	                [ "'No more...' says ", 1, "'You win.' ", 0, " gazes down at ", 1, ", pitiless and victorious. ", 0, " wins!" ],
-	                [ "As the dust settles around both combatants, ", 0, " kneels. The day is won and ", 1, " is finally defeated. ", 0, " wins!" ],
-	                [ 0, " throws ", 1, "'s limp body into the street, where it tumbles to a stop in the gutter. 'You asked for this...' ", 0, " says. ", 1, " groans in pain. ", 0, " wins!" ]
-	            ],
-	            draw : [
-	                [ "The combatants stare across the broken and devistated landscape. They have found to a standstill. 'This isn't over', says ", 0, ". ", 1, " nods and turns away, teeth gritted in frustration. 'I'll get you next time.' The fight is a draw!"  ],
-	                [ "Damaged and beaten, ", 0, " and ", 1, " have fought until neither combatant can continue. The fight is a draw!" ],
-	                [ "Neither fighter thought that the fight would last this long. ", 0, " glares across the battlefield at ", 1, ". 'I've finally met my match' ", 0, " says. The fight is a draw!" ]
-	            ]
-	        },
-	        shoot : {
-	            failed : {
-	                hit : [
-	                    [ 0, " peels off an attack from a distance, narrowly missing ", 1 ],
-	                    [ "Off balance, ", 0, "attacks at range, missing ", 1, "as the fighter stumbles over debree." ],
-	                    [ "Jumpy with anticipation, ", 0, " fires from a distance, narrowly missing ", 1 ],
-	                    [ 0, " slips on the uneven terrain, shooting wide and missing ", 1 ],
-	                    [ "The sun is in ", 0, "'s eyes. Squinting in the light, ", 0, " fires. Missing ", 1, " by a wide margin." ]
-	                ],
-	                blocked : [
-	                    [ 0, " launches a devistating blow, but ", 1, " deftly parries it." ],
-	                    [ "Though, ", 0, " lands the ranged attack, ", 1, " withstands it and dives away, taking no damage." ],
-	                    [ 1, " moves like a viper, dodging ", 0, "'s powerful ranged attack" ],
-	                    [ "Shielded by the fallen debris of a nearby, demolished building, ", 1, " blocks ", 0, "'s attack." ],
-	                    [ 1, " dives to the ground, ducking", 0, "'s attack and rolling to safety" ]
-	                ]
-	            },
-	            success : [
-	                [ 0, " launches a devistating salvo of attacks against ", 1 ],
-	                [ "Suddenly, ", 0, " blasts a long range attack, catching ", 1, " off balance and knocking the fighter back." ],
-	                [ "Faster than ", 1, " can react, ", 0, " fires a ranged attack that cannot be dodged." ],
-	                [ 1, " is knocked back by force of ", 0, "'s attack, stumbling to the ground." ],
-	                [ "Unable to evade ", 0, "'s attack, ", 1, " tries to block the blow, but the force is too great to withstand." ]
-	            ]
-	        },
-	        assault : {
-	            failed : {
-	                hit : [
-	                    [ "Lunging forward ", 0, " strikes at ", 1, " but swings wide, missing ", 1, " by a mile." ],
-	                    [ "Enraged and desperate, ", 0, " lashes out at random.", 1, " dodges it easily." ],
-	                    [ "Furious and fumbling", 0, " dives in to assault ", 1, " clumsily missing." ],
-	                    [ 0, " stumbles while charging forward. Thrown off balance, ", 0, " is unable to land a blow to, ", 1, "." ],
-	                    [ 0, " assaults repeatedly in close range, but", 1, " dodges it all." ]
-	                ],
-	                blocked : [
-	                    [ "As ", 0, " steps forward to assault, ", 1, " steps forward to block, anticipating the attack and stopping it before its begun." ],
-	                    [ 0, " charges in, but the blow landed is blocked, by ", 1, "." ],
-	                    [ 0, "'s blows lack the force to damage ", 1, ". ", 1, " parries them easily with one hand." ],
-	                    [ 1, " stands firm, blocking all attacks by", 0, ". " ],
-	                    [ 0, " Sees ", 1, "'s blow coming just in time to block it and dodge away." ]
-	                ]
-	            },
-	            success : [
-	                [ 0, " lunges forward and lashes out at close range. Caught off guard, ", 1, " stumbles as the blow lands." ],
-	                [ "Dodging into close range, ", 0, "lands a blow, knocking ", 1, " to the ground." ],
-	                [ 0, " smashes into ", 1 ],
-	                [ 0, " delivers a crushing punch to ", 1, "'s jaw." ],
-	                [ 0, "Rips a manhole cover from the road, swinging it wildly and smashing it into", 1, "'s face." ]
-	            ]
-	        }
-	    };
-
-	    //UTILITY FUNCTIONS, PRIVATE
-
-	    //adds tiny jitter to a number scaled by the maximum
-	    //size of the number
-	    var jitter = function jitter( num, size ){
-
-	            var s = size || 0.1,
-	                s2 = s * 2;
-
-	            return num + s - Math.random() * s2;
-	        },
-	        //nonlinear, scales lower numbers aggressively
-	        ramp = function ramp( x ){
-
-	            return 15 * x / ( 5 + x );
-	        },
-	        //nonlinear, scales higher numbers agressively
-	        scale = function scale( x ){
-
-	            return x * x / ( x / 2 + 5 );
-	        },
-
-	        //maps a number in one range to anther range
-	        //both ranges start with 0
-	        remap = function( x, range, newrange ){
-
-	            return newrange * ( x / range );
-	        },
-	        //returns sub array of elements that return true when
-	        //passed to func
-	        filter = function filter( arr, func ){
-
-	            var arr2 = [];
-
-	            for( var i = 0, len = arr.length; i < len; i++ ){
-
-	                if( func( arr[ i ], i, arr ) ){ arr2.push( arr[ i ] ); }  
-	            }
-
-	            return arr2;
-	        },
-	        //runs func for each element in arr
-	        //returns an array of results from func
-	        each = function each( arr, func ){
-
-	            var arr2 = [];
-
-	            for( var i = 0, len = arr.length; i < len; i++ ){
-
-	                arr2.push( func( arr[ i ], i, arr ) );
-	            }
-
-	            return arr2;
-	        },
-	        //iterates over an array and adds up all of the
-	        //elements of the array, non-standard reduce
-	        reduce = function reduce( arr, func, init ){
-
-	            var sum = init != undefined ? init : 0,
-	                f   = func || function( val, sum ){ return sum + val; };
-
-	            for( var i = 0, len = arr.length; i < len; i++ ){
-
-	                sum = f( arr[ i ], sum );
-	            }
-
-	            return sum;
-	        },
-	        //keeps a number within a certain range
-	        clamp = function clamp( num, min, max ){
-
-	            if( min >= max ){
-	                throw "clamp: invalid range, min = " + min + ", max = " + max;
-	            }
-
-	            if( num < min ){ return min; }
-	            if( num > max ){ return max; }
-
-	            return num;
-	        },
-	        //random element from an array
-	        random = function random( arr ){
-
-	            return arr[ Math.floor( Math.random() * arr.length ) ];
-	        };
-
-	    //dic rolls
-	    var dice = {
-	            //one dice roll
-	            roll : function diceroll( sides ){
-
-	                return Math.floor( Math.random() * ( sides || 6 ) + 1 );
-	            },
-	            //returns an array of dice rolls
-	            toss : function dicethrow( count, sides ){
-
-	                var rolls = [];
-
-	                for( var i = 0; i < ( count || 1 ); i++ ){
-
-	                    rolls.push( this.roll( sides ) );
-	                }
-
-	                return rolls;
-	            }
-	        };
-
-
-	    //constructor function for fighter objects
-	    //used by BattleManager to reconstruct fighter stats for use by the manager
-	    var Fighter = function Fighter( stats ){
-
-	            this.name = stats.name;
-	            this.id   = stats.id;
-	            this.x    = 0;
-
-	            this.__type = "Fighter";
-
-	            this.source = {
-	                durability   : jitter( remap( stats.durability, 7, 6 ),   0.25 ),
-	                energy       : jitter( remap( stats.energy, 7, 6 ),       0.25 ) ,
-	                fighting     : jitter( remap( stats.fighting, 7, 6 ),     0.25 ),
-	                intelligence : jitter( remap( stats.intelligence, 7, 6 ), 0.25 ),
-	                speed        : jitter( remap( stats.speed, 7, 6 ),        0.25 ),
-	                strength     : jitter( remap( stats.strength, 7, 6 ),     0.25 )
-	            };
-
-	            this.armor = 5 - remap( 0.3 * this.source.durability + 0.1 * this.source.fighting + 0.3 * this.source.speed + 0.3 * this.source.strength, 6, 5 );
-
-	            if( this.armor < 0 ){ this.armor = 0; }
-	            this.armor = Math.floor( this.armor + 2 );
-	            
-	            this.assaultStrength = 0.6 * this.source.strength + 0.4 * this.source.speed;
-	            this.assaultSkill    = ramp( 0.7 * this.source.fighting + 0.3 * this.source.speed );
-	            this.toughness       = 0.3 * this.source.strength + 0.7 * this.source.durability;
-	            this.initiative      = 0.8 * this.source.speed + 0.2 * this.source.intelligence;
-	            this.attacks           = 1 + Math.floor( ( 0.2 * this.source.fighting + 0.8 * this.source.speed ) * 0.6 );
-	            this.wounds            = Math.floor( 10 * ramp( remap( this.source.durability, 6, 10 ) ) );
-	            this.ballisticStrength = 0.9 * this.source.energy + 0.1 * this.source.intelligence;
-	            this.ballisticSkill    = ramp( 0.8 * this.source.energy + 0.1 * this.source.fighting + 0.1 * this.source.intelligence ); 
-	        };
-
-	    //simple messenger object that manages the fight messages by type
-	    var messenger = {
-
-
-	        message : function message( type, attacker, defender ){
-	            return reduce( random( this.get( type ) ), function( val, sum ){
-	                return sum += ( val === 0 ? attacker.name : ( val === 1 ? defender.name : val ) );
-	            }, "" );
-	        },
-
-	        get : function( type ){
-
-	            var typeArray = type.split( ":" ),
-	                len       = typeArray.length,
-	                messages  = this.messages;
-
-	            for( var i = 0; i < len; i++ ){
-
-	                if( messages[ typeArray[ i ] ] != undefined ){
-
-	                    messages = messages[ typeArray[ i ] ];
-	                }
-	                else{
-	                    throw "messenger.get( type ): requested message type does not exist.";
-	                }
-	            }
-
-	            return messages;
-	        },
-
-	        messages : messages
-	    };
-
-
-	    var BattleManager = {
-
-	            fightdata : [],
-
-	            //should the fight continue?
-	            //Are both combatants still breathing?
-	            shouldContinue : function shouldContinue( c1, c2 ){
-
-	                return c2.wounds > 0 && c1.wounds > 0;
-	            },
-	            //initiate the fight.
-	            battle : function battle( fighter1, fighter2 ){
-
-	                var count = 0,
-	                    isDraw = false,
-	                    //who attacks first in close combat?
-	                    ix  = fighter1.initiative > fighter2.initiative,
-
-	                    //whomever is faster is c1,
-	                    //and will always attack first
-	                    c1  = ix ? fighter1 : fighter2,
-	                    c2  = ix ? fighter2 : fighter1;
-	                
-	                //holds all of the messages and data from the battle
-	                this.fightdata = [];
-
-	                //while both combatants are active and the fight hasn't gone on too long
-	                //keep fighting, turn by turn fighting
-	                while( this.shouldContinue( c1, c2 ) && count < 10 ){
-
-	                    //run a turn for the first combatant
-	                    this.characterTurn( c1, c2 );
-
-	                    //if someone has won, break out of the loop
-	                    if( !this.shouldContinue( c1, c2 ) ){ break; }
-
-	                    //run a turn for the second combatant
-	                    this.characterTurn( c2, c1 );
-
-	                    //if someone has won, break out of the loop
-	                    if( !this.shouldContinue( c1, c2 ) ){ break; }
-
-	                    //issue a round completion message
-	                    this.message( "round:full", c1, c2 );
-
-	                    //iterate the count
-	                    count++;
-	                }
-
-	                //if the fight is a draw issue a message
-	                if( count === 10 ){
-
-	                    this.message( "round:draw", c1, c2 );
-	                    isDraw = true;
-	                }
-	                else{
-	                    //if the fight has ended, calculate the winner and loser
-	                    if( c1.wounds > c2.wounds ){
-	                        //issue the winner message
-	                        this.message( "round:partial", c1, c2 );
-	                    }else{
-	                        //issue the winner message
-	                        this.message( "round:partial", c2, c1 );
-	                    }
-	                }
-
-	                //return the fight data
-	                return {
-	                    fightData : this.fightdata,
-	                    rounds    : count,
-	                    winner    : isDraw ? "draw" : c1.wounds > c2.wounds ? c1 : c2,
-	                    loser     : isDraw ? "draw" : c1.wounds > c2.wounds ? c2 : c1
-	                };
-	            },
-	            //runs shooting and assault for one character, c1
-	            characterTurn : function characterTurn( c1, c2 ){
-
-	                //shooting phase
-	                this.takeDamage( c2, this.shoot( c1, c2 ) );
-	                // //assault phase
-	                this.takeDamage( c2, this.assault( c1, c2 ) );
-	            },
-
-	            //assigns damage to defender character
-	            takeDamage : function takeDamage( defender, damage ){
-
-	                if( damage === 0 || damage === undefined ){ return false; }
-	                
-	                defender.wounds -= damage;
-	                return true;
-	            },
-
-	            shoot : function shoot( attacker, defender ){
-
-	                var hits, damage;
-
-	                //returns the number of successful hits by the attacker against the defender
-	                //depends solely on the attackers ballistic skill
-	                hits = this.ballisticHitsRoll( attacker, 6 );
-
-	                //if no hits, issue a message and return 0 damage
-	                if( hits <= 0 ){
-	                    this.message( "shoot:failed:hit", attacker, defender );
-	                    return 0;
-	                }
-
-	                //returns the total damage inflicted by the attacker against the defender
-	                damage = this.armorSaveRoll( hits, attacker, defender, 6 );
-
-	                //if all hits are blocked, issue a message and return 0 damage
-	                if( damage <= 0 ){
-	                    this.message( "shoot:failed:blocked", attacker, defender );
-	                    return 0;
-	                }
-
-	                damage *= attacker.ballisticStrength * 3;
-	                this.message( "shoot:success", attacker, defender, damage );
-
-	                //returns the total damage inflicted by the attacker against the defender
-	                return damage;
-	            },
-
-	            //rolls to hit, to wound and armor saves to determine the final damage against a defender
-	            assault : function assault( attacker, defender ){
-
-	                var hits, damage;
-
-	                //returns the number of successful hits by the attacker against the defender
-	                hits = this.assaultHitsRoll( attacker, defender, 6 );
-	                
-	                //if no hits, issue a message and return 0 damage
-	                if( hits <= 0 ){
-	                    this.message( "assault:failed:hit", attacker, defender );
-	                    return 0;
-	                }
-
-	                damage = this.armorSaveRoll( hits, attacker, defender, 6 );
-
-	                //if all hits are blocked, issue a message and return 0 damage
-	                if( damage <= 0 ){
-	                    this.message( "assault:failed:blocked", attacker, defender );
-	                    return 0;
-	                }
-
-	                //if some hits are unblocked, calculate the damage done and issue a message
-	                damage *= attacker.assaultStrength * 3;
-	                this.message( "assault:success", attacker, defender, damage );
-
-	                //return the total damage inflicted by the attacker against the defender
-	                return damage;
-	            },
-
-	            //roll a number of dice equal to the number of attacks,
-	            //filter them by sucessful hits and return the number of hits
-	            //'attacker' is the Fighter object attacking, 'faces' is the number of faces on the dice rolled
-	            ballisticHitsRoll : function ballisticHitsRoll( attacker, faces ){
-
-	                
-	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
-
-	                        return thr >= attacker.ballisticSkill;
-	                    } );
-	            },
-
-	            //rolls the attacker attacks against the defender
-	            //returns an array of successful attacks
-	            //'attacker' is the Fighter object attacking, 'faces' is the number of faces on the dice rolled
-	            overwatchHitsRoll : function overwatchHitsRoll( attacker, faces ){
-
-
-	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
-
-	                        return thr >= 6;
-	                    } );
-	            },
-
-	            //rolls the attacker attacks against the defender
-	            //returns an array of successful attacks
-	            //'attacker' is the Fighter object attacking,
-	            //'defender' is the Figheter object being attacked,
-	            //'faces' is the number of faces on the dice rolled
-	            assaultHitsRoll : function assautlHitsRoll( attacker, defender, faces ){
-
-	                return filter( dice.toss( attacker.attacks, faces ), function( thr, index, arr ){
-
-	                        return thr >= clamp( 4 - ( attacker.assaultSkill - defender.assaultSkill ) / 2, 2, 6 );
-	                    } );
-	            },
-
-	            //rolls armor saves to stop damage from wounds inflicted by the attacker
-	            //returns an integer of damage unsaved
-	            //'wounds' is the number of dice rolls not blocked by the defender
-	            //'attacker' is the Fighter object attacking,
-	            //'defender' is the Figheter object being attacked,
-	            //'faces' is the number of faces on the saving dice rolled
-	            armorSaveRoll : function armorSaveRoll( wounds, attacker, defender, sides ){
-
-	                return reduce( each( dice.toss( wounds.length, sides ), function( thr, index, arr ){
-
-	                        return thr < defender.armor ? 1 : 0;
-	                    } ) );
-	            },
-
-	            //constructs the event object for each attack and defense
-	            //adds the object to the BattleManager data object
-	            message : function message( type, attacker, defender, wounds ){
-
-	                this.fightdata.push( {
-	                    "type"           : type,
-	                    "attacker"       : attacker,
-	                    "attackerName"   : attacker.name,
-	                    "attackerWounds" : attacker.wounds,
-	                    "defender"       : defender,
-	                    "defenderName"   : defender.name,
-	                    "defenderWounds" : defender.wounds,
-	                    "message"        : messenger.message( type, attacker, defender ),
-	                    "wounds"         : wounds || null
-	                } );
-	            }
-	        };
-
-	    function getId (fighter) {
-	        var fighterId;
-	        if (typeof fighter === 'number' || typeof fighter === 'string') {
-	            fighterId = Number(fighter);
-	        } else if (typeof fighter === 'object' && 'id' in fighter) {
-	            fighterId = Number(fighter.id);
-	        } else {
-	            throw new Error('Fighter must be an object with "id" property or number.');
-	        }
-	        return fighterId;
-	    }
-
-	    function getStats (fighter) {
-	        var id = getId(fighter);
-	        return stats.find(function (s) {
-	            return s.id === id;
-	        });
-	    }
-
-	    return {
-	        narrativeBattle : function narrativeBattle( query1, query2 ){
-	            var fighter1Stats = getStats(query1),
-	                fighter2Stats = getStats(query2),
-	                fighter1 = new Fighter( fighter1Stats ),
-	                fighter2 = new Fighter( fighter2Stats );
-	            
-	            return BattleManager.battle( fighter1, fighter2 );
-	        },
-
-	        statBattle : function statBattle( query1, query2, count ){
-	            var fighter1Stats = getStats(query1);
-	            var fighter2Stats = getStats(query2);
-
-	            var sample,
-	                returnObj = {
-	                    fighter1 : {
-	                        name : fighter1Stats.name,
-	                        wins : 0,
-	                        draws : 0
-	                    },
-	                    fighter2 : {
-	                        name : fighter2Stats.name,
-	                        wins : 0,
-	                        draws : 0
-	                    },
-	                    data : []
-	                };
-
-	            for( var i = 0; i < count; i++ ){
-
-	                sample = this.narrativeBattle( fighter1Stats, fighter2Stats );
-
-	                if( sample.winner === "draw" ){
-
-	                    returnObj.fighter1.draws += 1;
-	                    returnObj.fighter2.draws += 1;
-	                }
-	                else{
-
-	                    returnObj[ sample.winner.name === returnObj.fighter1.name ? "fighter1" : "fighter2" ].wins += 1;
-	                } 
-
-	                returnObj.data.push( sample );
-	            }
-	            
-	            return returnObj;
-	        },
-
-	        addMessages : function( messages ){
-	            messenger.messages = messages;
-	        }
-	    };
-	    
-	}));
-
-
-
-
-
-
-
-
-
-
 
 /***/ }
 /******/ ]);
