@@ -8,6 +8,65 @@
 	display: table;
 }
 
+@font-face {
+	font-family: "Roboto";
+	src: url("/assets/fonts/roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Roboto Condensed Bold";
+	src: url("/assets/fonts/roboto/RobotoCondensed-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Roboto Condensed Bold Italic";
+	src: url("/assets/fonts/roboto/RobotoCondensed-BoldItalic.ttf");
+}
+
+header {
+	margin: 0;
+	background-color: #000;
+	width: 100%;
+	height: 90px;
+}
+
+header h1 {
+	text-transform: uppercase;
+	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
+	margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 3.5em;
+    color: #fff;
+    font-weight: normal;
+    font-size: 3.75em;
+    line-height: 1.4em;
+}
+
+#logo {
+	background: url("/assets/Marvel_Comics.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 100%;
+	/*width: 22%;*/
+}
+
+.intro {
+	padding: 0 20% 2em 15%;
+}
+
+.intro h3 {
+	font-family: "Roboto Condensed Bold", Helvetica, sans-serif;
+	padding-bottom: .5em;
+	border-bottom: 2px solid #ed1b24;
+	font-size: 2em;
+	margin-bottom: 0;
+}
+
+.intro p {
+	font-family: "Roboto", Helvetica, sans-serif;
+
+}
+
 div.select {
 	width: 100px;
 	height: 100px;

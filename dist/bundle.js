@@ -21427,8 +21427,8 @@
 
 	var CharacterSelection = __webpack_require__(173),
 	    Search = __webpack_require__(174),
-	    BattleView = __webpack_require__(179),
-	    characterStore = __webpack_require__(176),
+	    BattleView = __webpack_require__(180),
+	    characterStore = __webpack_require__(177),
 	    Results = __webpack_require__(175);
 
 	var App = React.createClass({
@@ -21567,7 +21567,7 @@
 	var React = __webpack_require__(1);
 
 	var Results = __webpack_require__(175),
-	    characterStore = __webpack_require__(176);
+	    characterStore = __webpack_require__(177);
 
 	var SearchView = React.createClass({
 		displayName: 'SearchView',
@@ -21641,7 +21641,7 @@
 
 	var React = __webpack_require__(1);
 
-	var CharacterViews = __webpack_require__(180);
+	var CharacterViews = __webpack_require__(176);
 
 	var ResultsView = React.createClass({
 		displayName: 'ResultsView',
@@ -21676,8 +21676,29 @@
 /* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(177),
-	    $ = __webpack_require__(178);
+	var React = __webpack_require__(1);
+
+	var CharacterViews = React.createClass({
+		displayName: 'CharacterViews',
+
+
+		render() {
+			return React.createElement(
+				'li',
+				{ onClick: this.props.handleCharacter, id: this.props.id },
+				this.props.name
+			);
+		}
+	});
+
+	module.exports = CharacterViews;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(178),
+	    $ = __webpack_require__(179);
 
 	var characterStore = Object.create(EventEmitter.prototype);
 	EventEmitter.call(characterStore);
@@ -21712,7 +21733,7 @@
 	module.exports = characterStore;
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22029,7 +22050,7 @@
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -32255,7 +32276,7 @@
 
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1),
@@ -32292,6 +32313,7 @@
 
 	module.exports = BattleView;
 
+<<<<<<< HEAD
 /***/ },
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
@@ -32902,5 +32924,3 @@
 
 
 
-/***/ }
-/******/ ]);
