@@ -32,14 +32,13 @@ battleStore.fetch = function () {
 	return records;
 };
 
-battleStore.post = function(win, lose, draw) {
+battleStore.post = function(win, lose) {
 	$.ajax({
 		url: '/records',
 		method: 'POST',
 		data: {
 			wins: win,
 			losses: lose,
-			draws: draw
 		},
 		success: function (response) {
 			records.push(response);
