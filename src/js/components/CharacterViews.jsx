@@ -2,18 +2,8 @@ var React = require('react');
 
 var CharacterViews = React.createClass({
 
-	getInitialState() {
-		return {
-
-		}
-	},
-
-	componentWillMount() {
-		
-	},
-
 	render() {
-		return
+		return <li onClick={this.props.handleCharacter} id={this.props.id}>{this.props.name}</li>;
 	}
 });
 

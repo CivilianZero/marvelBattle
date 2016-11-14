@@ -4,18 +4,29 @@ var EventEmitter = require('eventemitter3'),
 var characterStore = Object.create(EventEmitter.prototype);
 EventEmitter.call(characterStore);
 
-var characters = {},
-	url ='https://gateway.marvel.com:443/v1/public/characters?apikey=7cb23f38bdb6f335cc414779fcd42e71'
+var characters = [];
 
-characterStore.getDetails = function () {
-	return characters;
+function findById (id) {
+    return characters.find(function (c) {
+        return c.id === id;
+    });
+}
+
+characterStore.getCharacters = function (id) {
+	if (id) {
+        return findById(Number(id));
+    } else {
+		return characters;
+	}
 };
 
-characterStore.fetchDetails = function () {
+characterStore.fetchCharacters = function (starts) {
 	$.ajax({
-		url: url,
+		url: 'https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=' + 
+			starts + 
+			'&apikey=7cb23f38bdb6f335cc414779fcd42e71',
 		success: function (response) {
-			characters = response;
+			characters = response.data.results;
 			characterStore.emit('update');
 		}
 	});

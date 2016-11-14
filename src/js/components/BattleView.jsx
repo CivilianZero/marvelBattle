@@ -1,6 +1,6 @@
 var React = require('react');
 
-var SearchView = React.createClass({
+var BattleView = React.createClass({
 
 	getInitialState() {
 		return {
@@ -13,8 +13,8 @@ var SearchView = React.createClass({
 	},
 
 	render() {
-		return
+		return <div />;
 	}
 });
 
-module.exports = SearchView;
+module.exports = BattleView;
