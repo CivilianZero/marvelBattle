@@ -6,6 +6,7 @@ var CharacterViews = React.createClass({
 		return ( 
 			<li id={this.props.id}>
 				<img 
+					className={'thumnbnail'}
 					onClick={this.props.handleCharacter} 
 					src={this.props.photo} 
 					id={this.props.id} />
