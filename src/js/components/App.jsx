@@ -48,9 +48,6 @@ var App = React.createClass({
 				searchResults={this.state.searchResults}/>;
 		}
 
-		// var name1 = characterStore.getCharacters(this.state.character1).name;
-		// var name2 = characterStore.getCharacters(this.state.character2).name;
-
 		return (
 			<section>
 				<div className='image-rapper'>
@@ -112,7 +109,6 @@ var App = React.createClass({
 			this.setState({
 				character2: e.target.id,
 				image2: image.path + '.' + image.extension,
-				name1: null,
 				name2: e.target.name
 			})
 		}
