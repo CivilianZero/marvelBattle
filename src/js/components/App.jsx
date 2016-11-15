@@ -14,8 +14,10 @@ var App = React.createClass({
 		return {
 			character1: null,
 			image1: null,
+			name1: null,
 			character2: null,
 			image2: null,
+			name2: null,
 			activeSelect: null,
 			searchResults: null,
 			narrative: null,
@@ -46,34 +48,32 @@ var App = React.createClass({
 				searchResults={this.state.searchResults}/>;
 		}
 
-		var name1 = characterStore.getCharacters(this.state.character1).name;
-		var name2 = characterStore.getCharacters(this.state.character2).name;
+		// var name1 = characterStore.getCharacters(this.state.character1).name;
+		// var name2 = characterStore.getCharacters(this.state.character2).name;
 
 		return (
 			<section>
 				<div className='character-wrapper'>
 					<CharacterSelection
 						records={this.state.records}
-						name={name1}
+						name={this.state.name1}
 						id={this.state.character1}
 						image={this.state.image1}/>
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='left'
-						choose={this.handleChoose}
-						name={name1}/>
+						choose={this.handleChoose}/>
 				</div>
 				<div className='character-wrapper'>
 					<CharacterSelection
 						records={this.state.records}
-						name={name2} 
+						name={this.state.name2} 
 						id={this.state.character2}
 						image={this.state.image2}/>
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='right'
-						choose={this.handleChoose}
-						name={name2}/>
+						choose={this.handleChoose}/>
 				</div>
 				{results}
 				<BattleView 
@@ -104,11 +104,14 @@ var App = React.createClass({
 			this.setState({
 				character1: e.target.id,
 				image1: image.path + '.' + image.extension,
+				name1: e.target.name
 			})
 		} else {
 			this.setState({
 				character2: e.target.id,
-				image2: image.path + '.' + image.extension
+				image2: image.path + '.' + image.extension,
+				name1: null,
+				name2: e.target.name
 			})
 		}
 	},
