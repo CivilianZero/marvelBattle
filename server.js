@@ -25,15 +25,22 @@ app.get('/Records', function(req, res) {
 
 app.post('/Records', function(req, res) {
 	var body = req.body,
-		name = body.name,
-		wins = body.wins,
-		losses = body.losses;
+		winner = body.winner,
+		loser = body.loser;
 	let record = {
-		id: shortid(),
-		name: name,
-		wins: wins,
-		losses: losses
-	};
+		winner: {
+			name: winner.name,
+			wins: winner.wins,
+			losses: winner.losses,
+			id: shortid()
+		},
+		loser: {
+			name: loser.name,
+			wins: loser.wins,
+			losses: loser.losses,
+			id: shortid()
+		}
+	}
 	db.get('battleRecords').push(record).value();
 	res.json(record);
 	return;

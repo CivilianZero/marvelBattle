@@ -94,8 +94,7 @@ var App = React.createClass({
 		});
 		var winner = fight.winner.name,
 			loser = fight.loser.name;
-		battleStore.add(winner, 'win');
-		battleStore.add(loser, 'lose');
+		battleStore.add(winner, loser);
 	},
 
 	handleClick(e) {
