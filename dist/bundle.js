@@ -21440,10 +21440,8 @@
 			return {
 				character1: null,
 				image1: null,
-				name1: '',
 				character2: null,
 				image2: null,
-				name2: '',
 				activeSelect: null,
 				searchResults: null,
 				narrative: null,
@@ -21492,7 +21490,7 @@
 						handleCharacter: this.handleClick,
 						id: 'left',
 						choose: this.handleChoose,
-						inputValue: this.state.name1 })
+						name: name1 })
 				),
 				React.createElement(
 					'div',
@@ -21506,7 +21504,7 @@
 						handleCharacter: this.handleClick,
 						id: 'right',
 						choose: this.handleChoose,
-						inputValue: this.state.name2 })
+						name: name2 })
 				),
 				results,
 				React.createElement(
@@ -21541,14 +21539,12 @@
 			if (this.state.activeSelect === 'left') {
 				this.setState({
 					character1: e.target.id,
-					image1: image.path + '.' + image.extension,
-					name1: e.target.name
+					image1: image.path + '.' + image.extension
 				});
 			} else {
 				this.setState({
 					character2: e.target.id,
-					image2: image.path + '.' + image.extension,
-					name2: e.target.name
+					image2: image.path + '.' + image.extension
 				});
 			}
 		},
@@ -22245,6 +22241,7 @@
 				} else {
 					hero.losses++;
 				}
+				// update db
 			} else {
 				if (wl === 'win') {
 					records.push({ name: c, wins: 1, losses: 0 });
@@ -22254,18 +22251,6 @@
 			}
 			battleStore.emit('update');
 		}
-		$.ajax({
-			url: '/records',
-			method: 'POST',
-			data: {
-				wins: hero.wins,
-				losses: hero.losses
-			},
-			success: function (response) {
-				records.push(response);
-				battleStore.emit('update');
-			}
-		});
 	};
 
 	window.battleStore = battleStore;
@@ -32829,7 +32814,7 @@
 
 		getInitialState() {
 			return {
-				inputValue: this.props.inputValue,
+				inputValue: '',
 				searchResults: null
 			};
 		},
@@ -32939,13 +32924,17 @@
 		render() {
 			return React.createElement(
 				'li',
-				{ id: this.props.id },
-				React.createElement('img', {
-					onClick: this.props.handleCharacter,
-					src: this.props.photo,
-					id: this.props.id,
-					name: this.props.name }),
-				this.props.name
+				null,
+				React.createElement('img', { src: this.props.photo }),
+				this.props.name,
+				React.createElement(
+					'button',
+					{
+						id: this.props.id,
+						name: this.props.name,
+						onClick: this.props.handleCharacter },
+					'Select'
+				)
 			);
 		}
 	});

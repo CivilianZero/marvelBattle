@@ -41,6 +41,7 @@ battleStore.add = function(c, wl) {
 			} else {
 				hero.losses++;
 			}
+			// update db
 		} else {
 			if(wl === 'win') { 
 				records.push({name: c, wins:1, losses:0});
@@ -50,18 +51,6 @@ battleStore.add = function(c, wl) {
 		}
 		battleStore.emit('update');
 	}
-	$.ajax({
-		url: '/records',
-		method: 'POST',
-		data: {
-			wins: hero.wins,
-			losses: hero.losses
-		},
-		success: function (response) {
-			records.push(response);
-			battleStore.emit('update');
-		}
-	})
 }
 
 window.battleStore = battleStore;

@@ -14,10 +14,8 @@ var App = React.createClass({
 		return {
 			character1: null,
 			image1: null,
-			name1: '',
 			character2: null,
 			image2: null,
-			name2: '',
 			activeSelect: null,
 			searchResults: null,
 			narrative: null,
@@ -63,7 +61,7 @@ var App = React.createClass({
 						handleCharacter={this.handleClick} 
 						id='left'
 						choose={this.handleChoose}
-						inputValue={this.state.name1}/>
+						name={name1}/>
 				</div>
 				<div>
 					<CharacterSelection
@@ -75,7 +73,7 @@ var App = React.createClass({
 						handleCharacter={this.handleClick} 
 						id='right'
 						choose={this.handleChoose}
-						inputValue={this.state.name2}/>
+						name={name2}/>
 				</div>
 				{results}
 				<BattleView 
@@ -106,13 +104,11 @@ var App = React.createClass({
 			this.setState({
 				character1: e.target.id,
 				image1: image.path + '.' + image.extension,
-				name1: e.target.name
 			})
 		} else {
 			this.setState({
 				character2: e.target.id,
-				image2: image.path + '.' + image.extension,
-				name2: e.target.name
+				image2: image.path + '.' + image.extension
 			})
 		}
 	},
@@ -126,4 +122,4 @@ var App = React.createClass({
 
 });
 
-module.exports= App;
+module.exports = App;
