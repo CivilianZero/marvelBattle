@@ -21440,8 +21440,10 @@
 			return {
 				character1: null,
 				image1: null,
+				name1: '',
 				character2: null,
 				image2: null,
+				name2: '',
 				activeSelect: null,
 				searchResults: null,
 				narrative: null,
@@ -21489,7 +21491,8 @@
 					React.createElement(Search, {
 						handleCharacter: this.handleClick,
 						id: 'left',
-						choose: this.handleChoose })
+						choose: this.handleChoose,
+						inputValue: this.state.name1 })
 				),
 				React.createElement(
 					'div',
@@ -21502,7 +21505,8 @@
 					React.createElement(Search, {
 						handleCharacter: this.handleClick,
 						id: 'right',
-						choose: this.handleChoose })
+						choose: this.handleChoose,
+						inputValue: this.state.name2 })
 				),
 				results,
 				React.createElement(
@@ -32825,7 +32829,7 @@
 
 		getInitialState() {
 			return {
-				inputValue: '',
+				inputValue: this.props.inputValue,
 				searchResults: null
 			};
 		},
@@ -32870,9 +32874,9 @@
 		handleKeyPress(e) {
 			if (e.key === 'Enter') {
 				characterStore.fetchCharacters(this.state.inputValue);
-				this.setState({
-					inputValue: ''
-				});
+				// this.setState({
+				// 	inputValue: '',
+				// });
 			}
 		},
 
@@ -32939,7 +32943,8 @@
 				React.createElement('img', {
 					onClick: this.props.handleCharacter,
 					src: this.props.photo,
-					id: this.props.id }),
+					id: this.props.id,
+					name: this.props.name }),
 				this.props.name
 			);
 		}

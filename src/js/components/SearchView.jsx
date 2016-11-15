@@ -7,7 +7,7 @@ var SearchView = React.createClass({
 
 	getInitialState() {
 		return {
-			inputValue: '',
+			inputValue: this.props.inputValue,
 			searchResults: null
 		}
 	},
@@ -16,7 +16,7 @@ var SearchView = React.createClass({
 		var _this = this;
 		characterStore.on('update', function() {
 			_this.setState({
-			searchResults: characterStore.getCharacters()
+				searchResults: characterStore.getCharacters()
 			});
 		});
 	},
@@ -48,9 +48,9 @@ var SearchView = React.createClass({
 	handleKeyPress(e) {
 		if(e.key === 'Enter') {
 			characterStore.fetchCharacters(this.state.inputValue)
-			this.setState({
-				inputValue: '',
-			});
+			// this.setState({
+			// 	inputValue: '',
+			// });
 		}
 	},
 

@@ -14,8 +14,10 @@ var App = React.createClass({
 		return {
 			character1: null,
 			image1: null,
+			name1: '',
 			character2: null,
 			image2: null,
+			name2: '',
 			activeSelect: null,
 			searchResults: null,
 			narrative: null,
@@ -60,7 +62,8 @@ var App = React.createClass({
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='left'
-						choose={this.handleChoose}/>
+						choose={this.handleChoose}
+						inputValue={this.state.name1}/>
 				</div>
 				<div>
 					<CharacterSelection
@@ -71,7 +74,8 @@ var App = React.createClass({
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='right'
-						choose={this.handleChoose}/>
+						choose={this.handleChoose}
+						inputValue={this.state.name2}/>
 				</div>
 				{results}
 				<BattleView 

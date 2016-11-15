@@ -8,7 +8,8 @@ var CharacterViews = React.createClass({
 				<img 
 					onClick={this.props.handleCharacter} 
 					src={this.props.photo} 
-					id={this.props.id} />
+					id={this.props.id} 
+					name={this.props.name}/>
 				{this.props.name}
 			</li>
 		);
