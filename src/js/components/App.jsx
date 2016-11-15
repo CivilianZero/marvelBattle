@@ -5,7 +5,8 @@ var CharacterSelection = require('./CharacterSelection.jsx'),
 	Search = require('./SearchView.jsx'),
 	BattleView = require('./BattleView.jsx'),
 	characterStore = require('../stores/characterStore.js'),
-	Results = require('./ResultsView.jsx');
+	Results = require('./ResultsView.jsx'),
+	battleStore = require('../stores/battleStore.js');
 
 var App = React.createClass({
 
@@ -17,7 +18,8 @@ var App = React.createClass({
 			image2: null,
 			activeSelect: null,
 			searchResults: null,
-			narrative: null
+			narrative: null,
+			records: battleStore.fetch()
 		}
 	},
 
@@ -25,7 +27,12 @@ var App = React.createClass({
 		var _this = this;
 		characterStore.on('update', function() {
 			_this.setState({
-			searchResults: characterStore.getCharacters()
+				searchResults: characterStore.getCharacters()
+			});
+		});
+		battleStore.on('update', function() {
+			_this.setState({
+				records: battleStore.get()
 			});
 		});
 	},
@@ -39,26 +46,34 @@ var App = React.createClass({
 				searchResults={this.state.searchResults}/>;
 		}
 
+		var name1 = characterStore.getCharacters(this.state.character1).name;
+		var name2 = characterStore.getCharacters(this.state.character2).name;
 
 		return (
 			<section>
 				<div className='character-wrapper'>
 					<CharacterSelection
+						records={this.state.records}
+						name={name1}
 						id={this.state.character1}
 						image={this.state.image1}/>
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='left'
-						choose={this.handleChoose}/>
+						choose={this.handleChoose}
+						name={name1}/>
 				</div>
 				<div className='character-wrapper'>
-					<CharacterSelection 
+					<CharacterSelection
+						records={this.state.records}
+						name={name2} 
 						id={this.state.character2}
 						image={this.state.image2}/>
 					<Search 
 						handleCharacter={this.handleClick} 
 						id='right'
-						choose={this.handleChoose}/>
+						choose={this.handleChoose}
+						name={name2}/>
 				</div>
 				{results}
 				<BattleView 
@@ -72,10 +87,15 @@ var App = React.createClass({
 	},
 
 	handleFight() {
+		var fight = battleManager.narrativeBattle(this.state.character1, this.state.character2)
 		this.setState({
 			searchResults: null,
-			narrative: battleManager.narrativeBattle(this.state.character1, this.state.character2)
+			narrative: fight
 		});
+		var winner = fight.winner.name,
+			loser = fight.loser.name;
+		battleStore.add(winner, 'win');
+		battleStore.add(loser, 'lose');
 	},
 
 	handleClick(e) {
@@ -83,7 +103,7 @@ var App = React.createClass({
 		if (this.state.activeSelect === 'left') {
 			this.setState({
 				character1: e.target.id,
-				image1: image.path + '.' + image.extension
+				image1: image.path + '.' + image.extension,
 			})
 		} else {
 			this.setState({
@@ -102,4 +122,4 @@ var App = React.createClass({
 
 });
 
-module.exports= App;
+module.exports = App;

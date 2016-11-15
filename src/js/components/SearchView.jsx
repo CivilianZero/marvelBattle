@@ -16,7 +16,7 @@ var SearchView = React.createClass({
 		var _this = this;
 		characterStore.on('update', function() {
 			_this.setState({
-			searchResults: characterStore.getCharacters()
+				searchResults: characterStore.getCharacters(),
 			});
 		});
 	},

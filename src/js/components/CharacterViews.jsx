@@ -4,13 +4,16 @@ var CharacterViews = React.createClass({
 
 	render() {
 		return ( 
-			<li id={this.props.id}>
-				<img 
-					className={'thumnbnail'}
-					onClick={this.props.handleCharacter} 
-					src={this.props.photo} 
-					id={this.props.id} />
+
+			<li>
+				<img src={this.props.photo} />
 				{this.props.name}
+				<button 
+					id={this.props.id} 
+					name={this.props.name}
+					onClick={this.props.handleCharacter}>
+					Select
+				</button>
 			</li>
 		);
 	}

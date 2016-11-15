@@ -2,4 +2,4 @@ npm-debug-log*
 .DS_Store
 node_modules/
 db.json
-dist/
+dist/bundle.js

@@ -7,10 +7,6 @@ var express = require('express'),
 	port = 3000,
 	db = lowdb('db.json', { storage: fileAsync });
 
-db.defaults({
-	// any default collections (Arrays)
-}).value();
-
 app.use(bodyParser());
 
 app.use(express.static(__dirname + '/public'));
@@ -27,17 +23,20 @@ app.get('/Records', function(req, res) {
 	res.json(db.get('battleRecords').value());
 });
 
-// app.post('/Records', function(req, res) {
-// 	var body = req.body,
-// 		name = body.name,
-// 		wins = body.wins,
-// 		draws = body.draws,
-// 		losses = body.losses;
-
-// 	if (name) {
-// 		var record = {}
-// 	}
-// 	db.get('animals').push(record).value()
-// });
+app.post('/Records', function(req, res) {
+	var body = req.body,
+		name = body.name,
+		wins = body.wins,
+		losses = body.losses;
+	let record = {
+		id: shortid(),
+		name: name,
+		wins: wins,
+		losses: losses
+	};
+	db.get('battleRecords').push(record).value();
+	res.json(record);
+	return;
+});
 
 app.listen(port);
