@@ -32874,9 +32874,9 @@
 		handleKeyPress(e) {
 			if (e.key === 'Enter') {
 				characterStore.fetchCharacters(this.state.inputValue);
-				// this.setState({
-				// 	inputValue: '',
-				// });
+				this.setState({
+					inputValue: ''
+				});
 			}
 		},
 
