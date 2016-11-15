@@ -22,8 +22,9 @@ var SearchView = React.createClass({
 	},
 
 	render() {
+		var classes = 'search ' + this.props.id;
 		return (
-			<div className='search'>
+			<div className={classes}>
 				<input 
 					type='text' 
 					ref='search'

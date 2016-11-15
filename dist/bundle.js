@@ -22179,9 +22179,10 @@
 		},
 
 		render() {
+			var classes = 'search ' + this.props.id;
 			return React.createElement(
 				'div',
-				{ className: 'search' },
+				{ className: classes },
 				React.createElement('input', {
 					type: 'text',
 					ref: 'search',
