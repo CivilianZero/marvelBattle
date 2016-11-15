@@ -40,16 +40,12 @@ battleStore.add = function(win, lose) {
 		method: 'POST',
 		data: {
 			winner: {
-				name: winner,
-				wins: winner.wins++,
-				losses: winner.losses,
-				id: winner.id,
+				name: win.name,
+				id: win.id
 			},
 			loser: {
-				name: loser,
-				wins: loser.wins,
-				losses: loser.losses++,
-				id: loser.id,
+				name: lose.name,
+				id: lose.id
 			}
 		},
 		success: function() {

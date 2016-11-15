@@ -48,9 +48,6 @@ var App = React.createClass({
 				searchResults={this.state.searchResults}/>;
 		}
 
-		// var name1 = characterStore.getCharacters(this.state.character1).name;
-		// var name2 = characterStore.getCharacters(this.state.character2).name;
-
 		return (
 			<section>
 				<div className='image-rapper'>

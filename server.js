@@ -37,8 +37,8 @@ app.post('/Records', function(req, res) {
 		heroWinner = {
 			name: winner.name,
 			id: winner.id,
-			wins: winner.wins,
-			losses: winner.losses
+			wins: 1,
+			losses: 0
 		}
 		db.get('battleRecords').push(heroWinner).value();
 	}
@@ -52,8 +52,8 @@ app.post('/Records', function(req, res) {
 		heroLoser = {
 			name: loser.name,
 			id: loser.id,
-			wins: loser.wins,
-			losses: loser.losses
+			wins: 0,
+			losses: 1
 		}
 		db.get('battleRecords').push(heroLoser).value();
 	}
