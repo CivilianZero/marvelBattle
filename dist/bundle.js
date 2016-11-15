@@ -21882,7 +21882,7 @@
 	                        this.message( "round:partial", c2, c1 );
 	                    }
 	                }
-
+	                // HOW DO I TELL IF ITS A DRAW
 	                //return the fight data
 	                return {
 	                    fightData : this.fightdata,
@@ -22134,19 +22134,16 @@
 
 
 		render() {
-			var src = 'http://www.marvelsynergy.com/images/ultron.png';
+			var url = 'http://www.marvelsynergy.com/images/ultron.png',
+			    divImage = { backgroundImage: 'url(' + url + ')' };
 			if (this.props.id) {
-				src = this.props.image;
+				url = this.props.image;
 			}
-			return React.createElement(
-				'div',
-				{
-					className: 'select',
-					key: this.props.id,
-					id: this.props.id,
-					onClick: this.props.choose },
-				React.createElement('img', { src: src })
-			);
+			return React.createElement('div', { style: divImage,
+				className: 'select',
+				key: this.props.id,
+				id: this.props.id,
+				onClick: this.props.choose });
 		}
 	});
 
