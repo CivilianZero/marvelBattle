@@ -23,11 +23,24 @@
 	src: url("/assets/fonts/roboto/RobotoCondensed-BoldItalic.ttf");
 }
 
-header {
+header,
+footer {
 	margin: 0;
 	background-color: #000;
 	width: 100%;
 	height: 90px;
+}
+
+footer {
+	clear: both;
+	color: #fff;
+	margin-top: 100px;
+}
+
+small {
+	font-family: "Roboto", Helvetica, sans-serif;
+	padding: 1em 0 0 10em;
+	display: block;
 }
 
 header h1 {
@@ -74,12 +87,11 @@ section {
 .character-wrapper {
 	width: 49.7%;
 	height: 400px;
-	/*margin-right: 2px;*/
-	/*display: inline-block;*/
 	float: left;
 	overflow: hidden;
 	border: 5px solid #000;
 	position: relative;
+	margin-bottom: 50px;
 }
 
 .character-wrapper:first-child {
@@ -119,16 +131,34 @@ div.select {
 	left: initial;
 }
 
-/*input[type="text"] {
-	position: relative;
-}*/
+.search input {
+	padding: .5em;
+	border: 5px solid #000;
+	border-radius: 2px;
 
-/*#vs {
+}
+
+.search button {
+	position: relative;
+	left: -37px;
+	top: -5px;
+	border: none;
+	background-image: url("/assets/search.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	padding: .7em;
+	background-color: transparent;
+}
+
+#vs {
 	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
 	width: 100px;
 	height: 45px;
 	border: 5px solid #000;
 	border-radius: 2px;
 	position: relative;
-
-}*/
+	text-align: center;
+    line-height: 1.3em;
+    font-size: 1.75em;
+}
