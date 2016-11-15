@@ -27,22 +27,37 @@ app.post('/Records', function(req, res) {
 	var body = req.body,
 		winner = body.winner,
 		loser = body.loser;
-	let record = {
-		winner: {
+	
+	var heroWinner = db.get('battleRecords').find({ id: winner.id });
+	if (heroWinner.value()) {
+		winner.assign({
+			wins: heroWinner.value().wins + 1
+		}).value();
+	} else {
+		heroWinner = {
 			name: winner.name,
+			id: winner.id,
 			wins: winner.wins,
-			losses: winner.losses,
-			id: shortid()
-		},
-		loser: {
-			name: loser.name,
-			wins: loser.wins,
-			losses: loser.losses,
-			id: shortid()
+			losses: winner.losses
 		}
+		db.get('battleRecords').push(heroWinner).value();
 	}
-	db.get('battleRecords').push(record).value();
-	res.json(record);
+
+	var heroLoser = db.get('battleRecords').find({ id: loser.id });
+	if (heroLoser.value()) {
+		loser.assign({
+			losses: heroLoser.value().losses + 1
+		}).value();
+	} else {
+		heroLoser = {
+			name: loser.name,
+			id: loser.id,
+			wins: loser.wins,
+			losses: loser.losses
+		}
+		db.get('battleRecords').push(heroLoser).value();
+	}
+	res.json(db.get('battleRecords').value());
 	return;
 });
 
