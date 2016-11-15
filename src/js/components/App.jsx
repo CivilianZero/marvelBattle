@@ -53,27 +53,29 @@ var App = React.createClass({
 
 		return (
 			<section>
-				<div className='character-wrapper'>
-					<CharacterSelection
-						records={this.state.records}
-						name={this.state.name1}
-						id={this.state.character1}
-						image={this.state.image1}/>
-					<Search 
-						handleCharacter={this.handleClick} 
-						id='left'
-						choose={this.handleChoose}/>
-				</div>
-				<div className='character-wrapper'>
-					<CharacterSelection
-						records={this.state.records}
-						name={this.state.name2} 
-						id={this.state.character2}
-						image={this.state.image2}/>
-					<Search 
-						handleCharacter={this.handleClick} 
-						id='right'
-						choose={this.handleChoose}/>
+				<div className='imageRapper'>
+					<div className='character-wrapper'>
+						<CharacterSelection
+							records={this.state.records}
+							name={this.state.name1}
+							id={this.state.character1}
+							image={this.state.image1}/>
+						<Search 
+							handleCharacter={this.handleClick} 
+							id='left'
+							choose={this.handleChoose}/>
+					</div>
+					<div className='character-wrapper'>
+						<CharacterSelection
+							records={this.state.records}
+							name={this.state.name2} 
+							id={this.state.character2}
+							image={this.state.image2}/>
+						<Search 
+							handleCharacter={this.handleClick} 
+							id='right'
+							choose={this.handleChoose}/>
+					</div>
 				</div>
 				{results}
 				<BattleView 
