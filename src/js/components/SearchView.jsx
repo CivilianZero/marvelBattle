@@ -34,7 +34,7 @@ var SearchView = React.createClass({
 					onKeyPress={this.handleKeyPress}
 					onClick={this.props.choose}
 					value={this.state.inputValue} />
-				<button onClick={this.handleClick}>Search</button>
+				<button onClick={this.handleClick} />
 			</div>
 		);
 	},
