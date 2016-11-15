@@ -25,7 +25,9 @@ battleStore.fetch = function () {
 		url: '/records',
 		success: function (response) {
 			var results = response.results;
-			records.push(results);
+			if(results) {
+				records.push(results);
+			}
 			battleStore.emit('update');
 		}
 	});
@@ -33,8 +35,12 @@ battleStore.fetch = function () {
 };
 
 battleStore.add = function(win, lose) {
-	var winner = records.find((chara) => chara.name === win.name),
+	var winner,
+		loser;
+	if(records[0]) {
+		winner = records.find((chara) => chara.name === win.name);
 		loser = records.find((chara) => chara.name === lose.name);
+	}
 	$.ajax({
 		url: '/records',
 		method: 'POST',
@@ -48,22 +54,21 @@ battleStore.add = function(win, lose) {
 				id: lose.id
 			}
 		},
-		success: function() {
+		success: function(results) {
 			if(winner) {
 				winner.wins++;
 			} else {
-				records.push({name: winner.name, wins:1, losses:0, id: winner.id});
+				records.push(results.winner);
 			}  
 
 			if(loser) {
 				loser.losses++;
 			} else {
-				records.push({name: loser.name, wins:0, losses:1, id: loser.id});
+				records.push(results.loser);
 			}
 			battleStore.emit('update');
 		}
 	});	
 }
 
-window.battleStore = battleStore;
 module.exports = battleStore;

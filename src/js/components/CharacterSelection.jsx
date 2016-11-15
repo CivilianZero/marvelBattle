@@ -9,7 +9,11 @@ var CharacterSelection = React.createClass({
 			divImage,
 			wins = 0,
 			losses = 0,
-			hero = this.props.records.find((chara) => chara.name === this.props.name)
+			hero;
+
+		if(this.props.records[0]) {
+			hero = this.props.records.find((chara) => chara.name === this.props.name);
+		}
 		
 		if (this.props.id) {
 			url = this.props.image;

@@ -17,20 +17,20 @@ app.use(express.static(__dirname + '/src/css'));
 
 db.defaults({
 	battleRecords: []
-});
+}).value();
 
-app.get('/Records', function(req, res) {
+app.get('/records', function(req, res) {
 	res.json(db.get('battleRecords').value());
 });
 
-app.post('/Records', function(req, res) {
+app.post('/records', function(req, res) {
 	var body = req.body,
 		winner = body.winner,
 		loser = body.loser;
 	
 	var heroWinner = db.get('battleRecords').find({ id: winner.id });
 	if (heroWinner.value()) {
-		winner.assign({
+		heroWinner.assign({
 			wins: heroWinner.value().wins + 1
 		}).value();
 	} else {
@@ -45,7 +45,7 @@ app.post('/Records', function(req, res) {
 
 	var heroLoser = db.get('battleRecords').find({ id: loser.id });
 	if (heroLoser.value()) {
-		loser.assign({
+		heroLoser.assign({
 			losses: heroLoser.value().losses + 1
 		}).value();
 	} else {
@@ -57,7 +57,11 @@ app.post('/Records', function(req, res) {
 		}
 		db.get('battleRecords').push(heroLoser).value();
 	}
-	res.json(db.get('battleRecords').value());
+	var returnThis = {
+		winner: heroWinner,
+		loser: heroLoser
+	};
+	res.json(returnThis);
 	return;
 });
 
