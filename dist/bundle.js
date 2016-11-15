@@ -21882,7 +21882,7 @@
 	                        this.message( "round:partial", c2, c1 );
 	                    }
 	                }
-	                // HOW DO I TELL IF ITS A DRAW
+
 	                //return the fight data
 	                return {
 	                    fightData : this.fightdata,
