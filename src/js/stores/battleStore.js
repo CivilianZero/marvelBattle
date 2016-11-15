@@ -33,33 +33,35 @@ battleStore.fetch = function () {
 };
 
 battleStore.add = function(c, wl) {
-	var chara = records.find((chara) => chara.name === c)
-	if(chara) {
-		if(wl === 'win') {
-			chara.wins++;
+	var hero = records.find((chara) => chara.name === c)
+	if(c !== 'draw') {
+		if(hero) {
+			if(wl === 'win') {
+				hero.wins++;
+			} else {
+				hero.losses++;
+			}
 		} else {
-			chara.losses++;
+			if(wl === 'win') { 
+				records.push({name: c, wins:1, losses:0});
+			} else {
+				records.push({name: c, wins:0, losses:1});
+			}
 		}
-	} else {
-		if(wl === 'win') { 
-			records.push({name: c, wins:1, losses:0});
-		} else {
-			records.push({name: c, wins:0, losses:1});
-		}
+		battleStore.emit('update');
 	}
-	// $.ajax({
-	// 	url: '/records',
-	// 	method: 'POST',
-	// 	data: {
-	// 		wins: records.c.wins,
-	// 		losses: records.c.losses
-	// 	},
-	// 	success: function (response) {
-	// 		records.push(response);
-	// 		battleStore.emit('update');
-	// 	}
-	// })
-	battleStore.emit('update');
+	$.ajax({
+		url: '/records',
+		method: 'POST',
+		data: {
+			wins: hero.wins,
+			losses: hero.losses
+		},
+		success: function (response) {
+			records.push(response);
+			battleStore.emit('update');
+		}
+	})
 }
 
 window.battleStore = battleStore;

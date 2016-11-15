@@ -31,13 +31,12 @@ app.get('/Records', function(req, res) {
 // 	var body = req.body,
 // 		name = body.name,
 // 		wins = body.wins,
-// 		draws = body.draws,
 // 		losses = body.losses;
 
-// 	if (name) {
-// 		var record = {}
+// 	if (db.get('battleRecords').find('name').value()) {
+		
 // 	}
-// 	db.get('animals').push(record).value()
+// 	db.get('battleRecords').push(record).value()
 // });
 
 app.listen(port);

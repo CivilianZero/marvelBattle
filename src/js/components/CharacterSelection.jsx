@@ -7,13 +7,17 @@ var CharacterSelection = React.createClass({
 	render() {
 		var src = 'http://www.marvelsynergy.com/images/ultron.png',
 			wins = 0,
-			losses = 0;
+			losses = 0,
+			hero = this.props.records.find((chara) => chara.name === this.props.name)
+		
 		if (this.props.id) {
 			src = this.props.image;
 		}
-		if (this.props.records.indexOf(this.props.name) !== -1){
-			var { wins, losses } = this.props.records;
+
+		if (hero){
+			var { wins, losses } = hero;
 		}
+
 		return (
 			<div 
 				className='select'

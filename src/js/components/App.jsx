@@ -101,12 +101,15 @@ var App = React.createClass({
 		if (this.state.activeSelect === 'left') {
 			this.setState({
 				character1: e.target.id,
-				image1: image.path + '.' + image.extension
+				image1: image.path + '.' + image.extension,
+				name1: e.target.name
 			})
+			
 		} else {
 			this.setState({
 				character2: e.target.id,
-				image2: image.path + '.' + image.extension
+				image2: image.path + '.' + image.extension,
+				name2: e.target.name
 			})
 		}
 	},

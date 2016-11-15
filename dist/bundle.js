@@ -21426,10 +21426,10 @@
 	    battleManager = __webpack_require__(173);
 
 	var CharacterSelection = __webpack_require__(174),
-	    Search = __webpack_require__(176),
+	    Search = __webpack_require__(178),
 	    BattleView = __webpack_require__(182),
-	    characterStore = __webpack_require__(179),
-	    Results = __webpack_require__(177),
+	    characterStore = __webpack_require__(181),
+	    Results = __webpack_require__(179),
 	    battleStore = __webpack_require__(175);
 
 	var App = React.createClass({
@@ -21537,12 +21537,14 @@
 			if (this.state.activeSelect === 'left') {
 				this.setState({
 					character1: e.target.id,
-					image1: image.path + '.' + image.extension
+					image1: image.path + '.' + image.extension,
+					name1: e.target.name
 				});
 			} else {
 				this.setState({
 					character2: e.target.id,
-					image2: image.path + '.' + image.extension
+					image2: image.path + '.' + image.extension,
+					name2: e.target.name
 				});
 			}
 		},
@@ -21901,7 +21903,7 @@
 	                        this.message( "round:partial", c2, c1 );
 	                    }
 	                }
-
+	                // HOW DO I TELL IF ITS A DRAW
 	                //return the fight data
 	                return {
 	                    fightData : this.fightdata,
@@ -22157,13 +22159,17 @@
 		render() {
 			var src = 'http://www.marvelsynergy.com/images/ultron.png',
 			    wins = 0,
-			    losses = 0;
+			    losses = 0,
+			    hero = this.props.records.find(chara => chara.name === this.props.name);
+
 			if (this.props.id) {
 				src = this.props.image;
 			}
-			if (this.props.records.indexOf(this.props.name) !== -1) {
-				var { wins, losses } = this.props.records;
+
+			if (hero) {
+				var { wins, losses } = hero;
 			}
+
 			return React.createElement(
 				'div',
 				{
@@ -22192,8 +22198,8 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var EventEmitter = __webpack_require__(180),
-	    $ = __webpack_require__(181);
+	var EventEmitter = __webpack_require__(176),
+	    $ = __webpack_require__(177);
 
 	var battleStore = Object.create(EventEmitter.prototype);
 	EventEmitter.call(battleStore);
@@ -22227,33 +22233,35 @@
 	};
 
 	battleStore.add = function (c, wl) {
-		var chara = records.find(chara => chara.name === c);
-		if (chara) {
-			if (wl === 'win') {
-				chara.wins++;
+		var hero = records.find(chara => chara.name === c);
+		if (c !== 'draw') {
+			if (hero) {
+				if (wl === 'win') {
+					hero.wins++;
+				} else {
+					hero.losses++;
+				}
 			} else {
-				chara.losses++;
+				if (wl === 'win') {
+					records.push({ name: c, wins: 1, losses: 0 });
+				} else {
+					records.push({ name: c, wins: 0, losses: 1 });
+				}
 			}
-		} else {
-			if (wl === 'win') {
-				records.push({ name: c, wins: 1, losses: 0 });
-			} else {
-				records.push({ name: c, wins: 0, losses: 1 });
-			}
+			battleStore.emit('update');
 		}
-		// $.ajax({
-		// 	url: '/records',
-		// 	method: 'POST',
-		// 	data: {
-		// 		wins: records.c.wins,
-		// 		losses: records.c.losses
-		// 	},
-		// 	success: function (response) {
-		// 		records.push(response);
-		// 		battleStore.emit('update');
-		// 	}
-		// })
-		battleStore.emit('update');
+		$.ajax({
+			url: '/records',
+			method: 'POST',
+			data: {
+				wins: hero.wins,
+				losses: hero.losses
+			},
+			success: function (response) {
+				records.push(response);
+				battleStore.emit('update');
+			}
+		});
 	};
 
 	window.battleStore = battleStore;
@@ -22261,182 +22269,6 @@
 
 /***/ },
 /* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var Results = __webpack_require__(177),
-	    characterStore = __webpack_require__(179);
-
-	var SearchView = React.createClass({
-		displayName: 'SearchView',
-
-
-		getInitialState() {
-			return {
-				inputValue: '',
-				searchResults: null
-			};
-		},
-
-		componentWillMount() {
-			var _this = this;
-			characterStore.on('update', function () {
-				_this.setState({
-					searchResults: characterStore.getCharacters()
-				});
-			});
-		},
-
-		render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement('input', {
-					type: 'text',
-					ref: 'search',
-					id: this.props.id,
-					onChange: this.handleChange,
-					placeholder: 'Search',
-					onKeyPress: this.handleKeyPress,
-					onClick: this.props.choose,
-					value: this.state.inputValue }),
-				React.createElement(
-					'button',
-					{ onClick: this.handleClick },
-					'Search'
-				)
-			);
-		},
-
-		handleClick() {
-			characterStore.fetchCharacters(this.state.inputValue);
-			this.setState({
-				inputValue: ''
-			});
-		},
-
-		handleKeyPress(e) {
-			if (e.key === 'Enter') {
-				characterStore.fetchCharacters(this.state.inputValue);
-				this.setState({
-					inputValue: ''
-				});
-			}
-		},
-
-		handleChange() {
-			this.setState({
-				inputValue: this.refs.search.value
-			});
-		}
-	});
-
-	module.exports = SearchView;
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var CharacterViews = __webpack_require__(178);
-
-	var ResultsView = React.createClass({
-		displayName: 'ResultsView',
-
-
-		render() {
-			var _this = this;
-			var characterViews = this.props.searchResults.map(function (character) {
-				return React.createElement(CharacterViews, {
-					key: character.id,
-					name: character.name,
-					id: character.id,
-					photo: character.thumbnail.path + '.' + character.thumbnail.extension,
-					handleCharacter: _this.props.handleCharacter });
-			});
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'ul',
-					null,
-					characterViews
-				)
-			);
-		}
-
-	});
-
-	module.exports = ResultsView;
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(1);
-
-	var CharacterViews = React.createClass({
-		displayName: 'CharacterViews',
-
-
-		render() {
-			return React.createElement(
-				'li',
-				{ id: this.props.id },
-				React.createElement('img', {
-					onClick: this.props.handleCharacter,
-					src: this.props.photo,
-					id: this.props.id }),
-				this.props.name
-			);
-		}
-	});
-
-	module.exports = CharacterViews;
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var EventEmitter = __webpack_require__(180),
-	    $ = __webpack_require__(181);
-
-	var characterStore = Object.create(EventEmitter.prototype);
-	EventEmitter.call(characterStore);
-
-	var characters = [];
-
-	function findById(id) {
-		return characters.find(function (c) {
-			return c.id === id;
-		});
-	}
-
-	characterStore.getCharacters = function (id) {
-		if (id) {
-			return findById(Number(id));
-		} else {
-			return characters;
-		}
-	};
-
-	characterStore.fetchCharacters = function (starts) {
-		$.ajax({
-			url: 'https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=' + starts + '&apikey=7cb23f38bdb6f335cc414779fcd42e71',
-			success: function (response) {
-				characters = response.data.results;
-				characterStore.emit('update');
-			}
-		});
-		return characters;
-	};
-
-	module.exports = characterStore;
-
-/***/ },
-/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22753,7 +22585,7 @@
 
 
 /***/ },
-/* 181 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -32977,6 +32809,182 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var Results = __webpack_require__(179),
+	    characterStore = __webpack_require__(181);
+
+	var SearchView = React.createClass({
+		displayName: 'SearchView',
+
+
+		getInitialState() {
+			return {
+				inputValue: '',
+				searchResults: null
+			};
+		},
+
+		componentWillMount() {
+			var _this = this;
+			characterStore.on('update', function () {
+				_this.setState({
+					searchResults: characterStore.getCharacters()
+				});
+			});
+		},
+
+		render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement('input', {
+					type: 'text',
+					ref: 'search',
+					id: this.props.id,
+					onChange: this.handleChange,
+					placeholder: 'Search',
+					onKeyPress: this.handleKeyPress,
+					onClick: this.props.choose,
+					value: this.state.inputValue }),
+				React.createElement(
+					'button',
+					{ onClick: this.handleClick },
+					'Search'
+				)
+			);
+		},
+
+		handleClick() {
+			characterStore.fetchCharacters(this.state.inputValue);
+			this.setState({
+				inputValue: ''
+			});
+		},
+
+		handleKeyPress(e) {
+			if (e.key === 'Enter') {
+				characterStore.fetchCharacters(this.state.inputValue);
+				this.setState({
+					inputValue: ''
+				});
+			}
+		},
+
+		handleChange() {
+			this.setState({
+				inputValue: this.refs.search.value
+			});
+		}
+	});
+
+	module.exports = SearchView;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var CharacterViews = __webpack_require__(180);
+
+	var ResultsView = React.createClass({
+		displayName: 'ResultsView',
+
+
+		render() {
+			var _this = this;
+			var characterViews = this.props.searchResults.map(function (character) {
+				return React.createElement(CharacterViews, {
+					key: character.id,
+					name: character.name,
+					id: character.id,
+					photo: character.thumbnail.path + '.' + character.thumbnail.extension,
+					handleCharacter: _this.props.handleCharacter });
+			});
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'ul',
+					null,
+					characterViews
+				)
+			);
+		}
+
+	});
+
+	module.exports = ResultsView;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(1);
+
+	var CharacterViews = React.createClass({
+		displayName: 'CharacterViews',
+
+
+		render() {
+			return React.createElement(
+				'li',
+				{ id: this.props.id },
+				React.createElement('img', {
+					onClick: this.props.handleCharacter,
+					src: this.props.photo,
+					id: this.props.id }),
+				this.props.name
+			);
+		}
+	});
+
+	module.exports = CharacterViews;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(176),
+	    $ = __webpack_require__(177);
+
+	var characterStore = Object.create(EventEmitter.prototype);
+	EventEmitter.call(characterStore);
+
+	var characters = [];
+
+	function findById(id) {
+		return characters.find(function (c) {
+			return c.id === id;
+		});
+	}
+
+	characterStore.getCharacters = function (id) {
+		if (id) {
+			return findById(Number(id));
+		} else {
+			return characters;
+		}
+	};
+
+	characterStore.fetchCharacters = function (starts) {
+		$.ajax({
+			url: 'https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=' + starts + '&apikey=7cb23f38bdb6f335cc414779fcd42e71',
+			success: function (response) {
+				characters = response.data.results;
+				characterStore.emit('update');
+			}
+		});
+		return characters;
+	};
+
+	module.exports = characterStore;
 
 /***/ },
 /* 182 */
