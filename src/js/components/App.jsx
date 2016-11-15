@@ -108,7 +108,6 @@ var App = React.createClass({
 			this.setState({
 				character2: e.target.id,
 				image2: image.path + '.' + image.extension,
-				name1: null,
 				name2: e.target.name
 			})
 		}
