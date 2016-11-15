@@ -53,7 +53,7 @@ var App = React.createClass({
 
 		return (
 			<section>
-				<div className='imageRapper'>
+				<div className='image-rapper'>
 					<div className='character-wrapper'>
 						<CharacterSelection
 							records={this.state.records}
