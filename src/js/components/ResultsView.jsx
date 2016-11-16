@@ -16,7 +16,7 @@ var ResultsView = React.createClass({
 		});
 		return (
 			<div>
-				<ul className={this.props.classProp}>{characterViews}</ul>
+				<ul id='results' className={this.props.classProp}>{characterViews}</ul>
 			</div>
 		);
 	}

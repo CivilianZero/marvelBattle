@@ -1,5 +1,5 @@
 var React = require('react'),
-	battleManager = require('battlemanager');
+	TweenMax = require('gsap');
 
 var BattleView = React.createClass({
 

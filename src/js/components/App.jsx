@@ -80,7 +80,7 @@ var App = React.createClass({
 					character1={this.state.character1}
 					character2={this.state.character2}
 					narrative={this.state.narrative}>
-					<button onClick={this.handleFight}>FIGHT!</button>
+					<button id='fight'onClick={this.handleFight}>FIGHT!</button>
 				</BattleView>
 			</section>
 		)
