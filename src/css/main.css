@@ -200,3 +200,7 @@ li button {
 	padding: 1em;
 	text-transform: uppercase;
 }
+
+.message {
+	opacity: 0;
+}

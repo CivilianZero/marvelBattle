@@ -7,8 +7,6 @@ var CharacterSelection = React.createClass({
 	render() {
 		var url,
 			divImage,
-			wins = 0,
-			losses = 0,
 			hero;
 
 		if(this.props.records[0]) {

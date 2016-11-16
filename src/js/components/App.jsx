@@ -61,6 +61,7 @@ var App = React.createClass({
 						<Search 
 							handleCharacter={this.handleClick} 
 							id='left'
+							ref='left'
 							choose={this.handleChoose}/>
 					</div>
 					<div className='character-wrapper'>
@@ -72,6 +73,7 @@ var App = React.createClass({
 						<Search 
 							handleCharacter={this.handleClick} 
 							id='right'
+							ref='right'
 							choose={this.handleChoose}/>
 					</div>
 				</div>
@@ -106,6 +108,7 @@ var App = React.createClass({
 				name1: e.target.name,
 				searchResults: null
 			})
+			this.refs.left.state={inputValue: e.target.name};
 		} else {
 			this.setState({
 				character2: e.target.id,
@@ -113,6 +116,7 @@ var App = React.createClass({
 				name2: e.target.name,
 				searchResults: null
 			})
+			this.refs.right.state={inputValue: e.target.name};
 		}
 	},
 
