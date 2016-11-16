@@ -92,7 +92,6 @@ var App = React.createClass({
 			searchResults: null,
 			narrative: fight
 		});
-		console.log(fight);
 		var winner = fight.winner,
 			loser = fight.loser;
 		battleStore.add(winner, loser);
