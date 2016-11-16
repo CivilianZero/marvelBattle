@@ -45,7 +45,8 @@ var App = React.createClass({
 		if (this.state.searchResults) {
 			results = <Results 
 				handleCharacter={this.handleClick} 
-				searchResults={this.state.searchResults}/>;
+				searchResults={this.state.searchResults}
+				classProp={this.state.activeSelect}/>;
 		}
 
 		return (
@@ -91,6 +92,7 @@ var App = React.createClass({
 			searchResults: null,
 			narrative: fight
 		});
+		console.log(fight);
 		var winner = fight.winner,
 			loser = fight.loser;
 		battleStore.add(winner, loser);
@@ -102,21 +104,22 @@ var App = React.createClass({
 			this.setState({
 				character1: e.target.id,
 				image1: image.path + '.' + image.extension,
-				name1: e.target.name
+				name1: e.target.name,
+				searchResults: null
 			})
 		} else {
 			this.setState({
 				character2: e.target.id,
 				image2: image.path + '.' + image.extension,
-				name2: e.target.name
+				name2: e.target.name,
+				searchResults: null
 			})
 		}
 	},
 
 	handleChoose(e) {
 		this.setState({
-			activeSelect: e.target.id,
-			searchResults: null
+			activeSelect: e.target.id
 		});
 	}
 

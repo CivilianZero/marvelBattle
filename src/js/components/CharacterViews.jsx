@@ -7,13 +7,13 @@ var CharacterViews = React.createClass({
 
 			<li>
 				<img src={this.props.photo} />
-				{this.props.name}
-				<button 
-					id={this.props.id} 
-					name={this.props.name}
-					onClick={this.props.handleCharacter}>
-					Select
-				</button>
+					<p>{this.props.name}</p>
+					<button 
+						id={this.props.id} 
+						name={this.props.name}
+						onClick={this.props.handleCharacter}>
+						Select
+					</button>
 			</li>
 		);
 	}
