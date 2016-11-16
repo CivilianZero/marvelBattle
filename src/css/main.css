@@ -64,7 +64,8 @@ header h1 {
 }
 
 .intro {
-	padding: 0 20% 2em 15%;
+	padding: 0 20% 0 15%;
+	margin-bottom: -2em;
 }
 
 .intro h3 {
@@ -131,7 +132,7 @@ div.select {
 }
 
 .search.right {
-	right: 10px;
+	right: -12px;
 	left: initial;
 }
 
@@ -139,19 +140,23 @@ div.select {
 	padding: .5em;
 	border: 5px solid #000;
 	border-radius: 2px;
+	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
+	text-transform: uppercase;
+	font-size: 1.75em;
+	width: 15em;
 
 }
 
 .search button {
 	position: relative;
-	left: -37px;
-	top: -5px;
+	left: -47px;
+	top: -10px;
 	border: none;
 	background-image: url("/assets/search.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	padding: .7em;
+	padding: .8em;
 	background-color: transparent;
 }
 
@@ -234,4 +239,18 @@ li button {
 
 .message {
 	opacity: 0;
+}
+
+#fight {
+	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
+	color: #fff;
+	background-color: #ed1b24;
+	text-align: center;
+	text-transform: uppercase;
+	width: 75%;
+	margin: 0 auto;
+	padding: 1em;
+	font-size: 2em;
+	display: block;
+	border: none;
 }
