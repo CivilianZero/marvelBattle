@@ -167,10 +167,17 @@ div.select {
     font-size: 1.75em;
 }
 
+ul {
+	padding-left: 6em;
+	width: 46%;
+}
+
 li {
 	font-family: "Roboto Condensed Bold", Helvetica, sans-serif;
 	border: 5px solid #000;
 	list-style: none;
+	/*width: 48%;*/
+	margin-bottom: .75em;
 	/*display: inline-block;*/
 }
 
