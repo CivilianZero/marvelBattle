@@ -234,4 +234,6 @@ li button {
 
 .message {
 	opacity: 0;
+	display: none;
+	margin: 15px;
 }
