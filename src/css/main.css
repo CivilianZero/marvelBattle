@@ -149,10 +149,10 @@ div.select {
 	text-transform: uppercase;
 	font-size: 1.75em;
 	width: 15em;
-
 }
 
-.search button {
+.search button,
+.remove {
 	position: relative;
 	left: -47px;
 	top: -10px;
@@ -165,9 +165,9 @@ div.select {
 	background-color: transparent;
 }
 
-/*.search.remove {
-	background-image: url("/assets/remove.png");
-}*/
+.remove {
+	background-image: url("/assets/remove.png") !important;
+}
 
 #vs {
 	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
