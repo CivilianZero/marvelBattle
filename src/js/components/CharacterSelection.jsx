@@ -27,8 +27,10 @@ var CharacterSelection = React.createClass({
 				key={this.props.character} 
 				id={this.props.id} 
 				onClick={this.props.choose}>
-				<span className='wins'>{wins}</span>
-				<span className='losses'>{losses}</span>
+				<div>
+					<span className='wins'>{wins}</span>
+					<span className='losses'>{losses}</span>
+				</div>
 			</div>
 		)
 	}
