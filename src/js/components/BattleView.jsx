@@ -41,7 +41,7 @@ var BattleView = React.createClass({
 		return (
 			<section>
 				{startFight}
-				<ul>{fight}</ul>
+				<ul className='fighting'>{fight}</ul>
 			</section>
 		);
 	},
