@@ -266,6 +266,45 @@ li button:hover {
 	background-color: #000;
 }
 
+.win-loss {
+	border: 5px solid #000;
+	border-radius: 2px;
+	background-color: #fff;
+	padding: 1em;
+	width: 20%;
+	/*float: right;*/
+	margin: 1em;
+	opacity: 0.2;
+	transition: .4s;
+}
+
+.win-loss:hover {
+	opacity: 1.0;
+}
+
+.wins:before {
+	content: "Wins: ";
+	text-transform: uppercase;
+}
+
+/*.wins:after {
+	content: " ";
+}*/
+
+.wins,
+.losses {
+	font-family: "Roboto Condensed Bold";
+	display: block;
+	padding: .2em 0;
+	font-size: 1.2em
+}
+
+.losses:before {
+	content: "Losses: ";
+	text-transform: uppercase;
+}
+
+
 #fight {
 	font-family: "Roboto Condensed Bold Italic", Helvetica, sans-serif;
 	color: #fff;
