@@ -309,6 +309,20 @@ li button:hover {
 	margin: 0;
 }
 
+.failure-left,
+.failure-right {
+	font-family: "Roboto Condensed Bold", Helvetica, sans-serif;
+	font-size: 1.5em;
+}
+
+.failure-left {
+	margin-left: 4em;
+}
+
+.failure-right {
+	margin-left: 31em;
+}
+
 /*-------------------------*/
 /*------MEDIA-QUERIES------*/
 /*-------------------------*/
