@@ -8,7 +8,8 @@ var SearchView = React.createClass({
 	getInitialState() {
 		return {
 			inputValue: '',
-			searchResults: null
+			searchResults: null,
+			characterSelected: false
 		}
 	},
 
@@ -22,7 +23,15 @@ var SearchView = React.createClass({
 	},
 
 	render() {
-		var classes = 'search ' + this.props.id;
+		var classes = 'search ' + this.props.id,
+			buttonToggle = this.handleClick,
+			toggleClass = 'search-button';
+
+		if (this.state.characterSelected) {
+			buttonToggle = this.props.handleRemove;
+			toggleClass = 'remove'
+		}
+
 		return (
 			<div className={classes}>
 				<input 
@@ -34,7 +43,10 @@ var SearchView = React.createClass({
 					onKeyPress={this.handleKeyPress}
 					onClick={this.props.choose}
 					value={this.state.inputValue} />
-				<button onClick={this.handleClick} />
+				<button 
+					className={toggleClass} 
+					id={this.props.id} 
+					onClick={buttonToggle} />
 			</div>
 		);
 	},

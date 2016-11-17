@@ -1,5 +1,6 @@
 var React = require('react'),
-	battleManager = require('battlemanager');
+	battleManager = require('battlemanager'),
+	$ = require('jquery');
 
 var CharacterSelection = require('./CharacterSelection.jsx'),
 	Search = require('./SearchView.jsx'),
@@ -20,8 +21,7 @@ var App = React.createClass({
 			name2: null,
 			activeSelect: null,
 			searchResults: null,
-			narrative: null,
-			records: battleStore.fetch()
+			narrative: null
 		}
 	},
 
@@ -30,11 +30,6 @@ var App = React.createClass({
 		characterStore.on('update', function() {
 			_this.setState({
 				searchResults: characterStore.getCharacters()
-			});
-		});
-		battleStore.on('update', function() {
-			_this.setState({
-				records: battleStore.get()
 			});
 		});
 	},
@@ -54,24 +49,26 @@ var App = React.createClass({
 				<div className='image-rapper'>
 					<div className='character-wrapper'>
 						<CharacterSelection
-							records={this.state.records}
 							name={this.state.name1}
-							id={this.state.character1}
+							character={this.state.character1}
+							id='left'
 							image={this.state.image1}/>
 						<Search 
-							handleCharacter={this.handleClick} 
+							handleCharacter={this.handleClick}
+							handleRemove={this.handleRemove} 
 							id='left'
 							ref='left'
 							choose={this.handleChoose}/>
 					</div>
 					<div className='character-wrapper'>
 						<CharacterSelection
-							records={this.state.records}
 							name={this.state.name2} 
-							id={this.state.character2}
+							character={this.state.character2}
+							id='right'
 							image={this.state.image2}/>
 						<Search 
 							handleCharacter={this.handleClick} 
+							handleRemove={this.handleRemove}
 							id='right'
 							ref='right'
 							choose={this.handleChoose}/>
@@ -108,7 +105,10 @@ var App = React.createClass({
 				name1: e.target.name,
 				searchResults: null
 			})
-			this.refs.left.state={inputValue: e.target.name};
+			this.refs.left.state={
+				inputValue: e.target.name,
+				characterSelected: true
+			};
 		} else {
 			this.setState({
 				character2: e.target.id,
@@ -116,7 +116,10 @@ var App = React.createClass({
 				name2: e.target.name,
 				searchResults: null
 			})
-			this.refs.right.state={inputValue: e.target.name};
+			this.refs.right.state={
+				inputValue: e.target.name,
+				characterSelected: true
+			};
 		}
 	},
 
@@ -124,6 +127,29 @@ var App = React.createClass({
 		this.setState({
 			activeSelect: e.target.id
 		});
+	},
+
+	handleRemove(e) {
+		if (e.target.id === 'left') {
+			this.setState({
+				character1: null,
+				image1: null,
+				name1: null
+			})
+			this.refs.left.state={
+				inputValue: ''
+			}
+		} else {
+			this.setState({
+				character2: null,
+				image2: null,
+				name2: null
+			})
+			this.refs.right.state={
+				inputValue: ''
+			}
+		}
+		$(e.target.id).removeAttr('style');
 	}
 
 });
