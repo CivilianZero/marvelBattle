@@ -4,28 +4,15 @@ var battleStore = require('../stores/battleStore.js');
 
 var CharacterSelection = React.createClass({
 
-	getInitialState() {
-		return {
-			records: battleStore.fetch()
-		}
-	},
-
-	componentWillMount() {
-		var _this = this;
-		battleStore.on('update', function() {
-			_this.setState({
-				records: battleStore.get()
-			});
-		});
-	},
-
 	render() {
 		var url,
 			divImage,
+			wins = 0,
+			losses = 0,
 			hero;
 
 		if(this.props.character) {
-			hero = this.state.records.find((chara) => chara.name === this.props.name);
+			hero = battleStore.get(this.props.character);
 		}
 		
 		if (this.props.character) {

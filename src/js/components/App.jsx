@@ -21,7 +21,8 @@ var App = React.createClass({
 			name2: null,
 			activeSelect: null,
 			searchResults: null,
-			narrative: null
+			narrative: null,
+			records: battleStore.fetch()
 		}
 	},
 
@@ -29,7 +30,7 @@ var App = React.createClass({
 		var _this = this;
 		characterStore.on('update', function() {
 			_this.setState({
-				searchResults: characterStore.getCharacters()
+				searchResults: characterStore.getCharacters(),
 			});
 		});
 	},
@@ -52,6 +53,7 @@ var App = React.createClass({
 							name={this.state.name1}
 							character={this.state.character1}
 							id='left'
+							ref='character1'
 							image={this.state.image1}/>
 						<Search 
 							handleCharacter={this.handleClick}
@@ -65,6 +67,7 @@ var App = React.createClass({
 							name={this.state.name2} 
 							character={this.state.character2}
 							id='right'
+							ref='character2'
 							image={this.state.image2}/>
 						<Search 
 							handleCharacter={this.handleClick} 
