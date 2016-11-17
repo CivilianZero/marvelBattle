@@ -266,7 +266,8 @@ li button:hover {
 	background-color: #000;
 }
 
-.win-loss {
+.wl-left,
+.wl-right {
 	border: 5px solid #000;
 	border-radius: 2px;
 	background-color: #fff;
@@ -278,7 +279,12 @@ li button:hover {
 	transition: .4s;
 }
 
-.win-loss:hover {
+.wl-right {
+	float: right;
+}
+
+.wl-left:hover,
+.wl-right:hover {
 	opacity: 1.0;
 }
 
