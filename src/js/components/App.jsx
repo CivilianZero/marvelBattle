@@ -37,12 +37,16 @@ var App = React.createClass({
 
 	render() {
 		var results;
-
 		if (this.state.searchResults) {
-			results = <Results 
-				handleCharacter={this.handleClick} 
-				searchResults={this.state.searchResults}
-				classProp={this.state.activeSelect}/>;
+			if(this.state.searchResults.length !== 0){
+				results = <Results 
+					handleCharacter={this.handleClick} 
+					searchResults={this.state.searchResults}
+					classProp={this.state.activeSelect}/>;
+			} else {
+				results = <p className={'failure-' + this.state.activeSelect}>
+					Try typing something intelligible, you uneducated doofus.' </p>
+			}
 		}
 
 		return (
