@@ -24,10 +24,7 @@ battleStore.fetch = function () {
 	$.ajax({
 		url: '/records',
 		success: function (response) {
-			var results = response.results;
-			if(results) {
-				records.push(results);
-			}
+			records = response;
 			battleStore.emit('update');
 		}
 	});

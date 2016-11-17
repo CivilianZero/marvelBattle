@@ -1,7 +1,6 @@
 var React = require('react');
 
-var Results = require('./ResultsView.jsx'),
-	characterStore = require('../stores/characterStore.js');
+var characterStore = require('../stores/characterStore.js');
 
 var SearchView = React.createClass({
 
